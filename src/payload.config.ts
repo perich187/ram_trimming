@@ -92,12 +92,16 @@ export default buildConfig({
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     ...plugins,
-    vercelBlobStorage({
-      collections: {
-        media: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
-    }),
+    // Vercel Blob storage — enabled when BLOB_READ_WRITE_TOKEN is set (Vercel deployment)
+    ...(process.env.BLOB_READ_WRITE_TOKEN &&
+    process.env.BLOB_READ_WRITE_TOKEN !== 'your-vercel-blob-token'
+      ? [
+          vercelBlobStorage({
+            collections: { media: true },
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+          }),
+        ]
+      : []),
   ],
   globals: [Header, Footer],
   secret: process.env.PAYLOAD_SECRET,
