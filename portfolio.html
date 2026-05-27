@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Ram's Trimming — Our Work</title>
+  <link rel="stylesheet" href="rams.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <style>
+    .filter-bar { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
+    .filter-btn {
+      font-family:var(--font-mono);
+      font-size:11px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      font-weight:600;
+      padding:10px 24px;
+      border:2px solid var(--grey-light);
+      background:transparent;
+      cursor:pointer;
+      border-radius:var(--radius);
+      color:var(--grey-text);
+      transition:all 0.2s;
+    }
+    .filter-btn:hover { border-color:var(--black); color:var(--black); }
+    .filter-btn.active { background:var(--black); color:var(--white); border-color:var(--black); }
+
+    .portfolio-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      grid-auto-rows:280px;
+      gap:16px;
+    }
+    .portfolio-item { position:relative; overflow:hidden; cursor:pointer; background:var(--black); }
+    .portfolio-item.featured { grid-column:span 2; grid-row:span 2; }
+    .portfolio-item.tall { grid-row:span 2; }
+    .portfolio-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s, opacity 0.4s; opacity:0.88; display:block; }
+    .portfolio-item:hover img { transform:scale(1.06); opacity:0.55; }
+    .portfolio-item-overlay {
+      position:absolute;
+      inset:0;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      opacity:0;
+      transition:opacity 0.35s;
+    }
+    .portfolio-item:hover .portfolio-item-overlay { opacity:1; }
+    .pi-tag { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); margin-bottom:8px; }
+    .pi-title { font-family:var(--font-display); font-size:20px; font-weight:700; color:var(--white); line-height:1.2; }
+
+    @media(max-width:900px) {
+      .portfolio-grid { grid-template-columns:1fr 1fr; grid-auto-rows:220px; }
+      .portfolio-item.featured { grid-column:span 2; grid-row:span 1; }
+      .portfolio-item.tall { grid-row:span 1; }
+    }
+    @media(max-width:600px) {
+      .portfolio-grid { grid-template-columns:1fr; grid-auto-rows:240px; }
+      .portfolio-item.featured, .portfolio-item.tall { grid-column:span 1; grid-row:span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-logo">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDo8gsfuLxtN7xFMwiXgiS79sA6k478mrNNnRv24ZGJ-_xe0lxEDlyewuBTR6AbOyT8IjkLWeFWoiNWQhvSSokLcGnuxIGYyYzhiE9waU_lKDuB_tfbwDBs1EBdKjDVZwXnaOktmsEjEKAbc0zUetAw8UxN9yC3Da97gd1F27GppEnaa7nBHfNgbFZ_Ao0im71bZ1QRj8OVhQo8c_er5-7yLrZBLDwquKAhsgzKL6EXM42K818YZt0NQagMaBUN_aM_U44xNtTOeh_" alt="Ram's Trimming" />
+    <span class="nav-logo-text">Ram's Trimming</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</header>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html" class="active">Portfolio</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<div class="page-hero">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC773KiEyz05ggx0RcnwZEOZGcireHUMVTRsQSuSp3qfyRsonamvK7cF5qvDqXmgJLGHZfGNp4JKiKO56mhsIovukmh6ltIxY7AIzz0ZNOQ2Z910WjgtGKSSGSzNWwmlktK9_M66abPZqF4tuWOWjtCmEeuZgyvuE1GQic5QuRJOFm--J8EjEkx8buGeCyP30qXszP6-96eP05yvRI7hfKR_DUwpro62VEADmnckAAjN-BKg4rXm4z2I_cvPbNs3kAXXOB28L4T7inj" alt="" />
+  <div class="page-hero-content">
+    <span class="page-hero-tag">Our Work</span>
+    <h1>Project Portfolio</h1>
+  </div>
+</div>
+
+<main style="padding:var(--section-gap) 64px;">
+  <style>@media(max-width:768px){main{padding:60px 16px!important;}}</style>
+  <div style="max-width:1280px; margin:0 auto;">
+
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:48px;">
+      <div>
+        <div class="section-label reveal"><span>Real Projects</span></div>
+        <h2 style="font-family:var(--font-display); font-size:40px; font-weight:700; color:var(--black); letter-spacing:-0.02em;" class="reveal">Built by Ram's Trimming</h2>
+      </div>
+      <div class="filter-bar reveal reveal-delay-1">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="marine">Marine</button>
+        <button class="filter-btn" data-filter="motor">Motor</button>
+        <button class="filter-btn" data-filter="upholstery">Upholstery</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-item featured reveal" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWx-lhXLyhY1Y7mtbSQwZ7twZnvGCWfOedgQpwpAThHveFGyahhl9l4ih6G2FzjMrS-a7OBM-MyzEDwHiu-DqKw3t8qbapLpOy_Z_kpk7Y3Qb3yaYUfJo9SwjhnY-Zw117n0k6cEefTVX0QlY_tvMaILaAUh05yYZYEdV9VVM29dBZDsBsbDs6WRksRFETPpTv6ed8oAXHaGhSehMY01mt4IayCoJD_zwGBMANOdEHOgCUqf4Siu9m0DMrYFI_MSRp8up55dHyDL8u" alt="Custom bimini" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Custom Bimini — 26ft Cruise Craft</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-1" data-category="motor">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFcIFHyT9FQOwqQQfl-6Z29sxRK3Y0em9AJ7Uay6t277xOwaqNRwhm_xdV7suTzW-gptuEECbvmTpPrkYc0aFIsSnueKPWLNVgXzcOg8JGfT9pT-HClTCZ44P9gHd2xuigXLZqiqh-9uWIDphibyev3933Kj7D1Zmi09OoLsw2-eTDmp0mJ06AggTHBfTcakqIIl866spiRgZ1L0x1msL0Ne11guZc4t0Jvj7_4jXGIsrLeCaxxylm6Vio5_5daVnGs5ox65MROmwf" alt="Seat restoration" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Motor Trimming</div>
+          <div class="pi-title">Seat Restore — Ford Ranger</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item tall reveal reveal-delay-2" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVlaGdmQdJcchxiFCgFQh_-9lo37ZobKZbEIZvxsuHCzX-7xbdWiHDivrF5owGM1X2SqZkAqg81S4Kc1KijBMvxe4vZ3Tl_CMEp5Xge5QVL6_dtPnzUJ2wvw4nX4Y963fa4ocbw1c_3P6NCoubpnQ2q3yNtcaeBwBReP8cgQ8CjgJ1vyVfUENO9vsF1c6BM3XWHKz3CyTvLd5yIbF34EKGqxfnJbQN14CKBdbvM3H9u-IBTRvuaVPHMAnoiDm730PRagxR0C1lXc--" alt="Camper system" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Full Camper System — Quintrex 520</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal" data-category="upholstery">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPLQg3nVe5EPN3diXHtXyJfRXtu4FkKXDkscH1i1sA_1-p620W5bnE1S240WE3GQK_uNqlbZNmYHVYbTsN1-v-dUd1O8KyYmI0KCRCFaj3_xQJ-DswlTkrIGzCvN90Ni0aPuv1XS_pXD7k0UMxgIDw2aFMD4f-jLJivkuScCJrXqinB-YRG8v9-23n8dWcrAXKPwqwoP43lvMNS3101KUsVVpz85ozwruw3Wm97M521cW_PLzoItXC7haJ6oAQyZU2tiele9jDhg5f" alt="Classic car interior" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Upholstery</div>
+          <div class="pi-title">Full Interior — Classic Holden</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-1" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7zATN78yFcuSkPBziPQ3Tmgu-8P4jfUTzczJeb5xd8PrPZIYXKSSdkz1yYQVzNCjfZVdsVUo2JxhQ5wzfsXqayGFFuXxAXZrnkBUzhEDoJw02KUDFWjRz6TuGPQls0XFw80wHdoSrWohSIWL6SGSHeHt5MP-dhVaxW0hcV9zfTvkuX9s40ckip12uKsgqjiZrsm3wS3tZduJzwT4uKuhMBtjdKqSzVPIoAVUtY_HMNEg08MNLVFNEsGYkcAY-9QYCDlT0FD73i-t8" alt="Boat upholstery" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Upholstery — Sea Ray 280</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-2" data-category="motor">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0qVtl6Ju4RJeDw9twjYsYTAsUdOXRAjOhN_P3XPAtKd2YvkUi8fflcP3tbZ4v5F361IMYOqQMJ4ih2l7wbTb4mAFlZLjwFRnWWgcrVe0e-EJB6ie0twieU130j4aMYXlyoxIkZK7jAVfm5qfsZ14eozkXc4KoTp0ObLDtPASC4dSwoQgThCnKFg-pdEZ6v2s60uy5pP5ynK6qdyHEJFWc6Jbx6BI69fvPq5UVNwrBjMgsDIk9tGLJnE38Ic54DezWouQ9Ve1Zt45s" alt="Ute canvas" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Motor Trimming</div>
+          <div class="pi-title">Canvas Cover — Toyota Hilux</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item tall reveal" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7NmVSSIx1WpWy8nKlOX7GySbczfh0ayCqxWSZyWR5ZILVIhvus3nfqaRrVmDWckeJU9Ub8yemq1cH_PzjTiBTqjz2rccIC74PAk7x4D5cHDdyjXlMb82BevjTrobrQDczbaB4im6ReAysiN4pjv9MMZ04M3DdduS85nKbml7djLEqFUAv7Hj5rqVxTTztsPnHCcGXywwM5FdgEOVHXqs6-cmljEVFNQtN3lYAcfT5RGGtJCXeVJrX-9vu3sQRp1cjKSVec6GFBGwi" alt="Front clears" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Front Clears — Sailfish 2000</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-1" data-category="upholstery">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0" alt="Golf buggy seats" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Upholstery</div>
+          <div class="pi-title">Golf Buggy — Full Seat Set</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-2" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOwsH3faYsqe_QJyHIVOLOFi7QmLKfSmj71ljR3BhaNxrYnojVtj_vXs6zb-85ydGk0ENqLNbRThQh0X2gXZo2nCAfTBmk4u0J8a6bgk-AIQfx3LnCJvIdHshWEAzIrdyrEpW7hzH6ERNWjSrYfejY1JwDm55KdRI2erOTVw4AbhJF3ZfBeZ9IF9sCIccH1ZCjYxef6MR0pDwQ2Y9W6hg7KeF6d0Rhgkpgu81Ew7cew_2ECSXNM0Tp5RN2k4QOJHwT7-YGaXXgCXYZ" alt="Sundeck cover" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Sundeck Cover — Haines Signature</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-1" data-category="motor">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTHOcfaehtUMoYyUADEhCX3L_8eSYtBkxMVMeUoue0ru-EVimVQ9fXi6EAsKlU918Akc58Fqifc_dVUIGnM9iCKPS6ye4qubpDYTG8IFdK-KcOQlU-hIEbjj2Q85nLvEJDNqLcYsk17_tsIWaMbCSHCQ70zenUvkx6Tckre8TrtNb0cT38w4i314QEQdQxfp2RCoUOeGWU96jLo47NuKyhBHHWgoqXosQN0-05SkTTmJ8nJuBS-FYGhu3T2mFnwBD9aN4dQ37S5eXV" alt="Headliner" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Motor Trimming</div>
+          <div class="pi-title">Headliner — 80 Series Landcruiser</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-2" data-category="marine">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqBLE55bRzEtZ2gkQe30Y5AHNJ4ucj61yNjX49HHLgcwlOl3ES0lvphrTf1fYy4nHPOdYEd5vXbWToyYrix38NTGgo3j9X0opXtoG9nY9ok_ZA7h_z6hAvsJSGkLKUlhOpTvOtKrJaBczhEzc0yt3fNX_SndEge1p-jQpxifQJY0HczcF_5DwhBFm51R1xuidvSHha565fNN5vm-sAtu9_NefkkRihXQTZ1LuZHLx5HPRphASgUFPbfzqiusVutDKxs68BLJuMLnjq" alt="Boat carpet" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Marine Trimming</div>
+          <div class="pi-title">Boat Carpet — Stacer 519</div>
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal reveal-delay-3" data-category="upholstery">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVzA6AvzLHKvMHHbmYjND-o_rK-l8fI_iAvdGFdxUdIz8Eu5l10Piu8twDZWP_9CytPUmmh1EIvCQ9ZXZPHlaeeC4r_FPw_L5J-GzZKYBS2_mgaVAT7MW_QXisfPt3Kg1uhx5IE2licLcN4VjoFutIN8Oreu1LYRwTiGwHaYXhzWi6rrCmFrX-Oz-kTeR9feX6sP2haCLPu_gl6OdCKArjfLaREK8UOt0ENYqpWVmXqCICqLqSflkp_JUbzmZdkGWAxb2QB9ANTb8Z" alt="Door panels" />
+        <div class="portfolio-item-overlay">
+          <div class="pi-tag">Motor Trimming</div>
+          <div class="pi-title">Door Panels — GQ Patrol</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <p style="text-align:center; font-size:14px; color:var(--grey-mid); margin-top:48px; font-family:var(--font-mono); letter-spacing:0.06em;" class="reveal">
+      A selection of recent work — more projects added regularly.
+    </p>
+
+    <!-- CTA -->
+    <div style="background:var(--black); padding:64px; text-align:center; margin-top:80px;" class="reveal">
+      <span class="caps" style="color:var(--white);">Start Your Project</span>
+      <h3 style="font-family:var(--font-display); font-size:36px; color:var(--white); margin:16px 0 32px; font-weight:700;">Want to see your project here?</h3>
+      <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDo8gsfuLxtN7xFMwiXgiS79sA6k478mrNNnRv24ZGJ-_xe0lxEDlyewuBTR6AbOyT8IjkLWeFWoiNWQhvSSokLcGnuxIGYyYzhiE9waU_lKDuB_tfbwDBs1EBdKjDVZwXnaOktmsEjEKAbc0zUetAw8UxN9yC3Da97gd1F27GppEnaa7nBHfNgbFZ_Ao0im71bZ1QRj8OVhQo8c_er5-7yLrZBLDwquKAhsgzKL6EXM42K818YZt0NQagMaBUN_aM_U44xNtTOeh_" alt="Ram's Trimming" />
+      <p>Expertise, Durability, Quality. Professional marine and motor trimming in Mandurah, WA and surrounds.</p>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Marine Trimming</a></li><li><a href="services.html">Motor Trimming</a></li><li><a href="services.html">Biminis &amp; Covers</a></li><li><a href="services.html">Upholstery</a></li><li><a href="contact.html">Free Quotes</a></li></ul></div>
+    <div class="footer-col"><h4>Contact Us</h4>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">location_on</span><span>Mandurah, WA 6210</span></div>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">phone</span><a href="tel:0435929441">0435 929 441</a></div>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">mail</span><a href="mailto:rhys@ramstrimming.com.au">rhys@ramstrimming.com.au</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ram's Trimming. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<a href="contact.html" class="fab" aria-label="Contact us"><span class="material-symbols-outlined">mail</span></a>
+<script src="rams.js"></script>
+</body>
+</html>

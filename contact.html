@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Ram's Trimming — Get a Free Quote</title>
+  <link rel="stylesheet" href="rams.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <style>
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      border-top: 4px solid var(--black);
+      padding: 40px 36px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: box-shadow 0.25s;
+    }
+    .contact-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .contact-card-icon {
+      background: var(--black);
+      padding: 14px;
+      font-size: 28px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .contact-card h4 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--grey-mid);
+      margin-bottom: 8px;
+    }
+    .contact-card a, .contact-card p {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .contact-card a:hover { color: var(--black); }
+    .map-placeholder {
+      background: var(--black);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 4px solid var(--white);
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-logo">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDo8gsfuLxtN7xFMwiXgiS79sA6k478mrNNnRv24ZGJ-_xe0lxEDlyewuBTR6AbOyT8IjkLWeFWoiNWQhvSSokLcGnuxIGYyYzhiE9waU_lKDuB_tfbwDBs1EBdKjDVZwXnaOktmsEjEKAbc0zUetAw8UxN9yC3Da97gd1F27GppEnaa7nBHfNgbFZ_Ao0im71bZ1QRj8OVhQo8c_er5-7yLrZBLDwquKAhsgzKL6EXM42K818YZt0NQagMaBUN_aM_U44xNtTOeh_" alt="Ram's Trimming" />
+    <span class="nav-logo-text">Ram's Trimming</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</header>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<div class="page-hero">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0" alt="" />
+  <div class="page-hero-content">
+    <span class="page-hero-tag">Get In Touch</span>
+    <h1>Contact Us</h1>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── Contact Cards ── -->
+  <section style="padding:80px 64px; background:var(--surface);">
+    <style>@media(max-width:768px){section{padding-left:16px!important;padding-right:16px!important;}}</style>
+    <div style="max-width:1280px; margin:0 auto;">
+      <div class="title-underline reveal"><h2>Get in Touch</h2></div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:80px;">
+        <style>@media(max-width:768px){.contact-cards{grid-template-columns:1fr!important;}}</style>
+
+        <div class="contact-card reveal reveal-delay-1">
+          <div class="contact-card-icon"><span class="material-symbols-outlined">phone</span></div>
+          <div>
+            <h4>Call Us</h4>
+            <a href="tel:0435929441">0435 929 441</a>
+            <p style="font-size:14px; font-family:var(--font-body); font-weight:400; color:var(--grey-text); margin-top:8px;">Mon–Fri: 8am – 5pm</p>
+          </div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-card-icon"><span class="material-symbols-outlined">mail</span></div>
+          <div>
+            <h4>Email Us</h4>
+            <a href="mailto:rhys@ramstrimming.com.au" style="font-size:17px;">rhys@ramstrimming.com.au</a>
+            <p style="font-size:14px; font-family:var(--font-body); font-weight:400; color:var(--grey-text); margin-top:8px;">We reply within 24 hours</p>
+          </div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-3">
+          <div class="contact-card-icon"><span class="material-symbols-outlined">location_on</span></div>
+          <div>
+            <h4>Find Us</h4>
+            <p>Mandurah, WA 6210</p>
+            <p style="font-size:14px; font-family:var(--font-body); font-weight:400; color:var(--grey-text); margin-top:8px;">Servicing Mandurah &amp; surrounds</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Quote Form + Info ── -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+        <style>@media(max-width:900px){.contact-layout{grid-template-columns:1fr!important;}}</style>
+
+        <!-- Form -->
+        <div class="reveal">
+          <div class="section-label" style="margin-bottom:32px;"><span>Free Quote Request</span></div>
+          <h3 style="font-family:var(--font-display); font-size:36px; font-weight:700; color:var(--black); margin-bottom:12px; line-height:1.15;">Tell us about your project</h3>
+          <p style="font-size:15px; color:var(--grey-text); margin-bottom:40px; line-height:1.65;">
+            Fill out the form below and we'll get back to you with a professional assessment within 24 hours — completely free, no obligation.
+          </p>
+
+          <form class="quote-form" style="display:flex; flex-direction:column; gap:20px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input class="form-input" type="text" placeholder="Rhys Smith" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input class="form-input" type="tel" placeholder="04XX XXX XXX" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input class="form-input" type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Required</label>
+              <select class="form-select">
+                <option value="">Select a service...</option>
+                <option>Marine Trimming — Biminis &amp; Bars</option>
+                <option>Marine Trimming — Boat Covers &amp; Campers</option>
+                <option>Marine Trimming — Clears &amp; Curtains</option>
+                <option>Marine Trimming — Boat Upholstery</option>
+                <option>Marine Trimming — Boat Carpets</option>
+                <option>Marine Trimming — Sundecks &amp; Extensions</option>
+                <option>Motor Trimming — Seats &amp; Bolstering</option>
+                <option>Motor Trimming — Headliners</option>
+                <option>Motor Trimming — Door Panels</option>
+                <option>Motor Trimming — Ute Canvas Covers</option>
+                <option>Motor Trimming — Golf Buggy Seats</option>
+                <option>Repairs &amp; Restoration</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+              <div class="form-group">
+                <label class="form-label">Vessel / Vehicle Type</label>
+                <input class="form-input" type="text" placeholder="e.g. Quintrex 520, Ford Ranger" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred Contact Time</label>
+                <select class="form-select">
+                  <option>Any time</option>
+                  <option>Morning (8am – 12pm)</option>
+                  <option>Afternoon (12pm – 5pm)</option>
+                  <option>Email only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Project Details *</label>
+              <textarea class="form-textarea" style="min-height:160px;" placeholder="Please describe your project in detail — what needs to be done, any specific materials or colours you have in mind, and the current condition of the item..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-red">Submit My Quote Request</button>
+            <p style="font-size:12px; color:var(--grey-mid); text-align:center; font-family:var(--font-mono); letter-spacing:0.06em;">
+              We'll respond within 24 hours — Mon to Fri
+            </p>
+          </form>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="reveal reveal-delay-1">
+          <div style="background:var(--black); padding:48px; margin-bottom:24px;">
+            <div class="section-label-white section-label" style="margin-bottom:28px;"><span>Business Hours</span></div>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:16px;">
+                <span style="font-family:var(--font-mono); font-size:12px; color:var(--white); letter-spacing:0.08em; text-transform:uppercase;">Monday – Friday</span>
+                <span style="font-size:15px; color:var(--white);">8:00 AM – 5:00 PM</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:16px;">
+                <span style="font-family:var(--font-mono); font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.08em; text-transform:uppercase;">Saturday</span>
+                <span style="font-size:15px; color:rgba(255,255,255,0.6);">By Appointment</span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="font-family:var(--font-mono); font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.08em; text-transform:uppercase;">Sunday</span>
+                <span style="font-size:15px; color:rgba(255,255,255,0.4);">Closed</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface); border:1px solid var(--grey-light); border-left:4px solid var(--black); padding:32px; margin-bottom:24px;">
+            <h4 style="font-family:var(--font-display); font-size:20px; font-weight:700; color:var(--black); margin-bottom:12px;">Free Quotes</h4>
+            <p style="font-size:15px; color:var(--grey-text); line-height:1.65;">All quotes are completely free and include a detailed assessment of your project. No surprises, no hidden costs.</p>
+          </div>
+
+          <div style="background:var(--surface); border:1px solid var(--grey-light); border-left:4px solid var(--black); padding:32px; margin-bottom:24px;">
+            <h4 style="font-family:var(--font-display); font-size:20px; font-weight:700; color:var(--black); margin-bottom:12px;">Service Area</h4>
+            <p style="font-size:15px; color:var(--grey-text); line-height:1.65;">Based in Mandurah, WA. We service Mandurah and the surrounding Peel region. Contact us to discuss your location.</p>
+          </div>
+
+          <div style="background:var(--white); border:1px solid var(--grey-light); padding:32px;">
+            <h4 style="font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--black); margin-bottom:8px;">Need urgent help?</h4>
+            <p style="font-size:15px; color:rgba(0,0,0,0.7); margin-bottom:20px; line-height:1.5;">Give us a call directly for urgent jobs or quick questions.</p>
+            <a href="tel:0435929441" style="font-family:var(--font-display); font-size:24px; font-weight:700; color:var(--black);">0435 929 441</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Map Placeholder ── -->
+  <div class="map-placeholder">
+    <span class="material-symbols-outlined" style="font-size:56px; color:var(--white);">location_on</span>
+    <p style="font-family:var(--font-display); font-size:24px; color:var(--white); font-weight:700;">Mandurah, WA 6210</p>
+    <p style="font-family:var(--font-mono); font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:0.12em; text-transform:uppercase;">Map integration coming soon</p>
+    <a href="https://maps.google.com/?q=Mandurah+WA+6210" target="_blank" rel="noopener" class="btn" style="background:var(--black); color:var(--white); margin-top:16px; font-size:11px; padding:12px 28px;">
+      Open in Google Maps
+    </a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDo8gsfuLxtN7xFMwiXgiS79sA6k478mrNNnRv24ZGJ-_xe0lxEDlyewuBTR6AbOyT8IjkLWeFWoiNWQhvSSokLcGnuxIGYyYzhiE9waU_lKDuB_tfbwDBs1EBdKjDVZwXnaOktmsEjEKAbc0zUetAw8UxN9yC3Da97gd1F27GppEnaa7nBHfNgbFZ_Ao0im71bZ1QRj8OVhQo8c_er5-7yLrZBLDwquKAhsgzKL6EXM42K818YZt0NQagMaBUN_aM_U44xNtTOeh_" alt="Ram's Trimming" />
+      <p>Expertise, Durability, Quality. Professional marine and motor trimming in Mandurah, WA and surrounds.</p>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Marine Trimming</a></li><li><a href="services.html">Motor Trimming</a></li><li><a href="services.html">Biminis &amp; Covers</a></li><li><a href="services.html">Upholstery</a></li><li><a href="contact.html">Free Quotes</a></li></ul></div>
+    <div class="footer-col"><h4>Contact Us</h4>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">location_on</span><span>Mandurah, WA 6210</span></div>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">phone</span><a href="tel:0435929441">0435 929 441</a></div>
+      <div class="footer-contact-item"><span class="material-symbols-outlined">mail</span><a href="mailto:rhys@ramstrimming.com.au">rhys@ramstrimming.com.au</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ram's Trimming. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<a href="tel:0435929441" class="fab" aria-label="Call us"><span class="material-symbols-outlined">phone</span></a>
+<script src="rams.js"></script>
+</body>
+</html>
