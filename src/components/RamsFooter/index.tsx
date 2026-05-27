@@ -75,7 +75,7 @@ export function RamsFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2025 Ram&apos;s Trimming. All rights reserved. Expertise, Durability, Quality.</p>
+        <p>© {new Date().getFullYear()} Ram&apos;s Trimming. All rights reserved. Expertise, Durability, Quality.</p>
         <div className="footer-bottom-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
