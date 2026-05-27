@@ -2,97 +2,54 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-const HERO_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC773KiEyz05ggx0RcnwZEOZGcireHUMVTRsQSuSp3qfyRsonamvK7cF5qvDqXmgJLGHZfGNp4JKiKO56mhsIovukmh6ltIxY7AIzz0ZNOQ2Z910WjgtGKSSGSzNWwmlktK9_M66abPZqF4tuWOWjtCmEeuZgyvuE1GQic5QuRJOFm--J8EjEkx8buGeCyP30qXszP6-96eP05yvRI7hfKR_DUwpro62VEADmnckAAjN-BKg4rXm4z2I_cvPbNs3kAXXOB28L4T7inj'
-
 const portfolioItems = [
   {
     id: 1,
     category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Custom Bimini — 26ft Cruise Craft',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWx-lhXLyhY1Y7mtbSQwZ7twZnvGCWfOedgQpwpAThHveFGyahhl9l4ih6G2FzjMrS-a7OBM-MyzEDwHiu-DqKw3t8qbapLpOy_Z_kpk7Y3Qb3yaYUfJo9SwjhnY-Zw117n0k6cEefTVX0QlY_tvMaILaAUh05yYZYEdV9VVM29dBZDsBsbDs6WRksRFETPpTv6ed8oAXHaGhSehMY01mt4IayCoJD_zwGBMANOdEHOgCUqf4Siu9m0DMrYFI_MSRp8up55dHyDL8u',
-    featured: true,
+    tag: 'Marine Grade',
+    title: 'Custom Yacht Bimini',
+    desc: 'Sunbrella marine fabric with stainless steel hardware and clear-view clears.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBhhmU7cahxBWFkOpomynRWEMWPLMCSfLd4R0YxtXe-u3XWnABnDxNlD1TaGcOR22piXPaQloHnu4OtAZx4SHVRc3XxZhPCN_dn2HhEOA5NIKwn4R8EG-kBlk4QoCPAJEEosSPwCFiJYSq5IIW-xm50rQZLNo77avxDXqL77cLveZR_helku3lstLaGReu5ydFr_9D42e9qxUawJiNVeij8xkjHSqG9GcrCxSxuaNPGzcPStw4KtwmMg9wpQkrVKMf4xJxHHfIS-Zw-',
   },
   {
     id: 2,
     category: 'motor',
     tag: 'Motor Trimming',
-    title: 'Seat Restore — Ford Ranger',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFcIFHyT9FQOwqQQfl-6Z29sxRK3Y0em9AJ7Uay6t277xOwaqNRwhm_xdV7suTzW-gptuEECbvmTpPrkYc0aFIsSnueKPWLNVgXzcOg8JGfT9pT-HClTCZ44P9gHd2xuigXLZqiqh-9uWIDphibyev3933Kj7D1Zmi09OoLsw2-eTDmp0mJ06AggTHBfTcakqIIl866spiRgZ1L0x1msL0Ne11guZc4t0Jvj7_4jXGIsrLeCaxxylm6Vio5_5daVnGs5ox65MROmwf',
-    featured: false,
+    title: 'Vintage Porsche Interior',
+    desc: 'Full Napa leather restoration with hand-stitched diamond patterns and wool carpets.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAZmLNTQu0Q5uBu_ZBOl5hGCDfX8I_FF0DOHv-QTFpj58LSTgg2vRuaJm4DdqPz9UXDTqzwtL97S15qgwn6o0EWpF-N9NkW6vYQjnfFSIpkiO1ZLyGPKwbPmaZ0cX99OQW7_Ih7hszBz6p_yHuD6NRRdfzN-MlF0JHAwB-s1dCR3NNm1QB66HejNQqie78kxP9SLBUHPktr5SNo5H75OlM3HR1mDdCXP1hQZQFbxo5jxjLF_1_VvUgnk3n_U94oV9GLfOXVjTJp3j8b',
   },
   {
     id: 3,
     category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Full Camper System — Quintrex 520',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDVlaGdmQdJcchxiFCgFQh_-9lo37ZobKZbEIZvxsuHCzX-7xbdWiHDivrF5owGM1X2SqZkAqg81S4Kc1KijBMvxe4vZ3Tl_CMEp5Xge5QVL6_dtPnzUJ2wvw4nX4Y963fa4ocbw1c_3P6NCoubpnQ2q3yNtcaeBwBReP8cgQ8CjgJ1vyVfUENO9vsF1c6BM3XWHKz3CyTvLd5yIbF34EKGqxfnJbQN14CKBdbvM3H9u-IBTRvuaVPHMAnoiDm730PRagxR0C1lXc--',
-    tall: true,
+    tag: 'Marine Grade',
+    title: 'Speedboat Bolster Seats',
+    desc: 'Heavy-duty UV resistant vinyl with high-density antimicrobial foam inserts.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCN5lgC4cDePg9HbY5KHDnGCZncl4l8kLCRLRs3-vGQK3XW5WhcxR3Dd6kKE1Y_IC-8VjJcbgjxO48cnwhDVmkwdvfIS-i7_I-j06nzG_xwtQtlrnJjI91SzgI3qLW2KdRVtlTpq2Mx37zx3mOv2idoGyXUWIXcve1U6xnWjiU2WKvAtEHR-V1-nG4uCM684eMfnpWZv1A67PXwIPo1f0O9ceRrgcDLuoypHO5htK7fT07KTGEXLe94fbT_gOZczLMT_yA1qC9ZNnxn',
   },
   {
     id: 4,
-    category: 'upholstery',
-    tag: 'Upholstery',
-    title: 'Full Interior — Classic Holden',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCPLQg3nVe5EPN3diXHtXyJfRXtu4FkKXDkscH1i1sA_1-p620W5bnE1S240WE3GQK_uNqlbZNmYHVYbTsN1-v-dUd1O8KyYmI0KCRCFaj3_xQJ-DswlTkrIGzCvN90Ni0aPuv1XS_pXD7k0UMxgIDw2aFMD4f-jLJivkuScCJrXqinB-YRG8v9-23n8dWcrAXKPwqwoP43lvMNS3101KUsVVpz85ozwruw3Wm97M521cW_PLzoItXC7haJ6oAQyZU2tiele9jDhg5f',
+    category: 'special',
+    tag: 'Special Project',
+    title: 'Industrial Canopy System',
+    desc: 'Reinforced PVC-coated polyester with thermal-welded seams for maximum durability.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCndJ4xMeKwn5_z6m3uSmODAj80vlBCPH2aoCHBmW_68jbe5pADnEqN6ExOaFUjngtQKD16EXVlOEOXLPmo4q557WqNxYVOtzxsNOId_Bp603heQPHsBvgjoqHpAc_YehvrXoYOENto36MDPd2fr5e7ZwozVn0tRpnb4TSF_zN18sZBC1sHADbuBLFQ7EZpfCaMt-YQaFQQxtiIobPmCDTvBtpC5n6bGwPicoz_wA9OzTqXTXp3bW34KDivZokodjTXTJ1mX4Wu1nXk',
   },
   {
     id: 5,
-    category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Upholstery — Sea Ray 280',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7zATN78yFcuSkPBziPQ3Tmgu-8P4jfUTzczJeb5xd8PrPZIYXKSSdkz1yYQVzNCjfZVdsVUo2JxhQ5wzfsXqayGFFuXxAXZrnkBUzhEDoJw02KUDFWjRz6TuGPQls0XFw80wHdoSrWohSIWL6SGSHeHt5MP-dhVaxW0hcV9zfTvkuX9s40ckip12uKsgqjiZrsm3wS3tZduJzwT4uKuhMBtjdKqSzVPIoAVUtY_HMNEg08MNLVFNEsGYkcAY-9QYCDlT0FD73i-t8',
+    category: 'motor',
+    tag: 'Motor Trimming',
+    title: 'Custom Truck Cabin',
+    desc: 'Leather-wrapped dashboard and custom headliner with integrated lighting.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAMaK5yA7c4jB5fl6jTaoYMPdydKGo_xHtHa7TCi2XjOe197HzIwnVeQ2bTwbiUVgRKsmQ1G1LqGVcAIgASTNPGQ8AuRwn9k6-H-AUgYmx_DHvphBZ5uBAFxR9A03zCWW6XTEg-ZfCZ_lOpyBpelsZlN36VJ3hJfP808-AUk8q1GOuXFYmeABet7B0w7FfTOhFUC5JkbKp2OUn4y4cPTyJaf2ltJNChYwLk-F9BpBGaBKwnv9Vda5Y0gYyk4mOOzIQqAjHc6xUvnvZC',
   },
   {
     id: 6,
-    category: 'motor',
-    tag: 'Motor Trimming',
-    title: 'Canvas Cover — Toyota Hilux',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD0qVtl6Ju4RJeDw9twjYsYTAsUdOXRAjOhN_P3XPAtKd2YvkUi8fflcP3tbZ4v5F361IMYOqQMJ4ih2l7wbTb4mAFlZLjwFRnWWgcrVe0e-EJB6ie0twieU130j4aMYXlyoxIkZK7jAVfm5qfsZ14eozkXc4KoTp0ObLDtPASC4dSwoQgThCnKFg-pdEZ6v2s60uy5pP5ynK6qdyHEJFWc6Jbx6BI69fvPq5UVNwrBjMgsDIk9tGLJnE38Ic54DezWouQ9Ve1Zt45s',
-  },
-  {
-    id: 7,
     category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Front Clears — Sailfish 2000',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7NmVSSIx1WpWy8nKlOX7GySbczfh0ayCqxWSZyWR5ZILVIhvus3nfqaRrVmDWckeJU9Ub8yemq1cH_PzjTiBTqjz2rccIC74PAk7x4D5cHDdyjXlMb82BevjTrobrQDczbaB4im6ReAysiN4pjv9MMZ04M3DdduS85nKbml7djLEqFUAv7Hj5rqVxTTztsPnHCcGXywwM5FdgEOVHXqs6-cmljEVFNQtN3lYAcfT5RGGtJCXeVJrX-9vu3sQRp1cjKSVec6GFBGwi',
-    tall: true,
-  },
-  {
-    id: 8,
-    category: 'upholstery',
-    tag: 'Upholstery',
-    title: 'Golf Buggy — Full Seat Set',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0',
-  },
-  {
-    id: 9,
-    category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Sundeck Cover — Haines Signature',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBOwsH3faYsqe_QJyHIVOLOFi7QmLKfSmj71ljR3BhaNxrYnojVtj_vXs6zb-85ydGk0ENqLNbRThQh0X2gXZo2nCAfTBmk4u0J8a6bgk-AIQfx3LnCJvIdHshWEAzIrdyrEpW7hzH6ERNWjSrYfejY1JwDm55KdRI2erOTVw4AbhJF3ZfBeZ9IF9sCIccH1ZCjYxef6MR0pDwQ2Y9W6hg7KeF6d0Rhgkpgu81Ew7cew_2ECSXNM0Tp5RN2k4QOJHwT7-YGaXXgCXYZ',
-  },
-  {
-    id: 10,
-    category: 'motor',
-    tag: 'Motor Trimming',
-    title: 'Headliner — 80 Series Landcruiser',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTHOcfaehtUMoYyUADEhCX3L_8eSYtBkxMVMeUoue0ru-EVimVQ9fXi6EAsKlU918Akc58Fqifc_dVUIGnM9iCKPS6ye4qubpDYTG8IFdK-KcOQlU-hIEbjj2Q85nLvEJDNqLcYsk17_tsIWaMbCSHCQ70zenUvkx6Tckre8TrtNb0cT38w4i314QEQdQxfp2RCoUOeGWU96jLo47NuKyhBHHWgoqXosQN0-05SkTTmJ8nJuBS-FYGhu3T2mFnwBD9aN4dQ37S5eXV',
-  },
-  {
-    id: 11,
-    category: 'marine',
-    tag: 'Marine Trimming',
-    title: 'Boat Carpet — Stacer 519',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqBLE55bRzEtZ2gkQe30Y5AHNJ4ucj61yNjX49HHLgcwlOl3ES0lvphrTf1fYy4nHPOdYEd5vXbWToyYrix38NTGgo3j9X0opXtoG9nY9ok_ZA7h_z6hAvsJSGkLKUlhOpTvOtKrJaBczhEzc0yt3fNX_SndEge1p-jQpxifQJY0HczcF_5DwhBFm51R1xuidvSHha565fNN5vm-sAtu9_NefkkRihXQTZ1LuZHLx5HPRphASgUFPbfzqiusVutDKxs68BLJuMLnjq',
-  },
-  {
-    id: 12,
-    category: 'upholstery',
-    tag: 'Motor Trimming',
-    title: 'Door Panels — GQ Patrol',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDVzA6AvzLHKvMHHbmYjND-o_rK-l8fI_iAvdGFdxUdIz8Eu5l10Piu8twDZWP_9CytPUmmh1EIvCQ9ZXZPHlaeeC4r_FPw_L5J-GzZKYBS2_mgaVAT7MW_QXisfPt3Kg1uhx5IE2licLcN4VjoFutIN8Oreu1LYRwTiGwHaYXhzWi6rrCmFrX-Oz-kTeR9feX6sP2haCLPu_gl6OdCKArjfLaREK8UOt0ENYqpWVmXqCICqLqSflkp_JUbzmZdkGWAxb2QB9ANTb8Z',
+    tag: 'Marine Grade',
+    title: 'Full Boat Cover',
+    desc: 'Weather-max 80 performance fabric with custom ventilation system.',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBk2vszMYxgygr0HutDMUMdvyRzaxtBCUfQLT-E8sxSpGt1Wao1WePSfI2qlU6RRMQmQpW3Yt1oOndXP3V90NK8QHVx_5xat2mBlbcLCJ1718nXIYwRoWoCK6Be55698TmsieVYSYnSwfW7kCACOniemSHCHxXdg-oky7YxXpb3c5nijD5QVSIedX1etd6NoMeuFpoQjZsB8AjYMXJgOah8jUB3GJ998C_sOEz6tfwTO1hEShDmwNpDqX8SoWvpxDH_1REKUqI1fWgc',
   },
 ]
 
@@ -100,7 +57,7 @@ const filters = [
   { key: 'all', label: 'All Work' },
   { key: 'marine', label: 'Marine' },
   { key: 'motor', label: 'Motor' },
-  { key: 'upholstery', label: 'Upholstery' },
+  { key: 'special', label: 'Special Projects' },
 ]
 
 export default function PortfolioPage() {
@@ -112,122 +69,244 @@ export default function PortfolioPage() {
       : portfolioItems.filter((item) => item.category === activeFilter)
 
   return (
-    <main style={{ padding: 'var(--rt-section-gap) 64px' }}>
-      {/* Page Hero */}
-      <div className="page-hero">
-        <img src={HERO_IMG} alt="" />
-        <div className="page-hero-content">
-          <span className="page-hero-tag">Our Work</span>
-          <h1>Project Portfolio</h1>
+    <main style={{ paddingTop: 128, paddingBottom: 'var(--rt-section-gap)' }}>
+      {/* ── Hero Section ── */}
+      <header style={{ padding: '0 40px', marginBottom: 64 }}>
+        <div style={{ maxWidth: 800 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+            <span style={{ display: 'block', height: 4, width: 48, background: 'var(--rt-black)' }} />
+            <span className="caps" style={{ color: 'var(--rt-black)' }}>Expertise &amp; Durability</span>
+          </div>
+          <h1
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 'clamp(32px,5vw,48px)',
+              fontWeight: 700,
+              color: 'var(--rt-black)',
+              marginBottom: 24,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            Our Craftsmanship in Action
+          </h1>
+          <p
+            style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#5d5e66',
+              maxWidth: 600,
+            }}
+          >
+            Explore a curated selection of our finest marine and motor trimming projects. From
+            luxury yachts to classic automotive restorations, we deliver uncompromising quality
+            using marine-grade materials.
+          </p>
         </div>
-      </div>
+      </header>
 
-      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+      {/* ── Filter System ── */}
+      <section style={{ padding: '0 40px', marginBottom: 48 }}>
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
             flexWrap: 'wrap',
+            alignItems: 'center',
             gap: 24,
-            marginBottom: 48,
+            borderBottom: '2px solid #eeeeef',
+            paddingBottom: 16,
           }}
         >
-          <div>
-            <div className="section-label">
-              <span>Real Projects</span>
-            </div>
-            <h2
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => setActiveFilter(f.key)}
               style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 40,
-                fontWeight: 700,
-                color: 'var(--rt-black)',
-                letterSpacing: '-0.02em',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontFamily: 'var(--rt-font-mono)',
+                fontSize: 14,
+                letterSpacing: '0.05em',
+                fontWeight: activeFilter === f.key ? 700 : 500,
+                color: activeFilter === f.key ? 'var(--rt-black)' : '#5d5e66',
+                borderBottom: activeFilter === f.key ? '2px solid var(--rt-black)' : '2px solid transparent',
+                paddingBottom: 8,
+                paddingLeft: 4,
+                paddingRight: 4,
+                transition: 'all 0.2s',
               }}
             >
-              Built by Ram&apos;s Trimming
-            </h2>
-          </div>
-          <div className="filter-bar">
-            {filters.map((f) => (
-              <button
-                key={f.key}
-                className={`filter-btn${activeFilter === f.key ? ' active' : ''}`}
-                onClick={() => setActiveFilter(f.key)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+              {f.label}
+            </button>
+          ))}
         </div>
+      </section>
 
-        <div className="portfolio-grid">
-          {filtered.map((item) => {
-            const cls = [
-              'portfolio-item',
-              item.featured ? 'pi-featured' : '',
-              item.tall ? 'pi-tall' : '',
-            ]
-              .filter(Boolean)
-              .join(' ')
-
-            return (
-              <div key={item.id} className={cls}>
-                <img src={item.img} alt={item.title} />
-                <div className="portfolio-item-overlay">
-                  <div className="pi-tag">{item.tag}</div>
-                  <div className="pi-title">{item.title}</div>
+      {/* ── Masonry Gallery Grid ── */}
+      <section style={{ padding: '0 40px' }}>
+        <div className="masonry-grid" id="project-grid">
+          {filtered.map((item) => (
+            <article
+              key={item.id}
+              className="masonry-item project-card"
+              data-category={item.category}
+              style={{ cursor: 'pointer' }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  background: '#eeeeef',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  transition: 'box-shadow 0.5s',
+                }}
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform 0.7s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.05)'
+                  }}
+                  onMouseOut={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'
+                  }}
+                />
+                <div
+                  style={{
+                    padding: 24,
+                    background: 'var(--rt-white)',
+                    borderBottom: '2px solid transparent',
+                    transition: 'border-color 0.2s',
+                  }}
+                  onMouseOver={(e) => ((e.currentTarget as HTMLDivElement).style.borderBottomColor = 'var(--rt-black)')}
+                  onMouseOut={(e) => ((e.currentTarget as HTMLDivElement).style.borderBottomColor = 'transparent')}
+                >
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      padding: '3px 12px',
+                      background: 'var(--rt-black)',
+                      color: 'var(--rt-white)',
+                      fontFamily: 'var(--rt-font-mono)',
+                      fontSize: 10,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      marginBottom: 12,
+                    }}
+                  >
+                    {item.tag}
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 20,
+                      fontWeight: 700,
+                      marginBottom: 8,
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.5 }}>{item.desc}</p>
                 </div>
               </div>
-            )
-          })}
+            </article>
+          ))}
         </div>
+      </section>
 
-        <p
-          style={{
-            textAlign: 'center',
-            fontSize: 14,
-            color: 'var(--rt-grey-mid)',
-            marginTop: 48,
-            fontFamily: 'var(--rt-font-mono)',
-            letterSpacing: '0.06em',
-          }}
-        >
-          A selection of recent work — more projects added regularly.
-        </p>
-
-        {/* CTA */}
+      {/* ── CTA Section ── */}
+      <section style={{ marginTop: 'var(--rt-section-gap)', padding: '0 40px' }}>
         <div
           style={{
             background: 'var(--rt-black)',
-            padding: 64,
-            textAlign: 'center',
-            marginTop: 80,
+            color: 'var(--rt-white)',
+            padding: '96px',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          <span className="caps" style={{ color: 'var(--rt-white)' }}>
-            Start Your Project
-          </span>
-          <h3
+          <div
             style={{
-              fontFamily: 'var(--rt-font-display)',
-              fontSize: 36,
-              color: 'var(--rt-white)',
-              margin: '16px 0 32px',
-              fontWeight: 700,
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              width: '33%',
+              height: '100%',
+              opacity: 0.1,
+              pointerEvents: 'none',
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            Want to see your project here?
-          </h3>
-          <Link href="/contact" className="btn btn-primary">
-            Get a Free Quote
-          </Link>
+            <span className="material-symbols-outlined" style={{ fontSize: 300, lineHeight: 1 }}>
+              sailing
+            </span>
+          </div>
+          <div style={{ position: 'relative', zIndex: 1, maxWidth: 560 }}>
+            <h2
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 'clamp(28px,4vw,40px)',
+                fontWeight: 700,
+                marginBottom: 24,
+                lineHeight: 1.15,
+              }}
+            >
+              Ready to start your custom project?
+            </h2>
+            <p style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.8, marginBottom: 32 }}>
+              Whether it&apos;s a small repair or a full interior overhaul, we bring decades of
+              expertise to every stitch.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+              <Link
+                href="/contact"
+                className="btn"
+                style={{
+                  background: 'var(--rt-white)',
+                  color: 'var(--rt-black)',
+                  fontSize: 12,
+                  boxShadow: '0 4px 0 0 #999999',
+                  letterSpacing: '0.15em',
+                }}
+              >
+                REQUEST A QUOTE
+              </Link>
+              <Link href="/contact" className="btn btn-outline" style={{ fontSize: 12, letterSpacing: '0.15em' }}>
+                CONTACT OUR TEAM
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       <style>{`
-        @media(max-width:768px) { main { padding:60px 16px !important; } }
+        .masonry-grid {
+          column-count: 1;
+          column-gap: 24px;
+        }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-item {
+          break-inside: avoid;
+          margin-bottom: 24px;
+        }
+        .project-card img {
+          filter: grayscale(0%) !important;
+        }
+        @media(max-width:768px) {
+          main { padding-top:80px !important; }
+          header, section { padding-left:16px !important; padding-right:16px !important; }
+          section[style*="marginTop"] > div { padding:40px 16px !important; }
+        }
       `}</style>
 
       {/* FAB */}

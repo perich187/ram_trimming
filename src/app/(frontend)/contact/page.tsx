@@ -1,495 +1,428 @@
 'use client'
 import { useState } from 'react'
 
-const CONTACT_IMG =
+const CONTACT_HERO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0'
+const MAP_IMG =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuAoiFuUABTAzZ8PSf09DfUBPX7YchOaVF-XjzT69JmCF79LqA4wG9CllRMWoS1ApOweySMGqeHl2rkvcbQ8lrOIJ_NhTBd4-b8hHToHlLP0GRSwH1P2XmiDtXvq4VH4oxAMssxLq24xm430icyO9OkXSFoS8_nWMTpPhuRmtvQbXQuJxcf0uedUhJ-I9DEJmzFDzqhp66F3wzIa511ovsEKLi24UyIy0qX9GhTBfFQKlwHRASZGErds6Nw50sHxW_-oGd2JdK9qiXnp'
 
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: '',
-    phone: '',
     email: '',
-    service: '',
-    vessel: '',
-    contactTime: 'Any time',
+    phone: '',
+    service: 'Marine',
     details: '',
   })
+  const [uploading, setUploading] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Thank you! We\'ll get back to you within 24 hours.')
+    alert("Thank you! We'll get back to you within 24 hours.")
   }
 
   return (
-    <main>
-      {/* Page Hero */}
-      <div className="page-hero">
-        <img src={CONTACT_IMG} alt="" />
-        <div className="page-hero-content">
-          <span className="page-hero-tag">Get In Touch</span>
-          <h1>Contact Us</h1>
+    <main style={{ paddingTop: 'var(--rt-nav-h)' }}>
+      {/* ── Hero Section ── */}
+      <section
+        style={{
+          position: 'relative',
+          height: 400,
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 64px',
+          overflow: 'hidden',
+          background: 'var(--rt-black)',
+          color: 'var(--rt-white)',
+        }}
+      >
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.4 }}>
+          <img
+            src={CONTACT_HERO}
+            alt="A high-fidelity close-up of premium marine upholstery with impeccable stitching."
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </div>
-      </div>
-
-      {/* ── Contact Cards ── */}
-      <section style={{ padding: '80px 64px', background: 'var(--rt-surface)' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div className="title-underline">
-            <h2>Get in Touch</h2>
-          </div>
-
-          <div
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 600 }}>
+          <h1
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3,1fr)',
-              gap: 24,
-              marginBottom: 80,
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 'clamp(32px,4vw,48px)',
+              fontWeight: 700,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              marginBottom: 16,
             }}
           >
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <span className="material-symbols-outlined">phone</span>
-              </div>
-              <div>
-                <h4>Call Us</h4>
-                <a href="tel:0435929441">0435 929 441</a>
-                <p
-                  style={{
-                    fontSize: 14,
-                    fontFamily: 'var(--rt-font-body)',
-                    fontWeight: 400,
-                    color: 'var(--rt-grey-text)',
-                    marginTop: 8,
-                  }}
-                >
-                  Mon–Fri: 8am – 5pm
-                </p>
-              </div>
-            </div>
+            Contact Our Workshop
+          </h1>
+          <div style={{ height: 4, width: 96, background: 'var(--rt-white)', marginBottom: 24 }} />
+          <p style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>
+            Expert marine and motor trimming in Perth. Let&apos;s discuss your custom project, from
+            luxury yacht interiors to vintage vehicle restorations.
+          </p>
+        </div>
+      </section>
 
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <span className="material-symbols-outlined">mail</span>
+      {/* ── Main Content Split ── */}
+      <section
+        style={{
+          padding: 'var(--rt-section-gap) 64px',
+          display: 'grid',
+          gridTemplateColumns: '5fr 7fr',
+          gap: 24,
+        }}
+      >
+        {/* Left: Contact Info */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div style={{ marginBottom: 48 }}>
+            <h2
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 32,
+                fontWeight: 700,
+                marginBottom: 32,
+                textTransform: 'uppercase',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Visit Us
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
+                  location_on
+                </span>
+                <div>
+                  <p className="caps" style={{ color: '#5d5e66', marginBottom: 4 }}>Workshop Address</p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 18,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                    }}
+                  >
+                    Perth, Western Australia
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4>Email Us</h4>
-                <a href="mailto:rhys@ramstrimming.com.au" style={{ fontSize: 17 }}>
-                  rhys@ramstrimming.com.au
-                </a>
-                <p
-                  style={{
-                    fontSize: 14,
-                    fontFamily: 'var(--rt-font-body)',
-                    fontWeight: 400,
-                    color: 'var(--rt-grey-text)',
-                    marginTop: 8,
-                  }}
-                >
-                  We reply within 24 hours
-                </p>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
+                  call
+                </span>
+                <div>
+                  <p className="caps" style={{ color: '#5d5e66', marginBottom: 4 }}>Direct Line</p>
+                  <a
+                    href="tel:0895818180"
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 18,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                    }}
+                  >
+                    (08) 9581 8180
+                  </a>
+                </div>
               </div>
-            </div>
-
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <span className="material-symbols-outlined">location_on</span>
-              </div>
-              <div>
-                <h4>Find Us</h4>
-                <p>Mandurah, WA 6210</p>
-                <p
-                  style={{
-                    fontSize: 14,
-                    fontFamily: 'var(--rt-font-body)',
-                    fontWeight: 400,
-                    color: 'var(--rt-grey-text)',
-                    marginTop: 8,
-                  }}
-                >
-                  Servicing Mandurah &amp; surrounds
-                </p>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
+                  mail
+                </span>
+                <div>
+                  <p className="caps" style={{ color: '#5d5e66', marginBottom: 4 }}>Email Inquiry</p>
+                  <a
+                    href="mailto:carol@ramstrimming.com.au"
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 17,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                    }}
+                  >
+                    carol@ramstrimming.com.au
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* ── Quote Form + Info Panel ── */}
+          {/* Operating Hours */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 80,
-              alignItems: 'start',
+              background: '#eeeeef',
+              padding: 24,
+              borderLeft: '4px solid var(--rt-black)',
+              boxShadow: '0 20px 40px -10px rgba(0,0,0,0.05)',
             }}
           >
-            {/* Form */}
-            <div>
-              <div className="section-label" style={{ marginBottom: 32 }}>
-                <span>Free Quote Request</span>
+            <h3 className="caps" style={{ marginBottom: 16, color: 'var(--rt-black)' }}>
+              Operating Hours
+            </h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 16 }}>
+              <li
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  borderBottom: '1px solid #cfc4c5',
+                  paddingBottom: 8,
+                }}
+              >
+                <span>Monday - Friday</span>
+                <span style={{ fontWeight: 700 }}>8:00 AM - 4:00 PM</span>
+              </li>
+              <li
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  borderBottom: '1px solid #cfc4c5',
+                  paddingBottom: 8,
+                }}
+              >
+                <span>Saturday</span>
+                <span style={{ fontWeight: 700 }}>By Appointment</span>
+              </li>
+              <li
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  color: '#5d5e66',
+                }}
+              >
+                <span>Sunday</span>
+                <span style={{ fontStyle: 'italic', fontWeight: 700 }}>Closed</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Right: Quote Form */}
+        <div>
+          <div
+            style={{
+              background: 'var(--rt-white)',
+              padding: 48,
+              border: '2px solid #cfc4c5',
+              boxShadow: '0 20px 40px -10px rgba(0,0,0,0.05)',
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 32,
+                fontWeight: 700,
+                marginBottom: 8,
+                textTransform: 'uppercase',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Request a Quote
+            </h2>
+            <p style={{ fontSize: 16, color: '#4c4546', marginBottom: 32, lineHeight: 1.5 }}>
+              Tell us about your project requirements for a detailed professional estimate.
+            </p>
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}
+            >
+              <div className="form-group">
+                <label className="form-label">Full Name</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  placeholder="John Doe"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
+                />
               </div>
-              <h3
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 36,
-                  fontWeight: 700,
-                  color: 'var(--rt-black)',
-                  marginBottom: 12,
-                  lineHeight: 1.15,
-                }}
-              >
-                Tell us about your project
-              </h3>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: 'var(--rt-grey-text)',
-                  marginBottom: 40,
-                  lineHeight: 1.65,
-                }}
-              >
-                Fill out the form below and we&apos;ll get back to you with a professional
-                assessment within 24 hours — completely free, no obligation.
-              </p>
-
-              <form
-                onSubmit={handleSubmit}
-                style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
-              >
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                  <div className="form-group">
-                    <label className="form-label">Full Name *</label>
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="Rhys Smith"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Phone</label>
-                    <input
-                      className="form-input"
-                      type="tel"
-                      placeholder="04XX XXX XXX"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Email Address *</label>
-                  <input
-                    className="form-input"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Service Required</label>
+              <div className="form-group">
+                <label className="form-label">Email Address</label>
+                <input
+                  className="form-input"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Phone Number</label>
+                <input
+                  className="form-input"
+                  type="tel"
+                  placeholder="(08) 9581 8180"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Type of Work</label>
+                <div style={{ position: 'relative' }}>
                   <select
                     className="form-select"
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
                   >
-                    <option value="">Select a service...</option>
-                    <option>Marine Trimming — Biminis &amp; Bars</option>
-                    <option>Marine Trimming — Boat Covers &amp; Campers</option>
-                    <option>Marine Trimming — Clears &amp; Curtains</option>
-                    <option>Marine Trimming — Boat Upholstery</option>
-                    <option>Marine Trimming — Boat Carpets</option>
-                    <option>Marine Trimming — Sundecks &amp; Extensions</option>
-                    <option>Motor Trimming — Seats &amp; Bolstering</option>
-                    <option>Motor Trimming — Headliners</option>
-                    <option>Motor Trimming — Door Panels</option>
-                    <option>Motor Trimming — Ute Canvas Covers</option>
-                    <option>Motor Trimming — Golf Buggy Seats</option>
-                    <option>Repairs &amp; Restoration</option>
-                    <option>Other / Not Sure</option>
+                    <option value="Marine">Marine</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Custom">Custom</option>
                   </select>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{
+                      position: 'absolute',
+                      right: 16,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      pointerEvents: 'none',
+                      color: '#7e7576',
+                    }}
+                  >
+                    expand_more
+                  </span>
                 </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                  <div className="form-group">
-                    <label className="form-label">Vessel / Vehicle Type</label>
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="e.g. Quintrex 520, Ford Ranger"
-                      value={form.vessel}
-                      onChange={(e) => setForm({ ...form, vessel: e.target.value })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Preferred Contact Time</label>
-                    <select
-                      className="form-select"
-                      value={form.contactTime}
-                      onChange={(e) => setForm({ ...form, contactTime: e.target.value })}
-                    >
-                      <option>Any time</option>
-                      <option>Morning (8am – 12pm)</option>
-                      <option>Afternoon (12pm – 5pm)</option>
-                      <option>Email only</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Project Details *</label>
-                  <textarea
-                    className="form-textarea"
-                    style={{ minHeight: 160 }}
-                    placeholder="Please describe your project in detail — what needs to be done, any specific materials or colours you have in mind, and the current condition of the item..."
-                    value={form.details}
-                    onChange={(e) => setForm({ ...form, details: e.target.value })}
-                    required
+              </div>
+              <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                <label className="form-label">Upload Photos</label>
+                <label
+                  style={{
+                    width: '100%',
+                    border: '2px dashed #cfc4c5',
+                    padding: '24px 16px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseOver={(e) => ((e.currentTarget as HTMLLabelElement).style.background = '#f3f3f4')}
+                  onMouseOut={(e) => ((e.currentTarget as HTMLLabelElement).style.background = 'transparent')}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#7e7576', marginBottom: 8 }}>
+                    upload_file
+                  </span>
+                  <span style={{ fontSize: 14, color: '#4c4546' }}>Click to upload or drag and drop</span>
+                  <span style={{ fontSize: 12, color: '#7e7576', marginTop: 4 }}>JPG, PNG (Max 10MB per file)</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    style={{ display: 'none' }}
+                    onChange={() => setUploading(true)}
                   />
-                </div>
-
-                <button type="submit" className="btn btn-red">
-                  Submit My Quote Request
+                </label>
+              </div>
+              <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                <label className="form-label">Project Details</label>
+                <textarea
+                  className="form-textarea"
+                  placeholder="Describe the scope, materials, and any specific requirements..."
+                  rows={5}
+                  value={form.details}
+                  onChange={(e) => setForm({ ...form, details: e.target.value })}
+                  style={{ minHeight: 120 }}
+                />
+              </div>
+              <div style={{ gridColumn: 'span 2', paddingTop: 16 }}>
+                <button
+                  type="submit"
+                  className="btn btn-red"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 12,
+                    fontSize: 13,
+                    letterSpacing: '0.15em',
+                  }}
+                >
+                  <span>Submit Request</span>
+                  <span className="material-symbols-outlined">send</span>
                 </button>
-                <p
-                  style={{
-                    fontSize: 12,
-                    color: 'var(--rt-grey-mid)',
-                    textAlign: 'center',
-                    fontFamily: 'var(--rt-font-mono)',
-                    letterSpacing: '0.06em',
-                  }}
-                >
-                  We&apos;ll respond within 24 hours — Mon to Fri
-                </p>
-              </form>
-            </div>
-
-            {/* Info Panel */}
-            <div>
-              <div style={{ background: 'var(--rt-black)', padding: 48, marginBottom: 24 }}>
-                <div
-                  className="section-label-white section-label"
-                  style={{ marginBottom: 28 }}
-                >
-                  <span>Business Hours</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)',
-                      paddingBottom: 16,
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: 'var(--rt-font-mono)',
-                        fontSize: 12,
-                        color: 'var(--rt-white)',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      Monday – Friday
-                    </span>
-                    <span style={{ fontSize: 15, color: 'var(--rt-white)' }}>
-                      8:00 AM – 5:00 PM
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      borderBottom: '1px solid rgba(255,255,255,0.1)',
-                      paddingBottom: 16,
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: 'var(--rt-font-mono)',
-                        fontSize: 12,
-                        color: 'rgba(255,255,255,0.4)',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      Saturday
-                    </span>
-                    <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>
-                      By Appointment
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span
-                      style={{
-                        fontFamily: 'var(--rt-font-mono)',
-                        fontSize: 12,
-                        color: 'rgba(255,255,255,0.4)',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      Sunday
-                    </span>
-                    <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.4)' }}>Closed</span>
-                  </div>
-                </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
+      {/* ── Divider ── */}
+      <div style={{ width: '100%', height: 4, background: 'var(--rt-black)' }} />
+
+      {/* ── Map Section ── */}
+      <section style={{ height: 500, position: 'relative', background: '#eeeeef' }}>
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+          <img
+            src={MAP_IMG}
+            alt="An aerial satellite perspective of the Perth coastline and Swan River in Western Australia."
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          {/* Map overlay pin */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              pointerEvents: 'none',
+            }}
+          >
+            <div
+              style={{
+                background: 'var(--rt-black)',
+                color: 'var(--rt-white)',
+                padding: 24,
+                boxShadow: '0 16px 40px rgba(0,0,0,0.3)',
+                position: 'relative',
+              }}
+            >
+              <div className="caps" style={{ marginBottom: 4 }}>Service Area</div>
               <div
                 style={{
-                  background: 'var(--rt-surface)',
-                  border: '1px solid var(--rt-grey-light)',
-                  borderLeft: '4px solid var(--rt-black)',
-                  padding: 32,
-                  marginBottom: 24,
+                  fontFamily: 'var(--rt-font-display)',
+                  fontSize: 24,
+                  fontWeight: 700,
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <h4
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                    marginBottom: 12,
-                  }}
-                >
-                  Free Quotes
-                </h4>
-                <p style={{ fontSize: 15, color: 'var(--rt-grey-text)', lineHeight: 1.65 }}>
-                  All quotes are completely free and include a detailed assessment of your project.
-                  No surprises, no hidden costs.
-                </p>
+                Perth, WA
               </div>
-
               <div
                 style={{
-                  background: 'var(--rt-surface)',
-                  border: '1px solid var(--rt-grey-light)',
-                  borderLeft: '4px solid var(--rt-black)',
-                  padding: 32,
-                  marginBottom: 24,
+                  position: 'absolute',
+                  bottom: -10,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: 0,
+                  height: 0,
+                  borderLeft: '10px solid transparent',
+                  borderRight: '10px solid transparent',
+                  borderTop: '10px solid var(--rt-black)',
                 }}
-              >
-                <h4
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                    marginBottom: 12,
-                  }}
-                >
-                  Service Area
-                </h4>
-                <p style={{ fontSize: 15, color: 'var(--rt-grey-text)', lineHeight: 1.65 }}>
-                  Based in Mandurah, WA. We service Mandurah and the surrounding Peel region.
-                  Contact us to discuss your location.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: 'var(--rt-white)',
-                  border: '1px solid var(--rt-grey-light)',
-                  padding: 32,
-                }}
-              >
-                <h4
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 22,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                    marginBottom: 8,
-                  }}
-                >
-                  Need urgent help?
-                </h4>
-                <p
-                  style={{
-                    fontSize: 15,
-                    color: 'rgba(0,0,0,0.7)',
-                    marginBottom: 20,
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Give us a call directly for urgent jobs or quick questions.
-                </p>
-                <a
-                  href="tel:0435929441"
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                  }}
-                >
-                  0435 929 441
-                </a>
-              </div>
+              />
             </div>
           </div>
         </div>
-        <style>{`
-          @media(max-width:768px) { section { padding-left:16px !important; padding-right:16px !important; } }
-          @media(max-width:900px) { .contact-layout { grid-template-columns:1fr !important; } }
-          @media(max-width:768px) { .contact-cards { grid-template-columns:1fr !important; } }
-        `}</style>
       </section>
 
-      {/* ── Map Placeholder ── */}
-      <div className="map-placeholder">
-        <span className="material-symbols-outlined" style={{ fontSize: 56, color: 'var(--rt-white)' }}>
-          location_on
-        </span>
-        <p
-          style={{
-            fontFamily: 'var(--rt-font-display)',
-            fontSize: 24,
-            color: 'var(--rt-white)',
-            fontWeight: 700,
-          }}
-        >
-          Mandurah, WA 6210
-        </p>
-        <p
-          style={{
-            fontFamily: 'var(--rt-font-mono)',
-            fontSize: 11,
-            color: 'rgba(255,255,255,0.4)',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-          }}
-        >
-          Map integration coming soon
-        </p>
-        <a
-          href="https://maps.google.com/?q=Mandurah+WA+6210"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn"
-          style={{
-            background: 'var(--rt-black)',
-            color: 'var(--rt-white)',
-            marginTop: 16,
-            fontSize: 11,
-            padding: '12px 28px',
-            border: '2px solid rgba(255,255,255,0.3)',
-          }}
-        >
-          Open in Google Maps
-        </a>
-      </div>
+      <style>{`
+        @media(max-width:900px) {
+          section[style*="gridTemplateColumns: 5fr 7fr"] { grid-template-columns:1fr !important; }
+        }
+        @media(max-width:768px) {
+          section { padding-left:16px !important; padding-right:16px !important; }
+          header { padding-left:16px !important; padding-right:16px !important; }
+          section > div[style*="gridTemplateColumns: 1fr 1fr"] { grid-template-columns:1fr !important; }
+          section > div > div > form { grid-template-columns:1fr !important; }
+          section > div > div > form > div[style*="span 2"] { grid-column: span 1 !important; }
+        }
+      `}</style>
 
       {/* FAB */}
-      <a href="tel:0435929441" className="fab" aria-label="Call us">
+      <a href="tel:0895818180" className="fab" aria-label="Call us">
         <span className="material-symbols-outlined">phone</span>
       </a>
     </main>

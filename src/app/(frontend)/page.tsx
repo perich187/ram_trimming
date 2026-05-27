@@ -6,17 +6,17 @@ const HERO_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC1FGc_sSS27sCh9zHn4U9EKYmXCPGqusvaRuvljHtwH4xSXUS_ydGRs7yekJf8P2-gcICZD73Ien2gLYr3rKpqcddn4Jb0zR8_bwk1xFMrWhReCCYEpmFm9hMtCbG9f43eN62pciJGwmfnl3ys6kY84bOP9A8kVdfTKWG9I0BApUWZeEkkIDH-32BQVozwPzxfjti2qWp0RHL_OaZoXog0vrvkSjWBhiJI7tSSsTcHSspinge2_KKXFkwnunuomjlDq_GD4xw0-YTY'
 const CRAFTSMAN =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAH68DclwPpBqh5vfHvGETI9AnNqPxNbwP0cusfz42jFbekv_qW_ZRuLfZ4Ii5AWBo4yd4it-viY0BEpRQCCm85I1EuTQx8c6ApEx7DX2ac7iXNcz_WtfT3PPW0y8cZaDnwCCStp3H1qGLmLepfPU9Xb8lrC8C085-MO9IVpSQ1yX3ANsHz4umVgTVq3CMP94BCPZNsui-fm5d5YAT1pbL4a8INTCyxetYJa8lvHr2hP2SvhOR-K99E_X5JXn98IZ82iYITqlUXIGja'
-const MARINE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuApt-7-KRPnp-5_rXRSG-HQwuKDQYYQulpBnreR_y8GgHREEd7oIDemu6tANWJ5-vfXY8XSq0jh6q9UGezabS-A7gfKMpqJuTPV1RK3SVG8gAskQD5SEND4rnS2pxOuuGiQurZoyS8Ikt53YDbXKU8A4RNc2UUqWRcLyKEejZlC_PXcOiGQESzbvy2xADW_Q0_POudpsgylTV3XxJ61gm50S7FAgGs-d1Pqjt3HpCn_9phRMHfY8xLMXy0-JIG4pNEpaMvCIfZ8tjiY'
-const MOTOR =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDFcIFHyT9FQOwqQQfl-6Z29sxRK3Y0em9AJ7Uay6t277xOwaqNRwhm_xdV7suTzW-gptuEECbvmTpPrkYc0aFIsSnueKPWLNVgXzcOg8JGfT9pT-HClTCZ44P9gHd2xuigXLZqiqh-9uWIDphibyev3933Kj7D1Zmi09OoLsw2-eTDmp0mJ06AggTHBfTcakqIIl866spiRgZ1L0x1msL0Ne11guZc4t0Jvj7_4jXGIsrLeCaxxylm6Vio5_5daVnGs5ox65MROmwf'
+const MARINE_SVC =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuC773KiEyz05ggx0RcnwZEOZGcireHUMVTRsQSuSp3qfyRsonamvK7cF5qvDqXmgJLGHZfGNp4JKiKO56mhsIovukmh6ltIxY7AIzz0ZNOQ2Z910WjgtGKSSGSzNWwmlktK9_M66abPZqF4tuWOWjtCmEeuZgyvuE1GQic5QuRJOFm--J8EjEkx8buGeCyP30qXszP6-96eP05yvRI7hfKR_DUwpro62VEADmnckAAjN-BKg4rXm4z2I_cvPbNs3kAXXOB28L4T7inj'
+const INDUSTRIAL_SVC = CRAFTSMAN
+const CUSTOM_SVC =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCPLQg3nVe5EPN3diXHtXyJfRXtu4FkKXDkscH1i1sA_1-p620W5bnE1S240WE3GQK_uNqlbZNmYHVYbTsN1-v-dUd1O8KyYmI0KCRCFaj3_xQJ-DswlTkrIGzCvN90Ni0aPuv1XS_pXD7k0UMxgIDw2aFMD4f-jLJivkuScCJrXqinB-YRG8v9-23n8dWcrAXKPwqwoP43lvMNS3101KUsVVpz85ozwruw3Wm97M521cW_PLzoItXC7haJ6oAQyZU2tiele9jDhg5f'
 const CLOSING =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuBOwsH3faYsqe_QJyHIVOLOFi7QmLKfSmj71ljR3BhaNxrYnojVtj_vXs6zb-85ydGk0ENqLNbRThQh0X2gXZo2nCAfTBmk4u0J8a6bgk-AIQfx3LnCJvIdHshWEAzIrdyrEpW7hzH6ERNWjSrYfejY1JwDm55KdRI2erOTVw4AbhJF3ZfBeZ9IF9sCIccH1ZCjYxef6MR0pDwQ2Y9W6hg7KeF6d0Rhgkpgu81Ew7cew_2ECSXNM0Tp5RN2k4QOJHwT7-YGaXXgCXYZ'
 
 export default function HomePage() {
   const [form, setForm] = useState({
     name: '',
-    phone: '',
     email: '',
     service: 'Marine Trimming',
     details: '',
@@ -44,24 +44,10 @@ export default function HomePage() {
       >
         <img
           src={HERO_BG}
-          alt="Marine boat on open water"
+          alt="A luxurious white power yacht speeds through deep blue ocean waters."
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        <div
-          className="hero-gradient"
-          style={{ position: 'absolute', inset: 0 }}
-        />
-        {/* Diagonal accent bar */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            width: 340,
-            height: 8,
-            background: 'var(--rt-white)',
-          }}
-        />
+        <div className="hero-gradient" style={{ position: 'absolute', inset: 0 }} />
         <div
           style={{
             position: 'relative',
@@ -69,155 +55,85 @@ export default function HomePage() {
             textAlign: 'center',
             color: 'var(--rt-white)',
             padding: '0 24px',
-            maxWidth: 880,
+            maxWidth: 900,
           }}
         >
-          <div
+          <span
+            className="caps"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 12,
+              background: 'var(--rt-black)',
+              color: 'var(--rt-white)',
+              padding: '4px 16px',
+              display: 'inline-block',
               marginBottom: 24,
             }}
           >
-            <div style={{ width: 40, height: 3, background: 'var(--rt-white)' }} />
-            <span className="caps" style={{ color: 'var(--rt-white)' }}>
-              Marine &amp; Motor Trimming Specialist
-            </span>
-            <div style={{ width: 40, height: 3, background: 'var(--rt-white)' }} />
-          </div>
+            Marine &amp; Motor Trimming Specialist
+          </span>
           <h1
             style={{
               fontFamily: 'var(--rt-font-display)',
-              fontSize: 'clamp(40px,6vw,72px)',
+              fontSize: 'clamp(40px,6vw,64px)',
               fontWeight: 700,
-              lineHeight: 1.08,
-              letterSpacing: '-0.025em',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
               marginBottom: 24,
             }}
           >
-            Mastering the Art of
-            <br />
-            Marine &amp; Motor Trimming
+            Built Tough. Made to Last.
           </h1>
           <p
             style={{
-              fontSize: 'clamp(16px,2vw,20px)',
-              lineHeight: 1.65,
-              color: 'rgba(255,255,255,0.82)',
+              fontSize: 'clamp(16px,2vw,18px)',
+              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.9)',
               marginBottom: 40,
-              maxWidth: 600,
+              maxWidth: 640,
               marginLeft: 'auto',
               marginRight: 'auto',
             }}
           >
-            Expertise, Durability, and Quality since 2017. We transform boats and vehicles with
-            professional-grade craftsmanship built for the elements.
+            Custom trimming solutions specialising in industrial, marine &amp; heavy-duty textile
+            fabrication across Western Australia.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}>
-            <Link href="/contact" className="btn btn-primary">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
+            <Link href="/contact" className="btn btn-primary" style={{ fontSize: 13 }}>
               Request a Quote
             </Link>
-            <Link href="/services" className="btn btn-outline">
-              Our Services
+            <Link href="/services" className="btn btn-outline" style={{ fontSize: 13 }}>
+              Our Expertise
             </Link>
           </div>
         </div>
-        {/* Scroll hint */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 32,
-            right: 64,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 8,
-            zIndex: 1,
-          }}
-        >
-          <span className="caps" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 9 }}>
-            Scroll
-          </span>
-          <div
-            style={{
-              width: 1,
-              height: 48,
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)',
-            }}
-          />
-        </div>
       </section>
 
-      {/* ── Marquee Strip ── */}
-      <div
-        style={{
-          background: 'var(--rt-black)',
-          padding: '14px 0',
-          overflow: 'hidden',
-          whiteSpace: 'nowrap',
-          borderTop: '3px solid var(--rt-white)',
-        }}
-      >
-        <div style={{ display: 'inline-flex', animation: 'marquee 28s linear infinite' }}>
-          {[...Array(2)].map((_, i) => (
-            <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <span className="caps" style={{ color: 'var(--rt-white)', margin: '0 32px' }}>
-                Biminis &amp; Bars
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'rgba(255,255,255,0.5)', margin: '0 32px' }}>
-                Boat Upholstery
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'var(--rt-white)', margin: '0 32px' }}>
-                Canvas Covers
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'rgba(255,255,255,0.5)', margin: '0 32px' }}>
-                Seat Restoration
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'var(--rt-white)', margin: '0 32px' }}>
-                Motor Trimming
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'rgba(255,255,255,0.5)', margin: '0 32px' }}>
-                Sundecks
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-              <span className="caps" style={{ color: 'var(--rt-white)', margin: '0 32px' }}>
-                Free Quotes
-              </span>
-              <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 8px' }}>—</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Expertise / About ── */}
+      {/* ── Expertise / About Section (Bento Style) ── */}
       <section
         id="expertise"
-        style={{ padding: 'var(--rt-section-gap) 64px', background: 'var(--rt-surface)' }}
+        style={{
+          padding: 'var(--rt-section-gap) 40px',
+          background: 'var(--rt-surface)',
+        }}
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div className="section-label">
-            <span>Est. 2017 — Mandurah, WA</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32 }}>
+            <div style={{ height: 2, width: 96, background: 'var(--rt-black)' }} />
+            <span className="caps" style={{ color: 'var(--rt-black)' }}>Est. 2017</span>
           </div>
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 64,
-              alignItems: 'center',
+              gridTemplateColumns: '7fr 5fr',
+              gap: 24,
+              alignItems: 'stretch',
             }}
           >
             {/* Left copy */}
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h2
                 style={{
                   fontFamily: 'var(--rt-font-display)',
-                  fontSize: 'clamp(32px,4vw,52px)',
+                  fontSize: 'clamp(32px,4vw,48px)',
                   fontWeight: 700,
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
@@ -225,55 +141,56 @@ export default function HomePage() {
                   color: 'var(--rt-black)',
                 }}
               >
-                Precision Crafted
-                <br />
-                for the Elements
+                About RAMS TRIMMING
               </h2>
               <p
                 style={{
-                  fontSize: 17,
-                  lineHeight: 1.75,
-                  color: 'var(--rt-grey-text)',
+                  fontSize: 18,
+                  lineHeight: 1.6,
+                  color: '#4c4546',
                   marginBottom: 32,
                 }}
               >
-                Operating in the industry since 2017, our team at Ram&apos;s Trimming combines
-                technical mastery with modern marine-grade materials. We specialise in the complex
-                geometry of boat covers, custom yacht interiors, and motor trimming that withstands
-                the harshest sun and salt.
+                At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed
+                to handle the harshest environments Australia can throw at them. From mine spec to
+                marine and everything in between, we focus on durability, function, and clean
+                workmanship.
               </p>
-              <p
-                style={{
-                  fontSize: 17,
-                  lineHeight: 1.75,
-                  color: 'var(--rt-grey-text)',
-                  marginBottom: 48,
-                }}
-              >
-                From Mandurah to surrounds, every job — no matter how small — is treated with the
-                same dedication to quality and precision.
-              </p>
-              {/* Stats */}
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  gap: 32,
-                  paddingTop: 32,
-                  borderTop: '2px solid var(--rt-grey-light)',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 24,
+                  marginBottom: 48,
                 }}
               >
-                <div className="stat-item">
-                  <h3>7+</h3>
-                  <p>Years in Business</p>
+                <div>
+                  <h4
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 32,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                      marginBottom: 8,
+                    }}
+                  >
+                    33+
+                  </h4>
+                  <p className="caps" style={{ color: '#5d5e66' }}>Years Experience</p>
                 </div>
-                <div className="stat-item">
-                  <h3>100%</h3>
-                  <p>Work Guarantee</p>
-                </div>
-                <div className="stat-item">
-                  <h3>Free</h3>
-                  <p>Quotes Always</p>
+                <div>
+                  <h4
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 32,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                      marginBottom: 8,
+                    }}
+                  >
+                    100%
+                  </h4>
+                  <p className="caps" style={{ color: '#5d5e66' }}>Work Guarantee</p>
                 </div>
               </div>
             </div>
@@ -281,33 +198,28 @@ export default function HomePage() {
             <div style={{ position: 'relative' }}>
               <img
                 src={CRAFTSMAN}
-                alt="Craftsman at work"
-                style={{
-                  width: '100%',
-                  height: 520,
-                  objectFit: 'cover',
-                  boxShadow: '0 24px 64px rgba(0,0,0,0.15)',
-                }}
+                alt="Close up high-fidelity shot of a master craftsman hand-stitching premium leather."
+                style={{ width: '100%', height: '100%', objectFit: 'cover', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}
               />
               <div
                 style={{
                   position: 'absolute',
                   bottom: -24,
-                  left: -32,
+                  left: -24,
                   background: 'var(--rt-black)',
-                  padding: '28px 32px',
+                  padding: '32px',
+                  display: 'none',
                 }}
+                className="about-badge"
               >
-                <span className="caps" style={{ color: 'var(--rt-white)' }}>
-                  Marine Grade
-                </span>
+                <span className="caps" style={{ color: '#f3f3f4' }}>Marine Grade</span>
                 <p
                   style={{
                     fontFamily: 'var(--rt-font-display)',
                     fontSize: 20,
+                    fontWeight: 700,
                     color: 'var(--rt-white)',
                     marginTop: 8,
-                    fontWeight: 700,
                   }}
                 >
                   Built to Last.
@@ -317,53 +229,47 @@ export default function HomePage() {
           </div>
         </div>
         <style>{`
+          @media(min-width:1024px) { .about-badge { display: block !important; } }
           @media(max-width:768px) {
             #expertise { padding-left:16px !important; padding-right:16px !important; }
-            #expertise > div > div[style*="grid-template-columns"] { grid-template-columns:1fr !important; gap:40px !important; }
+            #expertise > div > div[style*="grid-template-columns: 7fr"] { grid-template-columns:1fr !important; gap:40px !important; }
           }
         `}</style>
       </section>
 
-      {/* ── Services Overview ── */}
+      {/* ── Services Section ── */}
       <section
         id="services"
-        style={{ padding: 'var(--rt-section-gap) 64px' }}
+        style={{ padding: 'var(--rt-section-gap) 40px', background: 'var(--rt-white)' }}
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div className="title-underline">
-            <h2>Core Services</h2>
+            <h2>What We Do</h2>
           </div>
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 48,
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 32,
             }}
           >
-            {/* Marine */}
+            {/* Marine Trimming */}
             <div>
-              <div style={{ overflow: 'hidden', marginBottom: 32 }}>
+              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
                 <img
-                  src={MARINE}
+                  src={MARINE_SVC}
                   alt="Marine trimming"
-                  style={{
-                    width: '100%',
-                    height: 280,
-                    objectFit: 'cover',
-                    transition: 'transform 0.5s',
-                  }}
-                  onMouseOver={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)')}
-                  onMouseOut={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1)')}
+                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
                 />
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
                   directions_boat
                 </span>
                 <h3
                   style={{
                     fontFamily: 'var(--rt-font-display)',
-                    fontSize: 28,
+                    fontSize: 24,
                     fontWeight: 700,
                     color: 'var(--rt-black)',
                   }}
@@ -371,332 +277,213 @@ export default function HomePage() {
                   Marine Trimming
                 </h3>
               </div>
-              <ul
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 10,
-                  marginBottom: 28,
-                }}
-              >
-                {[
-                  'Biminis and Bars',
-                  'Duckbill Replacement',
-                  'Canopy Materials',
-                  'Rear Extensions',
-                  'Sun Decks',
-                  'Front & Side Clears',
-                  'Full Camper Covers',
-                  'Seat Re-upholstering',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                      fontSize: 15,
-                      color: 'var(--rt-grey-text)',
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 6,
-                        height: 6,
-                        background: 'var(--rt-black)',
-                        display: 'block',
-                        flexShrink: 0,
-                      }}
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/services"
-                className="btn btn-primary"
-                style={{ fontSize: 11, padding: '14px 32px' }}
-              >
-                View All Marine Services
-              </Link>
             </div>
-
-            {/* Motor */}
+            {/* Industrial Textiles */}
             <div>
-              <div style={{ overflow: 'hidden', marginBottom: 32 }}>
+              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
                 <img
-                  src={MOTOR}
-                  alt="Motor trimming"
-                  style={{
-                    width: '100%',
-                    height: 280,
-                    objectFit: 'cover',
-                    transition: 'transform 0.5s',
-                  }}
-                  onMouseOver={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)')}
-                  onMouseOut={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1)')}
+                  src={INDUSTRIAL_SVC}
+                  alt="Industrial textiles"
+                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
                 />
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
-                  directions_car
+                  factory
                 </span>
                 <h3
                   style={{
                     fontFamily: 'var(--rt-font-display)',
-                    fontSize: 28,
+                    fontSize: 24,
                     fontWeight: 700,
                     color: 'var(--rt-black)',
                   }}
                 >
-                  Motor Trimming
+                  Industrial Textiles
                 </h3>
               </div>
-              <ul
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 10,
-                  marginBottom: 28,
-                }}
-              >
-                {[
-                  'Head Trim Linings',
-                  'Door Panel Repair',
-                  'Custom Car Seats',
-                  'Ute Canvas Covers',
-                  'Seat Bolstering',
-                  'Golf Buggy Seats',
-                  'Full Interior Restores',
-                  'Canvas Replacements',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                      fontSize: 15,
-                      color: 'var(--rt-grey-text)',
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: 6,
-                        height: 6,
-                        background: 'var(--rt-black)',
-                        display: 'block',
-                        flexShrink: 0,
-                      }}
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/services"
-                className="btn btn-primary"
-                style={{ fontSize: 11, padding: '14px 32px' }}
-              >
-                View All Motor Services
-              </Link>
+            </div>
+            {/* Custom Covers */}
+            <div>
+              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
+                <img
+                  src={CUSTOM_SVC}
+                  alt="Custom covers"
+                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
+                  check_box_outline_blank
+                </span>
+                <h3
+                  style={{
+                    fontFamily: 'var(--rt-font-display)',
+                    fontSize: 24,
+                    fontWeight: 700,
+                    color: 'var(--rt-black)',
+                  }}
+                >
+                  Custom Covers
+                </h3>
+              </div>
             </div>
           </div>
         </div>
         <style>{`
           @media(max-width:768px) {
             #services { padding-left:16px !important; padding-right:16px !important; }
-            #services > div > div[style*="grid-template-columns"] { grid-template-columns:1fr !important; }
+            #services > div > div[style*="repeat(3"] { grid-template-columns:1fr !important; }
           }
         `}</style>
       </section>
 
-      {/* ── Why Choose Rams + Quote Form ── */}
+      {/* ── Why Choose Us + Quote Form ── */}
       <section
         id="why"
         style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
       >
-        {/* Left: Why Choose Us */}
+        {/* Left: Why Choose Rams */}
         <div
           style={{
             background: 'var(--rt-black)',
             color: 'var(--rt-white)',
-            padding: 'var(--rt-section-gap) 64px',
+            padding: 'var(--rt-section-gap) 40px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
           }}
         >
-          <div
-            className="section-label-white section-label"
-            style={{ marginBottom: 40 }}
-          >
-            <span>Why Ram&apos;s?</span>
-          </div>
-          <h2
-            style={{
-              fontFamily: 'var(--rt-font-display)',
-              fontSize: 40,
-              fontWeight: 700,
-              color: 'var(--rt-white)',
-              marginBottom: 48,
-              lineHeight: 1.15,
-            }}
-          >
-            Built Different.
-            <br />
-            Built to Last.
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
-            <div className="why-item">
-              <div className="why-icon-wrap">
-                <span className="material-symbols-outlined">verified_user</span>
-              </div>
-              <div>
-                <h4>Unmatched Durability</h4>
-                <p>
-                  We use only UV-treated threads and genuine marine-grade fabrics to ensure your
-                  investment lasts decades, not just seasons.
-                </p>
-              </div>
-            </div>
-            <div className="why-item">
-              <div className="why-icon-wrap">
-                <span className="material-symbols-outlined">speed</span>
-              </div>
-              <div>
-                <h4>Fast Turnaround</h4>
-                <p>
-                  Our experienced crew delivers professional results with efficient lead times to get
-                  you back on the water or road quickly.
-                </p>
-              </div>
-            </div>
-            <div className="why-item">
-              <div className="why-icon-wrap">
-                <span className="material-symbols-outlined">architecture</span>
-              </div>
-              <div>
-                <h4>Custom Engineering</h4>
-                <p>
-                  No two boats or vehicles are the same. Every trim and cover is custom templated
-                  for a perfect structural fit.
-                </p>
-              </div>
+          <div style={{ maxWidth: 480, marginLeft: 'auto' }}>
+            <h2
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 40,
+                fontWeight: 700,
+                color: 'var(--rt-white)',
+                marginBottom: 48,
+                lineHeight: 1.15,
+              }}
+            >
+              Why Choose Rams?
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
+              {[
+                { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },
+                { icon: 'manufacturing', label: 'Industrial-grade materials' },
+                { icon: 'design_services', label: 'Custom fabrication – no off-the-shelf compromises' },
+                { icon: 'handshake', label: 'Reliable turnaround & honest service' },
+                { icon: 'location_on', label: 'WA owned & operated' },
+              ].map((item) => (
+                <div key={item.icon} style={{ display: 'flex', gap: 24 }}>
+                  <div
+                    style={{
+                      background: '#e2e2e3',
+                      padding: 12,
+                      height: 'fit-content',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
+                      {item.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="caps" style={{ color: '#f3f3f4' }}>{item.label}</h4>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Right: Quote Form */}
         <div
-          id="quote"
+          id="contact"
           style={{
-            background: 'var(--rt-surface)',
-            padding: 'var(--rt-section-gap) 64px',
+            background: '#e2e2e3',
+            padding: 'var(--rt-section-gap) 40px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
           }}
         >
-          <div className="section-label">
-            <span>Free Assessment</span>
+          <div style={{ maxWidth: 480 }}>
+            <h2
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 40,
+                fontWeight: 700,
+                color: 'var(--rt-black)',
+                marginBottom: 16,
+              }}
+            >
+              Request a Quote
+            </h2>
+            <p style={{ fontSize: 16, color: '#4c4546', marginBottom: 40, lineHeight: 1.5 }}>
+              Describe your requirements and we will provide a professional assessment within 24 hours.
+            </p>
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
+            >
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                <div className="form-group">
+                  <label className="form-label">Full Name</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    placeholder="John Smith"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email Address</label>
+                  <input
+                    className="form-input"
+                    type="email"
+                    placeholder="john@example.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Service Type</label>
+                <select
+                  className="form-select"
+                  value={form.service}
+                  onChange={(e) => setForm({ ...form, service: e.target.value })}
+                >
+                  <option>Marine Trimming</option>
+                  <option>Motor Body Trimming</option>
+                  <option>Custom Upholstery</option>
+                  <option>Repairs &amp; Maintenance</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Project Details</label>
+                <textarea
+                  className="form-textarea"
+                  placeholder="Describe your boat or vehicle model and what you need..."
+                  value={form.details}
+                  onChange={(e) => setForm({ ...form, details: e.target.value })}
+                />
+              </div>
+              <button type="submit" className="btn btn-red" style={{ letterSpacing: '0.18em', fontSize: 13, padding: '20px' }}>
+                SUBMIT MY REQUEST
+              </button>
+            </form>
           </div>
-          <h2
-            style={{
-              fontFamily: 'var(--rt-font-display)',
-              fontSize: 40,
-              fontWeight: 700,
-              color: 'var(--rt-black)',
-              marginBottom: 16,
-            }}
-          >
-            Request a Quote
-          </h2>
-          <p
-            style={{
-              fontSize: 15,
-              color: 'var(--rt-grey-text)',
-              marginBottom: 40,
-              lineHeight: 1.65,
-            }}
-          >
-            Describe your requirements and we&apos;ll provide a professional assessment within 24
-            hours.
-          </p>
-
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-              <div className="form-group">
-                <label className="form-label">Full Name</label>
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Rhys Smith"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Phone</label>
-                <input
-                  className="form-input"
-                  type="tel"
-                  placeholder="0435 929 441"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label className="form-label">Email Address</label>
-              <input
-                className="form-input"
-                type="email"
-                placeholder="you@example.com"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Service Type</label>
-              <select
-                className="form-select"
-                value={form.service}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
-              >
-                <option>Marine Trimming</option>
-                <option>Motor Body Trimming</option>
-                <option>Custom Upholstery</option>
-                <option>Repairs &amp; Maintenance</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label className="form-label">Project Details</label>
-              <textarea
-                className="form-textarea"
-                placeholder="Describe your boat or vehicle and what you need..."
-                value={form.details}
-                onChange={(e) => setForm({ ...form, details: e.target.value })}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-red">
-              Submit My Request
-            </button>
-          </form>
         </div>
         <style>{`
           @media(max-width:900px) {
             #why { grid-template-columns:1fr !important; }
-            #why > div:first-child { padding:64px 24px !important; }
-            #why > div:last-child { padding:64px 24px !important; }
+            #why > div { padding:64px 16px !important; }
+            #why > div > div { margin-left:0 !important; max-width:100% !important; }
           }
         `}</style>
       </section>
@@ -704,7 +491,7 @@ export default function HomePage() {
       {/* ── Closing Atmospheric Section ── */}
       <section
         style={{
-          height: '55vh',
+          height: '60vh',
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
@@ -714,7 +501,7 @@ export default function HomePage() {
       >
         <img
           src={CLOSING}
-          alt=""
+          alt="A luxurious white power yacht speeds through deep blue ocean waters."
           style={{
             position: 'absolute',
             inset: 0,
@@ -723,42 +510,32 @@ export default function HomePage() {
             objectFit: 'cover',
           }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(1px)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 24px' }}>
           <div
             style={{
-              border: '6px solid rgba(255,255,255,0.2)',
               padding: '48px 64px',
-              backdropFilter: 'blur(4px)',
+              border: '2px solid rgba(255,255,255,0.3)',
               maxWidth: 680,
+              backdropFilter: 'blur(8px)',
             }}
           >
-            <p
-              className="caps"
-              style={{ color: 'var(--rt-white)', letterSpacing: '0.2em', marginBottom: 20 }}
-            >
-              Crafted for Excellence
-            </p>
             <h2
               style={{
                 fontFamily: 'var(--rt-font-display)',
-                fontSize: 'clamp(32px,5vw,52px)',
+                fontSize: 'clamp(32px,5vw,48px)',
                 color: 'var(--rt-white)',
                 fontWeight: 700,
                 lineHeight: 1.1,
                 letterSpacing: '-0.02em',
+                marginBottom: 16,
               }}
             >
               Precision on the Waves.
             </h2>
-            <div
-              style={{
-                width: 80,
-                height: 3,
-                background: 'var(--rt-white)',
-                margin: '24px auto 0',
-              }}
-            />
+            <p className="caps" style={{ color: '#f3f3f4', letterSpacing: '0.2em' }}>
+              CRAFTED FOR EXCELLENCE
+            </p>
           </div>
         </div>
       </section>

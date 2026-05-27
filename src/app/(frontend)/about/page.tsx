@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 
 const WORKSHOP_HERO =
@@ -9,424 +10,402 @@ const WORKSHOP_INTERIOR =
 
 export default function AboutPage() {
   return (
-    <main>
-      {/* Page Hero */}
-      <div className="page-hero">
-        <img src={WORKSHOP_HERO} alt="" />
-        <div className="page-hero-content">
-          <span className="page-hero-tag">Our Story</span>
-          <h1>About Ram&apos;s Trimming</h1>
-        </div>
-      </div>
+    <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingTop: 48, paddingBottom: 96 }}>
 
-      {/* ── Story Section ── */}
-      <section style={{ padding: 'var(--rt-section-gap) 64px', background: 'var(--rt-surface)' }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 80,
-            alignItems: 'center',
-          }}
-        >
-          <div>
-            <div className="section-label">
-              <span>Est. 2017</span>
-            </div>
-            <h2
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 'clamp(32px,4vw,48px)',
-                fontWeight: 700,
-                color: 'var(--rt-black)',
-                marginBottom: 28,
-                lineHeight: 1.12,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Passion for Precision.
-              <br />
-              Built from the Ground Up.
-            </h2>
-            <p style={{ fontSize: 17, lineHeight: 1.8, color: 'var(--rt-grey-text)', marginBottom: 20 }}>
-              Ram&apos;s Trimming was founded in 2017 with a single mission: deliver exceptional
-              marine and motor trimming to the Mandurah community and beyond. What started as a
-              passion project has grown into a trusted name for quality craftsmanship across Western
-              Australia.
-            </p>
-            <p style={{ fontSize: 17, lineHeight: 1.8, color: 'var(--rt-grey-text)', marginBottom: 20 }}>
-              We believe that quality workmanship speaks for itself. Every stitch, every seam, and
-              every material we choose is selected with longevity in mind. The ocean is unforgiving,
-              and so are we — we don&apos;t cut corners.
-            </p>
-            <p style={{ fontSize: 17, lineHeight: 1.8, color: 'var(--rt-grey-text)' }}>
-              Whether you&apos;re a weekend boatie who needs a bimini top, or a collector looking
-              to restore a classic car interior, you&apos;ll get the same level of attention and
-              expertise on every job.
-            </p>
-          </div>
-          <div>
+      {/* ── Hero Section ── */}
+      <header
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '7fr 5fr',
+          gap: 24,
+          marginBottom: 96,
+          marginTop: 'var(--rt-nav-h)',
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <span
+            className="caps"
+            style={{ color: 'var(--rt-black)', marginBottom: 16, letterSpacing: '0.16em' }}
+          >
+            Established Expertise
+          </span>
+          <h1
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 'clamp(32px,4vw,48px)',
+              fontWeight: 700,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: 32,
+              color: 'var(--rt-black)',
+            }}
+          >
+            Expertise, Durability, Quality.
+          </h1>
+          <p
+            style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#5d5e66',
+              maxWidth: 600,
+            }}
+          >
+            At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed to
+            handle the harshest environments Australia can throw at them.
+          </p>
+        </div>
+        <div>
+          <div
+            style={{
+              border: '2px solid var(--rt-black)',
+              overflow: 'hidden',
+              boxShadow: '4px 4px 0 0 var(--rt-black)',
+              aspectRatio: '1 / 1',
+            }}
+          >
             <img
-              src={CRAFTSMANSHIP}
-              alt="Rhys — Founder"
+              src={WORKSHOP_HERO}
+              alt="Industrial Workshop"
               style={{
                 width: '100%',
-                height: 580,
+                height: '100%',
                 objectFit: 'cover',
-                boxShadow: '0 24px 60px rgba(0,0,0,0.14)',
+                filter: 'grayscale(100%)',
+                transition: 'filter 0.7s ease',
               }}
+              onMouseOver={(e) => ((e.currentTarget as HTMLImageElement).style.filter = 'grayscale(0%)')}
+              onMouseOut={(e) => ((e.currentTarget as HTMLImageElement).style.filter = 'grayscale(100%)')}
             />
           </div>
         </div>
-        <style>{`
-          @media(max-width:900px) {
-            .about-story-grid { grid-template-columns:1fr !important; }
-          }
-          @media(max-width:768px) {
-            .about-story-section { padding-left:16px !important; padding-right:16px !important; }
-          }
-        `}</style>
-      </section>
+      </header>
 
-      {/* ── Stats Bar ── */}
-      <section style={{ background: 'var(--rt-black)', padding: 64 }}>
+      {/* ── Stats Section ── */}
+      <section
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          border: '2px solid var(--rt-black)',
+          marginBottom: 96,
+        }}
+      >
         <div
           style={{
-            maxWidth: 1280,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4,1fr)',
-            gap: 48,
+            padding: 48,
+            borderRight: '2px solid var(--rt-black)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             textAlign: 'center',
           }}
         >
-          <div>
-            <h3
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 52,
-                fontWeight: 700,
-                color: 'var(--rt-white)',
-              }}
-            >
-              7+
-            </h3>
-            <p className="caps" style={{ color: 'rgba(255,255,255,0.6)', marginTop: 12 }}>
-              Years in Business
-            </p>
-          </div>
-          <div>
-            <h3
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 52,
-                fontWeight: 700,
-                color: 'var(--rt-white)',
-              }}
-            >
-              100%
-            </h3>
-            <p className="caps" style={{ color: 'rgba(255,255,255,0.6)', marginTop: 12 }}>
-              Satisfaction Guarantee
-            </p>
-          </div>
-          <div>
-            <h3
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 52,
-                fontWeight: 700,
-                color: 'var(--rt-white)',
-              }}
-            >
-              Free
-            </h3>
-            <p className="caps" style={{ color: 'rgba(255,255,255,0.6)', marginTop: 12 }}>
-              Quotes Always
-            </p>
-          </div>
-          <div>
-            <h3
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 52,
-                fontWeight: 700,
-                color: 'var(--rt-white)',
-              }}
-            >
-              WA
-            </h3>
-            <p className="caps" style={{ color: 'rgba(255,255,255,0.6)', marginTop: 12 }}>
-              Based in Mandurah
-            </p>
-          </div>
-        </div>
-        <style>{`
-          @media(max-width:768px) {
-            .stats-bar { padding:48px 16px !important; }
-            .stats-grid { grid-template-columns:1fr 1fr !important; }
-          }
-        `}</style>
-      </section>
-
-      {/* ── Values ── */}
-      <section style={{ padding: 'var(--rt-section-gap) 64px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div className="title-underline">
-            <h2>Our Values</h2>
-          </div>
-          <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 32 }}
+          <span
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 48,
+              fontWeight: 700,
+              color: 'var(--rt-black)',
+              marginBottom: 8,
+            }}
           >
-            <div
-              style={{
-                borderTop: '4px solid var(--rt-black)',
-                padding: '40px 32px',
-                background: 'var(--rt-surface)',
-              }}
-            >
-              <span
-                className="material-symbols-outlined"
-                style={{ fontSize: 48, color: 'var(--rt-black)', marginBottom: 20, display: 'block' }}
-              >
-                star
-              </span>
-              <h3
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 24,
-                  fontWeight: 700,
-                  color: 'var(--rt-black)',
-                  marginBottom: 16,
-                }}
-              >
-                Expertise
-              </h3>
-              <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--rt-grey-text)' }}>
-                Every project is handled with deep technical knowledge. We stay up-to-date with the
-                latest materials and techniques to deliver the best possible result for every job.
-              </p>
-            </div>
-            <div
-              style={{
-                borderTop: '4px solid var(--rt-black)',
-                padding: '40px 32px',
-                background: 'var(--rt-surface)',
-              }}
-            >
-              <span
-                className="material-symbols-outlined"
-                style={{ fontSize: 48, color: 'var(--rt-black)', marginBottom: 20, display: 'block' }}
-              >
-                shield
-              </span>
-              <h3
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 24,
-                  fontWeight: 700,
-                  color: 'var(--rt-black)',
-                  marginBottom: 16,
-                }}
-              >
-                Durability
-              </h3>
-              <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--rt-grey-text)' }}>
-                We only use marine-grade, UV-treated materials that are built to last. We back every
-                job with our quality guarantee — because we&apos;re confident our work stands up to
-                anything.
-              </p>
-            </div>
-            <div
-              style={{
-                borderTop: '4px solid var(--rt-black)',
-                padding: '40px 32px',
-                background: 'var(--rt-surface)',
-              }}
-            >
-              <span
-                className="material-symbols-outlined"
-                style={{ fontSize: 48, color: 'var(--rt-black)', marginBottom: 20, display: 'block' }}
-              >
-                handshake
-              </span>
-              <h3
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 24,
-                  fontWeight: 700,
-                  color: 'var(--rt-black)',
-                  marginBottom: 16,
-                }}
-              >
-                Quality
-              </h3>
-              <p style={{ fontSize: 15, lineHeight: 1.75, color: 'var(--rt-grey-text)' }}>
-                Quality isn&apos;t just about the materials — it&apos;s about the attention to
-                detail, the care taken with each stitch, and the time invested in getting it exactly
-                right the first time.
-              </p>
-            </div>
-          </div>
+            33+
+          </span>
+          <span className="caps" style={{ letterSpacing: '0.15em' }}>Years Experience</span>
         </div>
-        <style>{`
-          @media(max-width:900px) {
-            .values-grid { grid-template-columns:1fr !important; }
-          }
-        `}</style>
-      </section>
-
-      {/* ── Why Us ── */}
-      <section
-        style={{ background: 'var(--rt-black)', padding: 'var(--rt-section-gap) 64px' }}
-      >
         <div
           style={{
-            maxWidth: 1280,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 80,
+            padding: 48,
+            background: 'var(--rt-black)',
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
+            textAlign: 'center',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 48,
+              fontWeight: 700,
+              color: 'var(--rt-white)',
+              marginBottom: 8,
+            }}
+          >
+            100%
+          </span>
+          <span className="caps" style={{ color: 'var(--rt-white)', letterSpacing: '0.15em' }}>Work Guarantee</span>
+        </div>
+      </section>
+
+      {/* ── Main Content (Bento Style) ── */}
+      <section
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(12, 1fr)',
+          gap: 24,
+          marginBottom: 96,
+        }}
+      >
+        {/* Story Card */}
+        <div
+          style={{
+            gridColumn: 'span 8',
+            border: '2px solid var(--rt-black)',
+            padding: 40,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
           <div>
-            <img
-              src={WORKSHOP_INTERIOR}
-              alt="Our workshop"
-              style={{ width: '100%', height: 480, objectFit: 'cover' }}
-            />
-          </div>
-          <div>
-            <div
-              className="section-label-white section-label"
-              style={{ marginBottom: 32 }}
-            >
-              <span>Why Choose Us</span>
-            </div>
             <h2
               style={{
                 fontFamily: 'var(--rt-font-display)',
-                fontSize: 40,
+                fontSize: 32,
                 fontWeight: 700,
-                color: 'var(--rt-white)',
-                marginBottom: 40,
-                lineHeight: 1.15,
-                letterSpacing: '-0.02em',
+                color: 'var(--rt-black)',
+                marginBottom: 24,
               }}
             >
-              No Job Too Big.
-              <br />
-              No Job Too Small.
+              Built for Australia
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-              {[
-                {
-                  icon: 'check_circle',
-                  title: 'Free Quotes',
-                  desc: 'We provide detailed, no-obligation quotes so you know exactly what you\'re getting before we start.',
-                },
-                {
-                  icon: 'schedule',
-                  title: 'Fast Turnaround',
-                  desc: 'We respect your time. Our experienced team works efficiently to get your boat or vehicle back to you quickly.',
-                },
-                {
-                  icon: 'precision_manufacturing',
-                  title: 'Custom Every Time',
-                  desc: 'Every piece is templated and fabricated specifically for your vessel or vehicle — no off-the-shelf solutions.',
-                },
-                {
-                  icon: 'verified',
-                  title: 'Quality Guaranteed',
-                  desc: '100% professional work guaranteed on every single job. We stand behind everything we make.',
-                },
-              ].map((item) => (
-                <div key={item.title} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                  <div
-                    style={{
-                      background: 'var(--rt-white)',
-                      padding: 10,
-                      flexShrink: 0,
-                      fontSize: 22,
-                      color: 'var(--rt-black)',
-                    }}
-                  >
-                    <span className="material-symbols-outlined">{item.icon}</span>
-                  </div>
-                  <div>
-                    <h4 className="caps" style={{ color: 'var(--rt-white)', marginBottom: 8 }}>
-                      {item.title}
-                    </h4>
-                    <p
-                      style={{
-                        fontSize: 15,
-                        color: 'rgba(255,255,255,0.7)',
-                        lineHeight: 1.65,
-                      }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66', marginBottom: 24 }}>
+              From mine spec to marine and everything in between, we focus on durability, function,
+              and clean workmanship. We understand that in the Australian outback or on the rough WA
+              coast, gear failure isn&apos;t just an inconvenience—it&apos;s a critical risk.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
+              Our workshop is equipped with industrial-grade machinery capable of handling
+              heavy-weight PVC, canvas, and high-performance synthetics. Every stitch is placed with
+              structural integrity in mind.
+            </p>
+          </div>
+          <div
+            style={{
+              marginTop: 48,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 16,
+            }}
+          >
+            <span className="caps" style={{ fontWeight: 700 }}>CERTIFIED FABRICATION</span>
+            <div style={{ flexGrow: 1, height: 1, background: 'var(--rt-black)' }} />
           </div>
         </div>
-        <style>{`
-          @media(max-width:900px) {
-            .why-grid { grid-template-columns:1fr !important; }
-          }
-        `}</style>
-      </section>
 
-      {/* ── CTA ── */}
-      <section
-        style={{
-          padding: '96px 64px',
-          textAlign: 'center',
-          background: 'var(--rt-surface)',
-        }}
-      >
-        <h2
+        {/* Image Card */}
+        <div
           style={{
-            fontFamily: 'var(--rt-font-display)',
-            fontSize: 40,
-            fontWeight: 700,
-            color: 'var(--rt-black)',
-            marginBottom: 20,
+            gridColumn: 'span 4',
+            border: '2px solid var(--rt-black)',
+            overflow: 'hidden',
           }}
         >
-          Ready to Work Together?
-        </h2>
-        <p
+          <img
+            src={CRAFTSMANSHIP}
+            alt="Craftsmanship detail"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
+
+        {/* Value Proposition Card */}
+        <div
           style={{
-            fontSize: 17,
-            color: 'var(--rt-grey-text)',
-            marginBottom: 40,
-            maxWidth: 480,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            lineHeight: 1.65,
+            gridColumn: 'span 4',
+            background: '#eeeeef',
+            border: '2px solid var(--rt-black)',
+            padding: 40,
           }}
         >
-          Get in touch for a free, no-obligation quote on your marine or motor trimming project.
-        </p>
-        <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/contact" className="btn btn-primary">
-            Get a Free Quote
-          </Link>
-          <Link
-            href="/services"
-            className="btn"
-            style={{ background: 'var(--rt-black)', color: 'var(--rt-white)' }}
+          <span className="material-symbols-outlined" style={{ fontSize: 48, marginBottom: 24, display: 'block' }}>
+            verified
+          </span>
+          <h3 className="caps" style={{ fontWeight: 700, marginBottom: 16 }}>No Compromise</h3>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: '#1a1c1d' }}>
+            We reject off-the-shelf compromises. Every project is a custom fabrication using
+            industrial-grade materials tailored to your specific operational needs.
+          </p>
+        </div>
+
+        {/* Identity Card */}
+        <div
+          style={{
+            gridColumn: 'span 8',
+            border: '2px solid var(--rt-black)',
+            padding: 40,
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 32,
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ flex: '0 0 50%' }}>
+            <h3
+              style={{
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 32,
+                fontWeight: 700,
+                color: 'var(--rt-black)',
+                marginBottom: 16,
+              }}
+            >
+              WA Owned &amp; Operated
+            </h3>
+            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
+              Based in Western Australia, we are local specialists who know the conditions. Our
+              reputation is built on decades of serving the community with honesty and technical
+              precision.
+            </p>
+          </div>
+          <div
+            style={{
+              flex: '0 0 50%',
+              height: 192,
+              border: '2px solid var(--rt-black)',
+              overflow: 'hidden',
+              filter: 'grayscale(100%) contrast(1.25)',
+            }}
           >
-            View Services
-          </Link>
+            <img
+              src={WORKSHOP_INTERIOR}
+              alt="Workshop Interior"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
         </div>
       </section>
+
+      {/* ── Values Section ── */}
+      <section style={{ borderTop: '2px solid var(--rt-black)', paddingTop: 64, marginBottom: 96 }}>
+        <div style={{ marginBottom: 48 }}>
+          <h2
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 32,
+              fontWeight: 700,
+              color: 'var(--rt-black)',
+            }}
+          >
+            Our Core Values
+          </h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          {[
+            {
+              num: '01',
+              label: 'INTEGRITY',
+              desc: 'Absolute transparency in material selection and construction methods. We do it right the first time.',
+            },
+            {
+              num: '02',
+              label: 'DURABILITY',
+              desc: 'Designed to outlast the equipment it covers. We use UV-stabilized threads and reinforced stress points.',
+            },
+            {
+              num: '03',
+              label: 'PRECISION',
+              desc: 'Millimeter-perfect fit for every vehicle, vessel, or industrial component we trim.',
+            },
+          ].map((val) => (
+            <div key={val.num} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div
+                className="caps"
+                style={{
+                  borderBottom: '2px solid var(--rt-black)',
+                  paddingBottom: 8,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  fontWeight: 700,
+                }}
+              >
+                <span>{val.num}</span>
+                <span>{val.label}</span>
+              </div>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: '#5d5e66' }}>{val.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CTA Section ── */}
+      <section
+        style={{
+          background: 'var(--rt-black)',
+          color: 'var(--rt-white)',
+          padding: '80px',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <h2
+            style={{
+              fontFamily: 'var(--rt-font-display)',
+              fontSize: 'clamp(32px,4vw,48px)',
+              fontWeight: 700,
+              color: 'var(--rt-white)',
+              marginBottom: 32,
+            }}
+          >
+            Ready to start your project?
+          </h2>
+          <p
+            style={{
+              fontSize: 18,
+              lineHeight: 1.6,
+              color: '#e2e2e2',
+              marginBottom: 48,
+              maxWidth: 480,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          >
+            Contact us today for a technical consultation and quote on your next industrial or
+            marine textile project.
+          </p>
+          <Link
+            href="/contact"
+            className="btn"
+            style={{
+              background: 'var(--rt-white)',
+              color: 'var(--rt-black)',
+              fontSize: 12,
+              padding: '20px 40px',
+              letterSpacing: '0.15em',
+              boxShadow: '4px 4px 0 0 rgba(255,255,255,0.3)',
+            }}
+          >
+            Request a Quote
+          </Link>
+        </div>
+        {/* Decorative dot pattern */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.1,
+            pointerEvents: 'none',
+            backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+            backgroundSize: '20px 20px',
+          }}
+        />
+      </section>
+
+      <style>{`
+        @media(max-width:900px) {
+          main { padding-left:16px !important; padding-right:16px !important; }
+          header[style*="grid-template-columns: 7fr"] { grid-template-columns:1fr !important; }
+          section[style*="repeat(12"] { grid-template-columns:1fr !important; }
+          section[style*="repeat(12"] > div { grid-column: span 1 !important; }
+          section[style*="repeat(3, 1fr)"] { grid-template-columns:1fr !important; }
+          section[style*="border-Right: 2px"] { flex-direction: column !important; }
+        }
+        @media(max-width:600px) {
+          section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] { grid-template-columns:1fr !important; }
+          section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] > div:first-child { border-right:none !important; border-bottom:2px solid var(--rt-black); }
+        }
+      `}</style>
 
       {/* FAB */}
       <a href="/contact" className="fab" aria-label="Contact us">
