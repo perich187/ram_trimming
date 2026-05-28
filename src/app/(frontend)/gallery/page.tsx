@@ -99,7 +99,7 @@ export default async function GalleryPage() {
         `}</style>
       </header>
 
-      <main style={{ paddingBottom: 'var(--rt-section-gap)' }}>
+      <main style={{ paddingTop: 64, paddingBottom: 'var(--rt-section-gap)' }}>
         {/* ── Filter + Grid ── */}
         <GalleryClient items={items} />
 
