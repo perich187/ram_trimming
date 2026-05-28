@@ -1,17 +1,21 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { headers } from 'next/headers'
 
 export const maxDuration = 60
 
 export async function GET(req: Request): Promise<Response> {
+  const payload = await getPayload({ config })
+
+  // Allow if logged into the admin OR if the correct secret is passed
   const url = new URL(req.url)
   const secret = url.searchParams.get('secret')
+  const requestHeaders = await headers()
+  const { user } = await payload.auth({ headers: requestHeaders })
 
-  if (!secret || secret !== process.env.PAYLOAD_SECRET) {
-    return new Response('Unauthorized', { status: 401 })
+  if (!user && secret !== process.env.PAYLOAD_SECRET) {
+    return new Response('Unauthorized — log into the admin first, or pass ?secret=', { status: 401 })
   }
-
-  const payload = await getPayload({ config })
 
   try {
     await payload.updateGlobal({
