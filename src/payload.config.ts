@@ -74,6 +74,7 @@ export default buildConfig({
       slug: 'folders',
       folders: true,
       admin: {
+        hidden: true,
         useAsTitle: 'name',
       },
       fields: [
