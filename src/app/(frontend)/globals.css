@@ -287,7 +287,7 @@ html[data-theme='light'] {
   transition: box-shadow 0.3s;
 }
 .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo { display: flex; align-items: center; gap: 14px; min-width: 340px; flex-shrink: 0; }
 .nav-logo img {
   height: 76px;
   width: auto;
