@@ -19,7 +19,14 @@ export const Services: CollectionConfig = {
       options: [
         { label: 'Marine Trimming', value: 'marine' },
         { label: 'Motor Trimming', value: 'motor' },
+        { label: 'Industrial', value: 'industrial' },
+        { label: 'Custom', value: 'custom' },
       ],
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
       name: 'icon',

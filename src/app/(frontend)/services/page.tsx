@@ -1,5 +1,6 @@
-'use client'
 import Link from 'next/link'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 
@@ -17,9 +18,38 @@ const TRAILER_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDVzA6AvzLHKvMHHbmYjND-o_rK-l8fI_iAvdGFdxUdIz8Eu5l10Piu8twDZWP_9CytPUmmh1EIvCQ9ZXZPHlaeeC4r_FPw_L5J-GzZKYBS2_mgaVAT7MW_QXisfPt3Kg1uhx5IE2licLcN4VjoFutIN8Oreu1LYRwTiGwHaYXhzWi6rrCmFrX-Oz-kTeR9feX6sP2haCLPu_gl6OdCKArjfLaREK8UOt0ENYqpWVmXqCICqLqSflkp_JUbzmZdkGWAxb2QB9ANTb8Z'
 const HEADLINING_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDFcIFHyT9FQOwqQQfl-6Z29sxRK3Y0em9AJ7Uay6t277xOwaqNRwhm_xdV7suTzW-gptuEECbvmTpPrkYc0aFIsSnueKPWLNVgXzcOg8JGfT9pT-HClTCZ44P9gHd2xuigXLZqiqh-9uWIDphibyev3933Kj7D1Zmi09OoLsw2-eTDmp0mJ06AggTHBfTcakqIIl866spiRgZ1L0x1msL0Ne11guZc4t0Jvj7_4jXGIsrLeCaxxylm6Vio5_5daVnGs5ox65MROmwf'
-const SEAT_REPAIR_IMG = MARINE_SIDE
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  let cms: any = {}
+
+  try {
+    const payload = await getPayload({ config: configPromise })
+    cms = await payload.findGlobal({ slug: 'services-content', depth: 1 })
+  } catch {}
+
+  const heroHeading = cms.hero?.heading || 'Precision Craftsmanship'
+  const heroSubtext =
+    cms.hero?.subtext ||
+    'Expert marine, motor, and industrial trimming. Delivering professional-grade durability since 1987.'
+  const heroBg = (cms.hero?.image as any)?.url || SERVICES_HERO
+
+  // Section headers — fall back to hardcoded defaults
+  const sections = cms.sections && cms.sections.length >= 4
+    ? cms.sections
+    : [
+        { number: '01.', heading: 'Marine Trimming', accent: 'WATERPROOF EXCELLENCE' },
+        { number: '02.', heading: 'Industrial Textiles', accent: 'HEAVY DUTY SOLUTIONS' },
+        { number: '03.', heading: 'Custom Covers', accent: 'BESPOKE PROTECTION' },
+        { number: '04.', heading: 'Motor Trimming', accent: 'AUTOMOTIVE CRAFT' },
+      ]
+
+  const ctaHeading = cms.cta?.heading || 'Ready to start your project?'
+  const ctaSubtext =
+    cms.cta?.subtext ||
+    "Whether it's a luxury yacht, industrial equipment, or custom outdoor protection, we bring the same level of industrial expertise."
+  const ctaPhone = cms.cta?.phone || '08 9581 8180'
+  const ctaLocation = cms.cta?.location || '6C Harlem Place, Greenfields'
+
   return (
     <main>
       {/* ── Hero Header ── */}
@@ -37,15 +67,10 @@ export default function ServicesPage() {
       >
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'rgba(0,0,0,0.5)',
-              zIndex: 1,
-            }}
+            style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1 }}
           />
           <img
-            src={SERVICES_HERO}
+            src={heroBg}
             alt="Marine and motor trimming craftsmanship"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
@@ -72,21 +97,17 @@ export default function ServicesPage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Precision Craftsmanship
+              {heroHeading}
             </AnimatedHeading>
             <AnimatedText delay={0.45} style={{ fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
-              Expert marine, motor, and industrial trimming. Delivering professional-grade durability
-              since 1987.
+              {heroSubtext}
             </AnimatedText>
           </div>
         </div>
       </header>
 
       {/* ── 01. Marine Trimming ── */}
-      <section
-        id="marine"
-        style={{ padding: 'var(--rt-section-gap) 64px' }}
-      >
+      <section id="marine" style={{ padding: 'var(--rt-section-gap) 64px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
           <AnimatedHeading
             as="h2"
@@ -99,28 +120,20 @@ export default function ServicesPage() {
               flexShrink: 0,
             }}
           >
-            01. Marine Trimming
+            {`${sections[0]?.number} ${sections[0]?.heading}`}
           </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
-            WATERPROOF EXCELLENCE
+            {sections[0]?.accent}
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '8fr 4fr', gap: 24 }}>
-          {/* Main card */}
-          <div
-            style={{
-              background: '#eeeeef',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-              overflow: 'hidden',
-            }}
-          >
+          <div style={{ background: '#eeeeef', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
             <img
               src={MARINE_MAIN}
               alt="Marine trimming project"
+              className="svc-img-zoom"
               style={{ width: '100%', height: 400, objectFit: 'cover', transition: 'transform 0.7s' }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1.05)')}
-              onMouseOut={(e) => ((e.currentTarget as HTMLImageElement).style.transform = 'scale(1)')}
             />
             <div style={{ padding: 32 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -167,7 +180,6 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-          {/* Side card */}
           <div
             style={{
               background: 'var(--rt-black)',
@@ -187,35 +199,21 @@ export default function ServicesPage() {
               />
               <AnimatedHeading
                 as="h3"
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 24,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                }}
+                style={{ fontFamily: 'var(--rt-font-display)', fontSize: 24, fontWeight: 700, marginBottom: 16 }}
               >
                 Deck &amp; Canopy Care
               </AnimatedHeading>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15, opacity: 0.9 }}>
-                {[
-                  'Sun-decks & Duckbill repairs',
-                  'Marine-grade carpets',
-                  'Specialized canopy frames',
-                  'Storm-proof enclosures',
-                ].map((item) => (
-                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span
-                      style={{
-                        display: 'inline-block',
-                        width: 6,
-                        height: 6,
-                        background: '#7e7576',
-                        flexShrink: 0,
-                      }}
-                    />
-                    {item}
-                  </li>
-                ))}
+                {['Sun-decks & Duckbill repairs', 'Marine-grade carpets', 'Specialized canopy frames', 'Storm-proof enclosures'].map(
+                  (item) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span
+                        style={{ display: 'inline-block', width: 6, height: 6, background: '#7e7576', flexShrink: 0 }}
+                      />
+                      {item}
+                    </li>
+                  ),
+                )}
               </ul>
             </div>
             <button
@@ -241,10 +239,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 02. Industrial Textiles ── */}
-      <section
-        id="industrial"
-        style={{ padding: '80px 64px', background: '#f3f3f4' }}
-      >
+      <section id="industrial" style={{ padding: '80px 64px', background: '#f3f3f4' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
           <AnimatedHeading
             as="h2"
@@ -257,15 +252,14 @@ export default function ServicesPage() {
               flexShrink: 0,
             }}
           >
-            02. Industrial Textiles
+            {`${sections[1]?.number} ${sections[1]?.heading}`}
           </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
-            HEAVY DUTY SOLUTIONS
+            {sections[1]?.accent}
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 24 }}>
-          {/* Left info block */}
           <div
             style={{
               background: 'var(--rt-black)',
@@ -278,12 +272,7 @@ export default function ServicesPage() {
           >
             <AnimatedHeading
               as="h3"
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 30,
-                fontWeight: 700,
-                marginBottom: 24,
-              }}
+              style={{ fontFamily: 'var(--rt-font-display)', fontSize: 30, fontWeight: 700, marginBottom: 24 }}
             >
               Built for Performance
             </AnimatedHeading>
@@ -314,7 +303,6 @@ export default function ServicesPage() {
               ))}
             </div>
           </div>
-          {/* Right 2x2 grid */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
             <div
               style={{
@@ -327,12 +315,7 @@ export default function ServicesPage() {
               <img src={MINING_IMG} alt="Mining Solutions" style={{ width: '100%', height: 160, objectFit: 'cover', marginBottom: 24 }} />
               <AnimatedHeading
                 as="h4"
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 20,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                }}
+                style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
               >
                 Mining &amp; Ag Solutions
               </AnimatedHeading>
@@ -358,12 +341,7 @@ export default function ServicesPage() {
             >
               <AnimatedHeading
                 as="h4"
-                style={{
-                  fontFamily: 'var(--rt-font-display)',
-                  fontSize: 20,
-                  fontWeight: 700,
-                  marginBottom: 16,
-                }}
+                style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
               >
                 Equipment Protection
               </AnimatedHeading>
@@ -388,10 +366,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 03. Custom Covers ── */}
-      <section
-        id="custom-covers"
-        style={{ padding: 'var(--rt-section-gap) 64px' }}
-      >
+      <section id="custom-covers" style={{ padding: 'var(--rt-section-gap) 64px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
           <AnimatedHeading
             as="h2"
@@ -404,27 +379,21 @@ export default function ServicesPage() {
               flexShrink: 0,
             }}
           >
-            03. Custom Covers
+            {`${sections[2]?.number} ${sections[2]?.heading}`}
           </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
-            BESPOKE PROTECTION
+            {sections[2]?.accent}
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
-          {/* Intro card */}
           <div style={{ background: '#eeeeef', padding: 32, display: 'flex', flexDirection: 'column' }}>
             <span className="material-symbols-outlined" style={{ fontSize: 48, color: '#7e7576', marginBottom: 16, display: 'block' }}>
               home_repair_service
             </span>
             <AnimatedHeading
               as="h3"
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 24,
-                fontWeight: 700,
-                marginBottom: 16,
-              }}
+              style={{ fontFamily: 'var(--rt-font-display)', fontSize: 24, fontWeight: 700, marginBottom: 16 }}
             >
               Outdoor &amp; Travel
             </AnimatedHeading>
@@ -435,23 +404,12 @@ export default function ServicesPage() {
               <img src={TRAILER_IMG} alt="Trailer Cover" style={{ width: '100%', height: 128, objectFit: 'cover' }} />
             </div>
           </div>
-          {/* Item cards */}
           {[
             { num: '01', title: 'Outdoor Furniture', desc: 'Tailored covers for all types of outdoor dining and lounge sets using waterproof fabrics.' },
             { num: '02', title: 'Caravan Drawbar', desc: 'High-durability protection for caravan towing hardware and exposed front elements.' },
             { num: '03', title: 'Storage Bags', desc: 'Custom-sized, reinforced storage bags for tools, gear, and specialized equipment.' },
           ].map((item) => (
-            <div
-              key={item.num}
-              style={{
-                background: '#eeeeef',
-                padding: 32,
-                borderBottom: '4px solid transparent',
-                transition: 'border-color 0.2s',
-              }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLDivElement).style.borderBottomColor = '#7e7576')}
-              onMouseOut={(e) => ((e.currentTarget as HTMLDivElement).style.borderBottomColor = 'transparent')}
-            >
+            <div key={item.num} className="custom-cover-card" style={{ background: '#eeeeef', padding: 32, borderBottom: '4px solid transparent', transition: 'border-color 0.2s' }}>
               <div
                 style={{
                   width: 48,
@@ -468,10 +426,7 @@ export default function ServicesPage() {
               >
                 {item.num}
               </div>
-              <AnimatedHeading
-                as="h4"
-                style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}
-              >
+              <AnimatedHeading as="h4" style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>
                 {item.title}
               </AnimatedHeading>
               <AnimatedText style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.6 }}>
@@ -483,10 +438,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 04. Motor Trimming ── */}
-      <section
-        id="motor"
-        style={{ padding: '80px 64px' }}
-      >
+      <section id="motor" style={{ padding: '80px 64px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
           <AnimatedHeading
             as="h2"
@@ -499,42 +451,20 @@ export default function ServicesPage() {
               flexShrink: 0,
             }}
           >
-            04. Motor Trimming
+            {`${sections[3]?.number} ${sections[3]?.heading}`}
           </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: '#7e7576' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
-            AUTOMOTIVE CRAFT
+            {sections[3]?.accent}
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
           {[
-            {
-              img: HEADLINING_IMG,
-              tag: 'INTERIOR RESTORATION',
-              title: 'Head Linings',
-              desc: 'Sagging or damaged roof linings replaced with factory-matched or custom materials.',
-              detail: 'PRECISION FIT',
-            },
-            {
-              img: TRAILER_IMG,
-              tag: 'UTILITY SOLUTIONS',
-              title: 'Ute Canvas Covers',
-              desc: 'Custom-made heavy-duty canvas covers for utilities and trailers. Reinforced for extreme durability.',
-              detail: 'WEATHER-SHIELD',
-            },
-            {
-              img: SEAT_REPAIR_IMG,
-              tag: 'REPAIRS & PANELS',
-              title: 'Seat & Door Repairs',
-              desc: 'Expert repair, re-cover, and re-bolster of car seats. Specialized door panel trimming.',
-              detail: 'LUXURY COMFORT',
-            },
+            { img: HEADLINING_IMG, tag: 'INTERIOR RESTORATION', title: 'Head Linings', desc: 'Sagging or damaged roof linings replaced with factory-matched or custom materials.', detail: 'PRECISION FIT' },
+            { img: TRAILER_IMG, tag: 'UTILITY SOLUTIONS', title: 'Ute Canvas Covers', desc: 'Custom-made heavy-duty canvas covers for utilities and trailers. Reinforced for extreme durability.', detail: 'WEATHER-SHIELD' },
+            { img: MARINE_SIDE, tag: 'REPAIRS & PANELS', title: 'Seat & Door Repairs', desc: 'Expert repair, re-cover, and re-bolster of car seats. Specialized door panel trimming.', detail: 'LUXURY COMFORT' },
           ].map((svc) => (
-            <div
-              key={svc.title}
-              style={{ background: 'var(--rt-white' }}
-              className="motor-card"
-            >
+            <div key={svc.title} style={{ background: 'var(--rt-white)' }} className="motor-card">
               <div style={{ overflow: 'hidden' }}>
                 <img
                   src={svc.img}
@@ -555,12 +485,7 @@ export default function ServicesPage() {
                 <h4 className="caps" style={{ color: 'var(--rt-black)', marginBottom: 8 }}>{svc.tag}</h4>
                 <AnimatedHeading
                   as="h3"
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 24,
-                    fontWeight: 700,
-                    marginBottom: 16,
-                  }}
+                  style={{ fontFamily: 'var(--rt-font-display)', fontSize: 24, fontWeight: 700, marginBottom: 16 }}
                 >
                   {svc.title}
                 </AnimatedHeading>
@@ -599,10 +524,7 @@ export default function ServicesPage() {
               pointerEvents: 'none',
             }}
           >
-            <span
-              className="material-symbols-outlined"
-              style={{ fontSize: 200, fontVariationSettings: "'FILL' 1" }}
-            >
+            <span className="material-symbols-outlined" style={{ fontSize: 200, fontVariationSettings: "'FILL' 1" }}>
               straighten
             </span>
           </div>
@@ -628,11 +550,10 @@ export default function ServicesPage() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Ready to start your project?
+                {ctaHeading}
               </AnimatedHeading>
               <AnimatedText style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', marginBottom: 32, maxWidth: 440, lineHeight: 1.6 }}>
-                Whether it&apos;s a luxury yacht, industrial equipment, or custom outdoor protection,
-                we bring the same level of industrial expertise.
+                {ctaSubtext}
               </AnimatedText>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                 <Link
@@ -647,35 +568,19 @@ export default function ServicesPage() {
                 >
                   REQUEST A CALL
                 </Link>
-                <Link
-                  href="/portfolio"
-                  className="btn btn-outline"
-                  style={{ fontSize: 12 }}
-                >
+                <Link href="/portfolio" className="btn btn-outline" style={{ fontSize: 12 }}>
                   VIEW PORTFOLIO
                 </Link>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  padding: 24,
-                  borderLeft: '4px solid #7e7576',
-                }}
-              >
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: 24, borderLeft: '4px solid #7e7576' }}>
                 <h4 className="caps" style={{ color: '#7e7576', marginBottom: 4 }}>DIRECT CONTACT</h4>
-                <p style={{ fontSize: 24, fontWeight: 700 }}>08 9581 8180</p>
+                <p style={{ fontSize: 24, fontWeight: 700 }}>{ctaPhone}</p>
               </div>
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  padding: 24,
-                  borderLeft: '4px solid #7e7576',
-                }}
-              >
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: 24, borderLeft: '4px solid #7e7576' }}>
                 <h4 className="caps" style={{ color: '#7e7576', marginBottom: 4 }}>WORKSHOP LOCATION</h4>
-                <p style={{ fontSize: 24, fontWeight: 700 }}>6C Harlem Place, Greenfields</p>
+                <p style={{ fontSize: 24, fontWeight: 700 }}>{ctaLocation}</p>
               </div>
             </div>
           </div>
@@ -683,24 +588,23 @@ export default function ServicesPage() {
       </section>
 
       <style>{`
+        .svc-img-zoom:hover { transform: scale(1.05); }
+        .custom-cover-card:hover { border-bottom-color: #7e7576 !important; }
+        .motor-card:hover .motor-card-inner { border-color: var(--rt-black) !important; }
         @media(max-width:1024px) {
           #marine > div:last-child { grid-template-columns: 1fr !important; }
           #industrial > div:last-child { grid-template-columns: 1fr !important; }
           #custom-covers > div:last-child { grid-template-columns: 1fr 1fr !important; }
-          section[id="motor"] > div:last-child { grid-template-columns: 1fr 1fr !important; }
+          #motor > div:last-child { grid-template-columns: 1fr 1fr !important; }
           section:last-of-type > div > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
         }
         @media(max-width:768px) {
           header { padding: 0 16px !important; }
-          #marine, #custom-covers, #motor { padding-left:16px !important; padding-right:16px !important; }
-          #industrial { padding-left:16px !important; padding-right:16px !important; }
+          #marine, #custom-covers, #motor, #industrial { padding-left:16px !important; padding-right:16px !important; }
           section:last-of-type { padding-left:16px !important; padding-right:16px !important; }
           section:last-of-type > div { padding:40px 16px !important; }
-          #marine > div:first-child, #industrial > div:first-child, #custom-covers > div:first-child, #motor > div:first-child {
-            flex-wrap: wrap;
-          }
           #custom-covers > div:last-child { grid-template-columns: 1fr !important; }
-          section[id="motor"] > div:last-child { grid-template-columns: 1fr !important; }
+          #motor > div:last-child { grid-template-columns: 1fr !important; }
         }
       `}</style>
 

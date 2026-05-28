@@ -13,6 +13,10 @@ import { Services } from './collections/Services'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { HomepageContent } from './globals/HomepageContent'
+import { AboutContent } from './globals/AboutContent'
+import { ServicesContent } from './globals/ServicesContent'
+import { ContactContent } from './globals/ContactContent'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -103,7 +107,7 @@ export default buildConfig({
         ]
       : []),
   ],
-  globals: [Header, Footer],
+  globals: [Header, Footer, HomepageContent, AboutContent, ServicesContent, ContactContent],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {

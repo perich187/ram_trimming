@@ -1,5 +1,6 @@
-'use client'
 import Link from 'next/link'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 
@@ -10,7 +11,73 @@ const CRAFTSMANSHIP =
 const WORKSHOP_INTERIOR =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDnYpeowi_xDwjv9tp_ueiiKAn_C8027CPdbH2mIAOvKSRxxM_Bm6BMo_TjgSSr-8CVeh_K0iF7bU1aabkAY9SSep_Ousv8A04Iw12sJpUy9iKaajB_a4PMSnt8yGQNjvQCiMFe0Fb9a2r735OPPN2JXiXu53LBcg95pQru7UeGusxX-YJ2VTRmFuCtgDnOqKb1f9cgyspEWeq4K2FWeYeEKAk45bTnn5JYDHgeMQ-bTrq9RAVrnC9t0fN85cYwdhBJaBZ8HRbXbFZz'
 
-export default function AboutPage() {
+const DEFAULT_VALUES = [
+  {
+    number: '01',
+    label: 'INTEGRITY',
+    description: 'Absolute transparency in material selection and construction methods. We do it right the first time.',
+  },
+  {
+    number: '02',
+    label: 'DURABILITY',
+    description: 'Designed to outlast the equipment it covers. We use UV-stabilized threads and reinforced stress points.',
+  },
+  {
+    number: '03',
+    label: 'PRECISION',
+    description: 'Millimeter-perfect fit for every vehicle, vessel, or industrial component we trim.',
+  },
+]
+
+export default async function AboutPage() {
+  let cms: any = {}
+
+  try {
+    const payload = await getPayload({ config: configPromise })
+    cms = await payload.findGlobal({ slug: 'about-content', depth: 1 })
+  } catch {}
+
+  const heroBadge = cms.hero?.badge || 'Established Expertise'
+  const heroHeading = cms.hero?.heading || 'Expertise, Durability, Quality.'
+  const heroDescription =
+    cms.hero?.description ||
+    'At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed to handle the harshest environments Australia can throw at them.'
+  const heroImage = (cms.hero?.image as any)?.url || WORKSHOP_HERO
+
+  const stat1Number = cms.stats?.stat1Number || '33+'
+  const stat1Label = cms.stats?.stat1Label || 'Years Experience'
+  const stat2Number = cms.stats?.stat2Number || '100%'
+  const stat2Label = cms.stats?.stat2Label || 'Work Guarantee'
+
+  const storyHeading = cms.story?.heading || 'Built for Australia'
+  const storyText1 =
+    cms.story?.text1 ||
+    "From mine spec to marine and everything in between, we focus on durability, function, and clean workmanship. We understand that in the Australian outback or on the rough WA coast, gear failure isn't just an inconvenience—it's a critical risk."
+  const storyText2 =
+    cms.story?.text2 ||
+    'Our workshop is equipped with industrial-grade machinery capable of handling heavy-weight PVC, canvas, and high-performance synthetics. Every stitch is placed with structural integrity in mind.'
+  const storyBadge = cms.story?.badge || 'CERTIFIED FABRICATION'
+
+  const valueCardHeading = cms.valueCard?.heading || 'No Compromise'
+  const valueCardText =
+    cms.valueCard?.text ||
+    'We reject off-the-shelf compromises. Every project is a custom fabrication using industrial-grade materials tailored to your specific operational needs.'
+
+  const identityHeading = cms.identity?.heading || 'WA Owned & Operated'
+  const identityText =
+    cms.identity?.text ||
+    'Based in Western Australia, we are local specialists who know the conditions. Our reputation is built on decades of serving the community with honesty and technical precision.'
+  const identityImage = (cms.identity?.image as any)?.url || WORKSHOP_INTERIOR
+
+  const valuesHeading = cms.values?.heading || 'Our Core Values'
+  const valuesItems =
+    cms.values?.items && cms.values.items.length > 0 ? cms.values.items : DEFAULT_VALUES
+
+  const ctaHeading = cms.cta?.heading || 'Ready to start your project?'
+  const ctaText =
+    cms.cta?.text ||
+    'Contact us today for a technical consultation and quote on your next industrial or marine textile project.'
+
   return (
     <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingTop: 48, paddingBottom: 96 }}>
 
@@ -29,7 +96,7 @@ export default function AboutPage() {
             className="caps"
             style={{ color: 'var(--rt-black)', marginBottom: 16, letterSpacing: '0.16em' }}
           >
-            Established Expertise
+            {heroBadge}
           </span>
           <AnimatedHeading
             as="h1"
@@ -44,19 +111,10 @@ export default function AboutPage() {
               color: 'var(--rt-black)',
             }}
           >
-            Expertise, Durability, Quality.
+            {heroHeading}
           </AnimatedHeading>
-          <AnimatedText
-            delay={0.5}
-            style={{
-              fontSize: 18,
-              lineHeight: 1.6,
-              color: '#5d5e66',
-              maxWidth: 600,
-            }}
-          >
-            At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed to
-            handle the harshest environments Australia can throw at them.
+          <AnimatedText delay={0.5} style={{ fontSize: 18, lineHeight: 1.6, color: '#5d5e66', maxWidth: 600 }}>
+            {heroDescription}
           </AnimatedText>
         </div>
         <div>
@@ -69,8 +127,9 @@ export default function AboutPage() {
             }}
           >
             <img
-              src={WORKSHOP_HERO}
+              src={heroImage}
               alt="Industrial Workshop"
+              className="about-hero-img"
               style={{
                 width: '100%',
                 height: '100%',
@@ -78,8 +137,6 @@ export default function AboutPage() {
                 filter: 'grayscale(100%)',
                 transition: 'filter 0.7s ease',
               }}
-              onMouseOver={(e) => ((e.currentTarget as HTMLImageElement).style.filter = 'grayscale(0%)')}
-              onMouseOut={(e) => ((e.currentTarget as HTMLImageElement).style.filter = 'grayscale(100%)')}
             />
           </div>
         </div>
@@ -113,9 +170,9 @@ export default function AboutPage() {
               marginBottom: 8,
             }}
           >
-            33+
+            {stat1Number}
           </span>
-          <span className="caps" style={{ letterSpacing: '0.15em' }}>Years Experience</span>
+          <span className="caps" style={{ letterSpacing: '0.15em' }}>{stat1Label}</span>
         </div>
         <div
           style={{
@@ -136,20 +193,15 @@ export default function AboutPage() {
               marginBottom: 8,
             }}
           >
-            100%
+            {stat2Number}
           </span>
-          <span className="caps" style={{ color: 'var(--rt-white)', letterSpacing: '0.15em' }}>Work Guarantee</span>
+          <span className="caps" style={{ color: 'var(--rt-white)', letterSpacing: '0.15em' }}>{stat2Label}</span>
         </div>
       </section>
 
       {/* ── Main Content (Bento Style) ── */}
       <section
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(12, 1fr)',
-          gap: 24,
-          marginBottom: 96,
-        }}
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 24, marginBottom: 96 }}
       >
         {/* Story Card */}
         <div
@@ -173,40 +225,23 @@ export default function AboutPage() {
                 marginBottom: 24,
               }}
             >
-              Built for Australia
+              {storyHeading}
             </AnimatedHeading>
             <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66', marginBottom: 24 }}>
-              From mine spec to marine and everything in between, we focus on durability, function,
-              and clean workmanship. We understand that in the Australian outback or on the rough WA
-              coast, gear failure isn&apos;t just an inconvenience—it&apos;s a critical risk.
+              {storyText1}
             </AnimatedText>
             <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
-              Our workshop is equipped with industrial-grade machinery capable of handling
-              heavy-weight PVC, canvas, and high-performance synthetics. Every stitch is placed with
-              structural integrity in mind.
+              {storyText2}
             </AnimatedText>
           </div>
-          <div
-            style={{
-              marginTop: 48,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 16,
-            }}
-          >
-            <span className="caps" style={{ fontWeight: 700 }}>CERTIFIED FABRICATION</span>
+          <div style={{ marginTop: 48, display: 'flex', alignItems: 'center', gap: 16 }}>
+            <span className="caps" style={{ fontWeight: 700 }}>{storyBadge}</span>
             <div style={{ flexGrow: 1, height: 1, background: 'var(--rt-black)' }} />
           </div>
         </div>
 
         {/* Image Card */}
-        <div
-          style={{
-            gridColumn: 'span 4',
-            border: '2px solid var(--rt-black)',
-            overflow: 'hidden',
-          }}
-        >
+        <div style={{ gridColumn: 'span 4', border: '2px solid var(--rt-black)', overflow: 'hidden' }}>
           <img
             src={CRAFTSMANSHIP}
             alt="Craftsmanship detail"
@@ -226,10 +261,9 @@ export default function AboutPage() {
           <span className="material-symbols-outlined" style={{ fontSize: 48, marginBottom: 24, display: 'block' }}>
             verified
           </span>
-          <h3 className="caps" style={{ fontWeight: 700, marginBottom: 16 }}>No Compromise</h3>
+          <h3 className="caps" style={{ fontWeight: 700, marginBottom: 16 }}>{valueCardHeading}</h3>
           <AnimatedText style={{ fontSize: 16, lineHeight: 1.7, color: '#1a1c1d' }}>
-            We reject off-the-shelf compromises. Every project is a custom fabrication using
-            industrial-grade materials tailored to your specific operational needs.
+            {valueCardText}
           </AnimatedText>
         </div>
 
@@ -256,12 +290,10 @@ export default function AboutPage() {
                 marginBottom: 16,
               }}
             >
-              WA Owned &amp; Operated
+              {identityHeading}
             </AnimatedHeading>
             <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
-              Based in Western Australia, we are local specialists who know the conditions. Our
-              reputation is built on decades of serving the community with honesty and technical
-              precision.
+              {identityText}
             </AnimatedText>
           </div>
           <div
@@ -274,7 +306,7 @@ export default function AboutPage() {
             }}
           >
             <img
-              src={WORKSHOP_INTERIOR}
+              src={identityImage}
               alt="Workshop Interior"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -294,28 +326,12 @@ export default function AboutPage() {
               color: 'var(--rt-black)',
             }}
           >
-            Our Core Values
+            {valuesHeading}
           </AnimatedHeading>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-          {[
-            {
-              num: '01',
-              label: 'INTEGRITY',
-              desc: 'Absolute transparency in material selection and construction methods. We do it right the first time.',
-            },
-            {
-              num: '02',
-              label: 'DURABILITY',
-              desc: 'Designed to outlast the equipment it covers. We use UV-stabilized threads and reinforced stress points.',
-            },
-            {
-              num: '03',
-              label: 'PRECISION',
-              desc: 'Millimeter-perfect fit for every vehicle, vessel, or industrial component we trim.',
-            },
-          ].map((val) => (
-            <div key={val.num} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {valuesItems.map((val: any) => (
+            <div key={val.number} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div
                 className="caps"
                 style={{
@@ -326,11 +342,11 @@ export default function AboutPage() {
                   fontWeight: 700,
                 }}
               >
-                <span>{val.num}</span>
+                <span>{val.number}</span>
                 <span>{val.label}</span>
               </div>
               <AnimatedText style={{ fontSize: 15, lineHeight: 1.7, color: '#5d5e66' }}>
-                {val.desc}
+                {val.description}
               </AnimatedText>
             </div>
           ))}
@@ -360,7 +376,7 @@ export default function AboutPage() {
               justifyContent: 'center',
             }}
           >
-            Ready to start your project?
+            {ctaHeading}
           </AnimatedHeading>
           <AnimatedText
             style={{
@@ -373,8 +389,7 @@ export default function AboutPage() {
               marginRight: 'auto',
             }}
           >
-            Contact us today for a technical consultation and quote on your next industrial or
-            marine textile project.
+            {ctaText}
           </AnimatedText>
           <Link
             href="/contact"
@@ -391,7 +406,6 @@ export default function AboutPage() {
             Request a Quote
           </Link>
         </div>
-        {/* Decorative dot pattern */}
         <div
           style={{
             position: 'absolute',
@@ -405,13 +419,13 @@ export default function AboutPage() {
       </section>
 
       <style>{`
+        .about-hero-img:hover { filter: grayscale(0%) !important; }
         @media(max-width:900px) {
           main { padding-left:16px !important; padding-right:16px !important; }
-          header[style*="grid-template-columns: 7fr"] { grid-template-columns:1fr !important; }
+          header[style*="7fr"] { grid-template-columns:1fr !important; }
           section[style*="repeat(12"] { grid-template-columns:1fr !important; }
           section[style*="repeat(12"] > div { grid-column: span 1 !important; }
           section[style*="repeat(3, 1fr)"] { grid-template-columns:1fr !important; }
-          section[style*="border-Right: 2px"] { flex-direction: column !important; }
         }
         @media(max-width:600px) {
           section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] { grid-template-columns:1fr !important; }

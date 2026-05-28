@@ -20,6 +20,7 @@ export const Portfolio: CollectionConfig = {
         { label: 'Marine', value: 'marine' },
         { label: 'Motor', value: 'motor' },
         { label: 'Upholstery', value: 'upholstery' },
+        { label: 'Special', value: 'special' },
       ],
     },
     {
@@ -27,6 +28,11 @@ export const Portfolio: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'tag',
+      type: 'text',
+      admin: { description: 'Short tag label shown on the card, e.g. "Yacht Interior"' },
     },
     {
       name: 'description',

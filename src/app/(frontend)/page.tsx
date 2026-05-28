@@ -1,8 +1,9 @@
-'use client'
 import Link from 'next/link'
-import { useState } from 'react'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
+import { HomeQuoteForm } from './HomeQuoteForm'
 
 const HERO_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC1FGc_sSS27sCh9zHn4U9EKYmXCPGqusvaRuvljHtwH4xSXUS_ydGRs7yekJf8P2-gcICZD73Ien2gLYr3rKpqcddn4Jb0zR8_bwk1xFMrWhReCCYEpmFm9hMtCbG9f43eN62pciJGwmfnl3ys6kY84bOP9A8kVdfTKWG9I0BApUWZeEkkIDH-32BQVozwPzxfjti2qWp0RHL_OaZoXog0vrvkSjWBhiJI7tSSsTcHSspinge2_KKXFkwnunuomjlDq_GD4xw0-YTY'
@@ -10,24 +11,80 @@ const CRAFTSMAN =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAH68DclwPpBqh5vfHvGETI9AnNqPxNbwP0cusfz42jFbekv_qW_ZRuLfZ4Ii5AWBo4yd4it-viY0BEpRQCCm85I1EuTQx8c6ApEx7DX2ac7iXNcz_WtfT3PPW0y8cZaDnwCCStp3H1qGLmLepfPU9Xb8lrC8C085-MO9IVpSQ1yX3ANsHz4umVgTVq3CMP94BCPZNsui-fm5d5YAT1pbL4a8INTCyxetYJa8lvHr2hP2SvhOR-K99E_X5JXn98IZ82iYITqlUXIGja'
 const MARINE_SVC =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC773KiEyz05ggx0RcnwZEOZGcireHUMVTRsQSuSp3qfyRsonamvK7cF5qvDqXmgJLGHZfGNp4JKiKO56mhsIovukmh6ltIxY7AIzz0ZNOQ2Z910WjgtGKSSGSzNWwmlktK9_M66abPZqF4tuWOWjtCmEeuZgyvuE1GQic5QuRJOFm--J8EjEkx8buGeCyP30qXszP6-96eP05yvRI7hfKR_DUwpro62VEADmnckAAjN-BKg4rXm4z2I_cvPbNs3kAXXOB28L4T7inj'
-const INDUSTRIAL_SVC = CRAFTSMAN
 const CUSTOM_SVC =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCPLQg3nVe5EPN3diXHtXyJfRXtu4FkKXDkscH1i1sA_1-p620W5bnE1S240WE3GQK_uNqlbZNmYHVYbTsN1-v-dUd1O8KyYmI0KCRCFaj3_xQJ-DswlTkrIGzCvN90Ni0aPuv1XS_pXD7k0UMxgIDw2aFMD4f-jLJivkuScCJrXqinB-YRG8v9-23n8dWcrAXKPwqwoP43lvMNS3101KUsVVpz85ozwruw3Wm97M521cW_PLzoItXC7haJ6oAQyZU2tiele9jDhg5f'
 const CLOSING =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuBOwsH3faYsqe_QJyHIVOLOFi7QmLKfSmj71ljR3BhaNxrYnojVtj_vXs6zb-85ydGk0ENqLNbRThQh0X2gXZo2nCAfTBmk4u0J8a6bgk-AIQfx3LnCJvIdHshWEAzIrdyrEpW7hzH6ERNWjSrYfejY1JwDm55KdRI2erOTVw4AbhJF3ZfBeZ9IF9sCIccH1ZCjYxef6MR0pDwQ2Y9W6hg7KeF6d0Rhgkpgu81Ew7cew_2ECSXNM0Tp5RN2k4QOJHwT7-YGaXXgCXYZ'
 
-export default function HomePage() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    service: 'Marine Trimming',
-    details: '',
-  })
+const DEFAULT_WHY_ITEMS = [
+  { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },
+  { icon: 'manufacturing', label: 'Industrial-grade materials' },
+  { icon: 'design_services', label: 'Custom fabrication – no off-the-shelf compromises' },
+  { icon: 'handshake', label: 'Reliable turnaround & honest service' },
+  { icon: 'location_on', label: 'WA owned & operated' },
+]
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Thanks! We will be in touch within 24 hours.')
-  }
+const DEFAULT_SERVICES = [
+  { id: 'marine', icon: 'directions_boat', title: 'Marine Trimming', imageUrl: MARINE_SVC },
+  { id: 'industrial', icon: 'factory', title: 'Industrial Textiles', imageUrl: CRAFTSMAN },
+  { id: 'custom', icon: 'check_box_outline_blank', title: 'Custom Covers', imageUrl: CUSTOM_SVC },
+]
+
+export default async function HomePage() {
+  let cms: any = {}
+  let servicesFromDb: any[] = []
+
+  try {
+    const payload = await getPayload({ config: configPromise })
+    cms = await payload.findGlobal({ slug: 'homepage-content', depth: 1 })
+    const result = await payload.find({ collection: 'services', sort: 'order', limit: 3, depth: 1 })
+    servicesFromDb = result.docs
+  } catch {}
+
+  const heroTagline = cms.hero?.tagline || 'Marine & Motor Trimming Specialist'
+  const heroHeading = cms.hero?.heading || 'Built Tough. Made to Last.'
+  const heroSubtext =
+    cms.hero?.subtext ||
+    'Custom trimming solutions specialising in industrial, marine & heavy-duty textile fabrication across Western Australia.'
+  const heroBg = (cms.hero?.image as any)?.url || HERO_BG
+
+  const aboutBadge = cms.about?.badge || 'Est. 2017'
+  const aboutHeading = cms.about?.heading || 'About RAMS TRIMMING'
+  const aboutDescription =
+    cms.about?.description ||
+    'At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed to handle the harshest environments Australia can throw at them. From mine spec to marine and everything in between, we focus on durability, function, and clean workmanship.'
+  const stat1Number = cms.about?.stat1Number || '33+'
+  const stat1Label = cms.about?.stat1Label || 'Years Experience'
+  const stat2Number = cms.about?.stat2Number || '100%'
+  const stat2Label = cms.about?.stat2Label || 'Work Guarantee'
+  const aboutImage = (cms.about?.image as any)?.url || CRAFTSMAN
+
+  const servicesHeading = cms.services?.heading || 'What We Do'
+
+  const whyHeading = cms.whyChoose?.heading || 'Why Choose Rams?'
+  const whyItems =
+    cms.whyChoose?.items && cms.whyChoose.items.length > 0
+      ? cms.whyChoose.items
+      : DEFAULT_WHY_ITEMS
+
+  const quoteHeading = cms.quoteForm?.heading || 'Request a Quote'
+  const quoteSubtext =
+    cms.quoteForm?.subtext ||
+    'Describe your requirements and we will provide a professional assessment within 24 hours.'
+
+  const closingHeading = cms.closing?.heading || 'Precision on the Waves.'
+  const closingCaption = cms.closing?.caption || 'CRAFTED FOR EXCELLENCE'
+  const closingImage = (cms.closing?.image as any)?.url || CLOSING
+
+  const services =
+    servicesFromDb.length > 0
+      ? servicesFromDb.map((s) => ({
+          id: s.id,
+          icon: s.icon || 'design_services',
+          title: s.title,
+          imageUrl: (s.image as any)?.url || MARINE_SVC,
+        }))
+      : DEFAULT_SERVICES
 
   return (
     <main>
@@ -45,7 +102,7 @@ export default function HomePage() {
         }}
       >
         <img
-          src={HERO_BG}
+          src={heroBg}
           alt="A luxurious white power yacht speeds through deep blue ocean waters."
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
@@ -70,7 +127,7 @@ export default function HomePage() {
               marginBottom: 24,
             }}
           >
-            Marine &amp; Motor Trimming Specialist
+            {heroTagline}
           </span>
           <AnimatedHeading
             as="h1"
@@ -85,7 +142,7 @@ export default function HomePage() {
               justifyContent: 'center',
             }}
           >
-            Built Tough. Made to Last.
+            {heroHeading}
           </AnimatedHeading>
           <AnimatedText
             delay={0.5}
@@ -99,8 +156,7 @@ export default function HomePage() {
               marginRight: 'auto',
             }}
           >
-            Custom trimming solutions specialising in industrial, marine &amp; heavy-duty textile
-            fabrication across Western Australia.
+            {heroSubtext}
           </AnimatedText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
             <Link href="/contact" className="btn btn-primary" style={{ fontSize: 13 }}>
@@ -113,28 +169,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Expertise / About Section (Bento Style) ── */}
+      {/* ── Expertise / About Section ── */}
       <section
         id="expertise"
-        style={{
-          padding: 'var(--rt-section-gap) 40px',
-          background: 'var(--rt-surface)',
-        }}
+        style={{ padding: 'var(--rt-section-gap) 40px', background: 'var(--rt-surface)' }}
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32 }}>
             <div style={{ height: 2, width: 96, background: 'var(--rt-black)' }} />
-            <span className="caps" style={{ color: 'var(--rt-black)' }}>Est. 2017</span>
+            <span className="caps" style={{ color: 'var(--rt-black)' }}>{aboutBadge}</span>
           </div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '7fr 5fr',
-              gap: 24,
-              alignItems: 'stretch',
-            }}
-          >
-            {/* Left copy */}
+          <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: 24, alignItems: 'stretch' }}>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <AnimatedHeading
                 as="h2"
@@ -148,29 +193,12 @@ export default function HomePage() {
                   color: 'var(--rt-black)',
                 }}
               >
-                About RAMS TRIMMING
+                {aboutHeading}
               </AnimatedHeading>
-              <AnimatedText
-                style={{
-                  fontSize: 18,
-                  lineHeight: 1.6,
-                  color: '#4c4546',
-                  marginBottom: 32,
-                }}
-              >
-                At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed
-                to handle the harshest environments Australia can throw at them. From mine spec to
-                marine and everything in between, we focus on durability, function, and clean
-                workmanship.
+              <AnimatedText style={{ fontSize: 18, lineHeight: 1.6, color: '#4c4546', marginBottom: 32 }}>
+                {aboutDescription}
               </AnimatedText>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 24,
-                  marginBottom: 48,
-                }}
-              >
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 48 }}>
                 <div>
                   <h4
                     style={{
@@ -181,9 +209,9 @@ export default function HomePage() {
                       marginBottom: 8,
                     }}
                   >
-                    33+
+                    {stat1Number}
                   </h4>
-                  <p className="caps" style={{ color: '#5d5e66' }}>Years Experience</p>
+                  <p className="caps" style={{ color: '#5d5e66' }}>{stat1Label}</p>
                 </div>
                 <div>
                   <h4
@@ -195,18 +223,22 @@ export default function HomePage() {
                       marginBottom: 8,
                     }}
                   >
-                    100%
+                    {stat2Number}
                   </h4>
-                  <p className="caps" style={{ color: '#5d5e66' }}>Work Guarantee</p>
+                  <p className="caps" style={{ color: '#5d5e66' }}>{stat2Label}</p>
                 </div>
               </div>
             </div>
-            {/* Right image */}
             <div style={{ position: 'relative' }}>
               <img
-                src={CRAFTSMAN}
+                src={aboutImage}
                 alt="Close up high-fidelity shot of a master craftsman hand-stitching premium leather."
-                style={{ width: '100%', height: '100%', objectFit: 'cover', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  boxShadow: '0 24px 64px rgba(0,0,0,0.15)',
+                }}
               />
               <div
                 style={{
@@ -239,7 +271,7 @@ export default function HomePage() {
           @media(min-width:1024px) { .about-badge { display: block !important; } }
           @media(max-width:768px) {
             #expertise { padding-left:16px !important; padding-right:16px !important; }
-            #expertise > div > div[style*="grid-template-columns: 7fr"] { grid-template-columns:1fr !important; gap:40px !important; }
+            #expertise > div > div[style*="7fr"] { grid-template-columns:1fr !important; gap:40px !important; }
           }
         `}</style>
       </section>
@@ -251,93 +283,43 @@ export default function HomePage() {
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div className="title-underline">
-            <AnimatedHeading as="h2">What We Do</AnimatedHeading>
+            <AnimatedHeading as="h2">{servicesHeading}</AnimatedHeading>
           </div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 32,
-            }}
-          >
-            {/* Marine Trimming */}
-            <div>
-              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
-                <img
-                  src={MARINE_SVC}
-                  alt="Marine trimming"
-                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
-                  directions_boat
-                </span>
-                <AnimatedHeading
-                  as="h3"
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
+            {services.map((svc) => (
+              <div key={svc.id}>
+                <div
                   style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
+                    overflow: 'hidden',
+                    marginBottom: 32,
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                    border: '1px solid #e2e2e3',
                   }}
                 >
-                  Marine Trimming
-                </AnimatedHeading>
+                  <img
+                    src={svc.imageUrl}
+                    alt={svc.title}
+                    style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
+                  />
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
+                    {svc.icon}
+                  </span>
+                  <AnimatedHeading
+                    as="h3"
+                    style={{
+                      fontFamily: 'var(--rt-font-display)',
+                      fontSize: 24,
+                      fontWeight: 700,
+                      color: 'var(--rt-black)',
+                    }}
+                  >
+                    {svc.title}
+                  </AnimatedHeading>
+                </div>
               </div>
-            </div>
-            {/* Industrial Textiles */}
-            <div>
-              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
-                <img
-                  src={INDUSTRIAL_SVC}
-                  alt="Industrial textiles"
-                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
-                  factory
-                </span>
-                <AnimatedHeading
-                  as="h3"
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                  }}
-                >
-                  Industrial Textiles
-                </AnimatedHeading>
-              </div>
-            </div>
-            {/* Custom Covers */}
-            <div>
-              <div style={{ overflow: 'hidden', marginBottom: 32, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', border: '1px solid #e2e2e3' }}>
-                <img
-                  src={CUSTOM_SVC}
-                  alt="Custom covers"
-                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
-                  check_box_outline_blank
-                </span>
-                <AnimatedHeading
-                  as="h3"
-                  style={{
-                    fontFamily: 'var(--rt-font-display)',
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: 'var(--rt-black)',
-                  }}
-                >
-                  Custom Covers
-                </AnimatedHeading>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <style>{`
@@ -348,157 +330,13 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ── Why Choose Us + Quote Form ── */}
-      <section
-        id="why"
-        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
-      >
-        {/* Left: Why Choose Rams */}
-        <div
-          style={{
-            background: 'var(--rt-black)',
-            color: 'var(--rt-white)',
-            padding: 'var(--rt-section-gap) 40px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <div style={{ maxWidth: 480, marginLeft: 'auto' }}>
-            <AnimatedHeading
-              as="h2"
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 40,
-                fontWeight: 700,
-                color: 'var(--rt-white)',
-                marginBottom: 48,
-                lineHeight: 1.15,
-              }}
-            >
-              Why Choose Rams?
-            </AnimatedHeading>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-              {[
-                { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },
-                { icon: 'manufacturing', label: 'Industrial-grade materials' },
-                { icon: 'design_services', label: 'Custom fabrication – no off-the-shelf compromises' },
-                { icon: 'handshake', label: 'Reliable turnaround & honest service' },
-                { icon: 'location_on', label: 'WA owned & operated' },
-              ].map((item) => (
-                <div key={item.icon} style={{ display: 'flex', gap: 24 }}>
-                  <div
-                    style={{
-                      background: '#e2e2e3',
-                      padding: 12,
-                      height: 'fit-content',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
-                      {item.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="caps" style={{ color: '#f3f3f4' }}>{item.label}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Quote Form */}
-        <div
-          id="contact"
-          style={{
-            background: '#e2e2e3',
-            padding: 'var(--rt-section-gap) 40px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <div style={{ maxWidth: 480 }}>
-            <AnimatedHeading
-              as="h2"
-              style={{
-                fontFamily: 'var(--rt-font-display)',
-                fontSize: 40,
-                fontWeight: 700,
-                color: 'var(--rt-black)',
-                marginBottom: 16,
-              }}
-            >
-              Request a Quote
-            </AnimatedHeading>
-            <AnimatedText style={{ fontSize: 16, color: '#4c4546', marginBottom: 40, lineHeight: 1.5 }}>
-              Describe your requirements and we will provide a professional assessment within 24 hours.
-            </AnimatedText>
-            <form
-              onSubmit={handleSubmit}
-              style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
-            >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-                <div className="form-group">
-                  <label className="form-label">Full Name</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    placeholder="John Smith"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Email Address</label>
-                  <input
-                    className="form-input"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="form-group">
-                <label className="form-label">Service Type</label>
-                <select
-                  className="form-select"
-                  value={form.service}
-                  onChange={(e) => setForm({ ...form, service: e.target.value })}
-                >
-                  <option>Marine Trimming</option>
-                  <option>Motor Body Trimming</option>
-                  <option>Custom Upholstery</option>
-                  <option>Repairs &amp; Maintenance</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label className="form-label">Project Details</label>
-                <textarea
-                  className="form-textarea"
-                  placeholder="Describe your boat or vehicle model and what you need..."
-                  value={form.details}
-                  onChange={(e) => setForm({ ...form, details: e.target.value })}
-                />
-              </div>
-              <button type="submit" className="btn btn-red" style={{ letterSpacing: '0.18em', fontSize: 13, padding: '20px' }}>
-                SUBMIT MY REQUEST
-              </button>
-            </form>
-          </div>
-        </div>
-        <style>{`
-          @media(max-width:900px) {
-            #why { grid-template-columns:1fr !important; }
-            #why > div { padding:64px 16px !important; }
-            #why > div > div { margin-left:0 !important; max-width:100% !important; }
-          }
-        `}</style>
-      </section>
+      {/* ── Why Choose + Quote Form (client component handles both columns) ── */}
+      <HomeQuoteForm
+        whyHeading={whyHeading}
+        whyItems={whyItems}
+        quoteHeading={quoteHeading}
+        quoteSubtext={quoteSubtext}
+      />
 
       {/* ── Closing Atmospheric Section ── */}
       <section
@@ -512,15 +350,9 @@ export default function HomePage() {
         }}
       >
         <img
-          src={CLOSING}
+          src={closingImage}
           alt="A luxurious white power yacht speeds through deep blue ocean waters."
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(1px)' }} />
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 24px' }}>
@@ -545,10 +377,10 @@ export default function HomePage() {
                 justifyContent: 'center',
               }}
             >
-              Precision on the Waves.
+              {closingHeading}
             </AnimatedHeading>
             <p className="caps" style={{ color: '#f3f3f4', letterSpacing: '0.2em' }}>
-              CRAFTED FOR EXCELLENCE
+              {closingCaption}
             </p>
           </div>
         </div>
