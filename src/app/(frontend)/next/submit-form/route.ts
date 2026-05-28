@@ -2,7 +2,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Resend } from 'resend'
 
-const NOTIFY_EMAIL = process.env.NOTIFICATION_EMAIL || 'rhys@ramstrimming.com.au'
+const NOTIFY_EMAILS = (process.env.NOTIFICATION_EMAIL || 'rhys@ramstrimming.com.au')
+  .split(',')
+  .map((e) => e.trim())
+  .filter(Boolean)
 const FROM_EMAIL = process.env.FROM_EMAIL || 'noreply@ramstrimming.com.au'
 
 export async function POST(req: Request): Promise<Response> {
@@ -53,7 +56,7 @@ export async function POST(req: Request): Promise<Response> {
 
       await resend.emails.send({
         from: `RAMS Trimming Website <${FROM_EMAIL}>`,
-        to: [NOTIFY_EMAIL],
+        to: NOTIFY_EMAILS,
         replyTo: email,
         subject: `New ${label} enquiry from ${name}`,
         html: `
