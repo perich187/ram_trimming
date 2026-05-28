@@ -5,7 +5,6 @@ import { AnimatedText } from '@/components/AnimatedText'
 import { ContactForm } from './ContactForm'
 
 const CONTACT_HERO = '/images/marine-1.jpg'
-const MAP_IMG = '/images/industrial-2.jpg'
 
 const DEFAULT_HOURS = [
   { day: 'Monday - Friday', time: '8:00 AM - 4:00 PM' },
@@ -194,53 +193,17 @@ export default async function ContactPage() {
       <div style={{ width: '100%', height: 4, background: 'var(--rt-black)' }} />
 
       {/* ── Map Section ── */}
-      <section style={{ height: 500, position: 'relative', background: '#eeeeef' }}>
-        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-          <img
-            src={MAP_IMG}
-            alt="An aerial satellite perspective of the Perth coastline and Swan River in Western Australia."
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
-            }}
-          >
-            <div
-              style={{
-                background: 'var(--rt-black)',
-                color: 'var(--rt-white)',
-                padding: 24,
-                boxShadow: '0 16px 40px rgba(0,0,0,0.3)',
-                position: 'relative',
-              }}
-            >
-              <div className="caps" style={{ marginBottom: 4 }}>Service Area</div>
-              <div
-                style={{ fontFamily: 'var(--rt-font-display)', fontSize: 24, fontWeight: 700, whiteSpace: 'nowrap' }}
-              >
-                Perth, WA
-              </div>
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: -10,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: 0,
-                  height: 0,
-                  borderLeft: '10px solid transparent',
-                  borderRight: '10px solid transparent',
-                  borderTop: '10px solid var(--rt-black)',
-                }}
-              />
-            </div>
-          </div>
-        </div>
+      <section style={{ height: 500, position: 'relative' }}>
+        <iframe
+          src={`https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+          width="100%"
+          height="100%"
+          style={{ border: 0, display: 'block' }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="RAMS Trimming Workshop Location"
+        />
       </section>
 
       <style>{`
