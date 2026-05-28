@@ -221,6 +221,40 @@ export default async function ServicesPage() {
             </button>
           </div>
         </div>
+
+        {/* Clears strip */}
+        <div
+          style={{
+            marginTop: 24,
+            background: '#eeeeef',
+            border: '2px solid var(--rt-black)',
+            padding: '28px 32px',
+            display: 'grid',
+            gridTemplateColumns: '2fr 3fr',
+            gap: 48,
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#7e7576' }}>water</span>
+              <AnimatedHeading as="h3" style={{ fontFamily: 'var(--rt-font-display)', fontSize: 22, fontWeight: 700 }}>
+                Clears (Marine Enclosures)
+              </AnimatedHeading>
+            </div>
+            <AnimatedText style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.6 }}>
+              Heavy-duty marine clears for visibility and protection.
+            </AnimatedText>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            {['High-quality clear PVC', 'Zips, roll-ups & ventilation options', 'Designed for harsh weather'].map((item) => (
+              <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                <span style={{ display: 'inline-block', width: 6, height: 6, background: '#7e7576', flexShrink: 0, marginTop: 5 }} />
+                <span style={{ fontSize: 14, color: '#1a1c1d', lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── 02. Industrial Textiles ── */}
