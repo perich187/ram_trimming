@@ -28,10 +28,10 @@ export function RamsNav() {
   return (
     <>
       <header className={`nav${scrolled ? ' scrolled' : ''}`}>
-        <div className="nav-logo">
-          <img src={LOGO} alt="Ram&apos;s Trimming Logo" style={{ height: 60, width: 'auto' }} />
+        <Link href="/" className="nav-logo">
+          <img src={LOGO} alt="Ram&apos;s Trimming Logo" style={{ height: 76, width: 'auto' }} />
           <span className="nav-logo-text">Ram&apos;s Trimming</span>
-        </div>
+        </Link>
         <nav className="nav-links">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className={pathname === l.href ? 'active' : ''}>

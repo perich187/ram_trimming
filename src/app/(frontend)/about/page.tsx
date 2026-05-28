@@ -79,7 +79,7 @@ export default async function AboutPage() {
     'Contact us today for a technical consultation and quote on your next industrial or marine textile project.'
 
   return (
-    <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingTop: 48, paddingBottom: 96 }}>
+    <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingBottom: 96 }}>
 
       {/* ── Hero Section ── */}
       <header
