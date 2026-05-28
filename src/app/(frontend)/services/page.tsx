@@ -254,7 +254,7 @@ export default async function ServicesPage() {
                   <img
                     src={section.card1.image}
                     alt={section.card1.heading}
-                    style={{ width: '100%', height: 160, objectFit: 'cover', marginBottom: 24 }}
+                    style={{ width: '100%', height: 240, objectFit: 'cover', marginBottom: 24 }}
                   />
                   <AnimatedHeading
                     as="h4"
@@ -274,7 +274,7 @@ export default async function ServicesPage() {
                   </ul>
                 </div>
 
-                {/* Card 2 — image on bottom */}
+                {/* Card 2 — image on top */}
                 <div
                   style={{
                     background: cardBg,
@@ -283,6 +283,11 @@ export default async function ServicesPage() {
                     boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                   }}
                 >
+                  <img
+                    src={section.card2.image}
+                    alt={section.card2.heading}
+                    style={{ width: '100%', height: 240, objectFit: 'cover', marginBottom: 24 }}
+                  />
                   <AnimatedHeading
                     as="h4"
                     style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
@@ -292,18 +297,13 @@ export default async function ServicesPage() {
                   <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
                     {section.card2.description}
                   </AnimatedText>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600, marginBottom: 24 }}>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600 }}>
                     {section.card2.items.map((item: string) => (
                       <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ color: 'var(--rt-black)' }}>→</span> {item}
                       </li>
                     ))}
                   </ul>
-                  <img
-                    src={section.card2.image}
-                    alt={section.card2.heading}
-                    style={{ width: '100%', height: 160, objectFit: 'cover' }}
-                  />
                 </div>
               </div>
             </div>
