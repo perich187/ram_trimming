@@ -1,15 +1,8 @@
-import { headers } from 'next/headers'
-import { getPayload } from 'payload'
-import config from '@payload-config'
-
 export async function GET(req: Request): Promise<Response> {
   const url = new URL(req.url)
   const secret = url.searchParams.get('secret')
-  const requestHeaders = await headers()
-  const payload = await getPayload({ config })
-  const { user } = await payload.auth({ headers: requestHeaders })
 
-  if (!user && secret !== process.env.PAYLOAD_SECRET) {
+  if (secret !== process.env.PAYLOAD_SECRET) {
     return new Response('Unauthorized', { status: 401 })
   }
 
@@ -19,11 +12,12 @@ export async function GET(req: Request): Promise<Response> {
   return Response.json({
     blob: {
       tokenSet: !!token,
-      tokenPrefix: token ? token.substring(0, 20) + '...' : null,
+      tokenPrefix: token ? token.substring(0, 24) + '...' : 'NOT SET',
       pluginActive: !!(token && token !== 'your-vercel-blob-token'),
     },
     db: {
       uriSet: !!db,
+      uriPrefix: db ? db.substring(0, 20) + '...' : 'NOT SET',
     },
     nodeEnv: process.env.NODE_ENV,
   })
