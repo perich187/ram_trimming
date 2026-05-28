@@ -40,6 +40,7 @@ export function ContactForm({ heading, subtext }: Props) {
 
   return (
     <div
+      className="contact-form-box"
       style={{
         background: 'var(--rt-white)',
         padding: 48,
@@ -188,8 +189,9 @@ export function ContactForm({ heading, subtext }: Props) {
 
       <style>{`
         @media(max-width:768px) {
-          form { grid-template-columns:1fr !important; }
-          form > div[style*="span 2"] { grid-column: span 1 !important; }
+          .contact-form-box { padding: 24px !important; }
+          form { grid-template-columns: 1fr !important; }
+          form > div { grid-column: span 1 !important; }
         }
       `}</style>
     </div>

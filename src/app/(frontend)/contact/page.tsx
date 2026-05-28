@@ -85,6 +85,7 @@ export default async function ContactPage() {
 
       {/* ── Main Content Split ── */}
       <section
+        className="contact-split"
         style={{
           padding: 'var(--rt-section-gap) 64px',
           display: 'grid',
@@ -208,11 +209,11 @@ export default async function ContactPage() {
 
       <style>{`
         @media(max-width:900px) {
-          section[style*="gridTemplateColumns: 5fr 7fr"] { grid-template-columns:1fr !important; }
+          .contact-split { grid-template-columns: 1fr !important; }
         }
         @media(max-width:768px) {
-          section { padding-left:16px !important; padding-right:16px !important; }
-          header { padding-left:16px !important; padding-right:16px !important; }
+          .contact-split { padding: 40px 16px !important; gap: 40px !important; }
+          section { padding-left: 16px !important; padding-right: 16px !important; }
         }
       `}</style>
 

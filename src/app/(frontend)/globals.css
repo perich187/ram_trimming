@@ -807,10 +807,12 @@ html[data-theme='light'] {
 }
 
 @media (max-width: 768px) {
-  :root { --rt-section-gap: 80px; }
+  :root { --rt-section-gap: 60px; }
   .nav { padding: 0 16px; }
+  .nav-logo { min-width: 0 !important; }
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
+  .hero-content { padding: 0 16px !important; }
   .footer { padding: 48px 16px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }

@@ -62,7 +62,7 @@ export default async function GalleryPage() {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
           <div
             style={{
               background: 'rgba(0,0,0,0.9)',

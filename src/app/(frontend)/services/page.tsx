@@ -157,7 +157,7 @@ export default async function ServicesPage() {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
           <div
             style={{
               background: 'rgba(0,0,0,0.9)',
@@ -404,10 +404,10 @@ export default async function ServicesPage() {
           .svc-cards { grid-template-columns: 1fr !important; }
         }
         @media(max-width:768px) {
-          header { padding: 0 16px !important; }
-          section { padding-left: 16px !important; padding-right: 16px !important; }
-          section:last-of-type > div { padding: 40px 16px !important; }
-          section:last-of-type > div > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+          section { padding-left: 16px !important; padding-right: 16px !important; padding-top: 40px !important; padding-bottom: 40px !important; }
+          section:last-of-type { padding-bottom: 40px !important; }
+          section:last-of-type > div { padding: 40px 20px !important; }
+          section:last-of-type > div > div[style*="1fr 1fr"] { grid-template-columns: 1fr !important; }
         }
       `}</style>
 

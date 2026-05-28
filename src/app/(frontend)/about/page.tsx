@@ -98,7 +98,7 @@ export default async function AboutPage() {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-        <div style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
           <div
             style={{
               background: 'rgba(0,0,0,0.9)',
@@ -416,13 +416,13 @@ export default async function AboutPage() {
           section[style*="repeat(12"] { grid-template-columns:1fr !important; }
           section[style*="repeat(12"] > div { grid-column: span 1 !important; }
           section[style*="repeat(3, 1fr)"] { grid-template-columns:1fr !important; }
+          div[style*="flex-direction: row"][style*="gap: 32"] { flex-direction: column !important; }
+          div[style*="flex: 0 0 50%"] { flex: 1 1 auto !important; width: 100% !important; }
+          section[style*="padding: 80px"] { padding: 40px 20px !important; }
         }
         @media(max-width:600px) {
-          section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] { grid-template-columns:1fr !important; }
-          section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] > div:first-child { border-right:none !important; border-bottom:2px solid var(--rt-black); }
-        }
-        @media(max-width:768px) {
-          header { padding-left:16px !important; padding-right:16px !important; }
+          section[style*="1fr 1fr"][style*="border: 2px solid var(--rt-black)"] { grid-template-columns:1fr !important; }
+          section[style*="1fr 1fr"][style*="border: 2px solid var(--rt-black)"] > div:first-child { border-right:none !important; border-bottom:2px solid var(--rt-black); }
         }
       `}</style>
 
