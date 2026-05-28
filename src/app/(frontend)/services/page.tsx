@@ -200,7 +200,7 @@ export default async function ServicesPage() {
             style={{ padding: '80px 64px', background: sectionBg }}
           >
             {/* Section header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
+            <div className="svc-section-header" style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
               <AnimatedHeading
                 as="h2"
                 style={{
@@ -214,8 +214,8 @@ export default async function ServicesPage() {
               >
                 {`${section.number} ${section.heading}`}
               </AnimatedHeading>
-              <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
-              <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
+              <div className="svc-header-line" style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
+              <span className="caps svc-header-accent" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
                 {section.accent}
               </span>
             </div>
@@ -408,6 +408,11 @@ export default async function ServicesPage() {
           section:last-of-type { padding-bottom: 40px !important; }
           section:last-of-type > div { padding: 40px 20px !important; }
           section:last-of-type > div > div[style*="1fr 1fr"] { grid-template-columns: 1fr !important; }
+          .svc-section-header { margin-bottom: 24px !important; }
+          .svc-header-line { display: none !important; }
+          .svc-header-accent { display: none !important; }
+          .svc-section-header h2 { flex-shrink: 1 !important; font-size: 22px !important; letter-spacing: 0.02em !important; }
+          .svc-grid > div:first-child { padding: 24px !important; }
         }
       `}</style>
 
