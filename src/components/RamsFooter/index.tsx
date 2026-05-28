@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-const LOGO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCDo8gsfuLxtN7xFMwiXgiS79sA6k478mrNNnRv24ZGJ-_xe0lxEDlyewuBTR6AbOyT8IjkLWeFWoiNWQhvSSokLcGnuxIGYyYzhiE9waU_lKDuB_tfbwDBs1EBdKjDVZwXnaOktmsEjEKAbc0zUetAw8UxN9yC3Da97gd1F27GppEnaa7nBHfNgbFZ_Ao0im71bZ1QRj8OVhQo8c_er5-7yLrZBLDwquKAhsgzKL6EXM42K818YZt0NQagMaBUN_aM_U44xNtTOeh_'
+const LOGO = '/logo.svg'
 
 export function RamsFooter() {
   return (

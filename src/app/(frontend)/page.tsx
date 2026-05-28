@@ -5,16 +5,11 @@ import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 import { HomeQuoteForm } from './HomeQuoteForm'
 
-const HERO_BG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC1FGc_sSS27sCh9zHn4U9EKYmXCPGqusvaRuvljHtwH4xSXUS_ydGRs7yekJf8P2-gcICZD73Ien2gLYr3rKpqcddn4Jb0zR8_bwk1xFMrWhReCCYEpmFm9hMtCbG9f43eN62pciJGwmfnl3ys6kY84bOP9A8kVdfTKWG9I0BApUWZeEkkIDH-32BQVozwPzxfjti2qWp0RHL_OaZoXog0vrvkSjWBhiJI7tSSsTcHSspinge2_KKXFkwnunuomjlDq_GD4xw0-YTY'
-const CRAFTSMAN =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAH68DclwPpBqh5vfHvGETI9AnNqPxNbwP0cusfz42jFbekv_qW_ZRuLfZ4Ii5AWBo4yd4it-viY0BEpRQCCm85I1EuTQx8c6ApEx7DX2ac7iXNcz_WtfT3PPW0y8cZaDnwCCStp3H1qGLmLepfPU9Xb8lrC8C085-MO9IVpSQ1yX3ANsHz4umVgTVq3CMP94BCPZNsui-fm5d5YAT1pbL4a8INTCyxetYJa8lvHr2hP2SvhOR-K99E_X5JXn98IZ82iYITqlUXIGja'
-const MARINE_SVC =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC773KiEyz05ggx0RcnwZEOZGcireHUMVTRsQSuSp3qfyRsonamvK7cF5qvDqXmgJLGHZfGNp4JKiKO56mhsIovukmh6ltIxY7AIzz0ZNOQ2Z910WjgtGKSSGSzNWwmlktK9_M66abPZqF4tuWOWjtCmEeuZgyvuE1GQic5QuRJOFm--J8EjEkx8buGeCyP30qXszP6-96eP05yvRI7hfKR_DUwpro62VEADmnckAAjN-BKg4rXm4z2I_cvPbNs3kAXXOB28L4T7inj'
-const CUSTOM_SVC =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCPLQg3nVe5EPN3diXHtXyJfRXtu4FkKXDkscH1i1sA_1-p620W5bnE1S240WE3GQK_uNqlbZNmYHVYbTsN1-v-dUd1O8KyYmI0KCRCFaj3_xQJ-DswlTkrIGzCvN90Ni0aPuv1XS_pXD7k0UMxgIDw2aFMD4f-jLJivkuScCJrXqinB-YRG8v9-23n8dWcrAXKPwqwoP43lvMNS3101KUsVVpz85ozwruw3Wm97M521cW_PLzoItXC7haJ6oAQyZU2tiele9jDhg5f'
-const CLOSING =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBOwsH3faYsqe_QJyHIVOLOFi7QmLKfSmj71ljR3BhaNxrYnojVtj_vXs6zb-85ydGk0ENqLNbRThQh0X2gXZo2nCAfTBmk4u0J8a6bgk-AIQfx3LnCJvIdHshWEAzIrdyrEpW7hzH6ERNWjSrYfejY1JwDm55KdRI2erOTVw4AbhJF3ZfBeZ9IF9sCIccH1ZCjYxef6MR0pDwQ2Y9W6hg7KeF6d0Rhgkpgu81Ew7cew_2ECSXNM0Tp5RN2k4QOJHwT7-YGaXXgCXYZ'
+const HERO_BG = '/images/hero.jpg'
+const CRAFTSMAN = '/images/marine-1.jpg'
+const MARINE_SVC = '/images/marine-2.jpg'
+const CUSTOM_SVC = '/images/marine-3.jpg'
+const CLOSING = '/images/hero.jpg'
 
 const DEFAULT_WHY_ITEMS = [
   { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },

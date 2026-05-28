@@ -4,12 +4,9 @@ import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 
-const WORKSHOP_HERO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDB-EieVgSsJnCgjpE4vPSEUM5oWow2YDyl6_7GFjSF4eP4w2R-nptI0339PoujoMYwHIoqTRNFptXMF_2om1HJQ3ZMYOeFMQwY9JQK2rzBnW6qai_veZOFfEBWF65IFrNilDmLauIaftKQXffzc3wSwjRqMl-2gpHStHgZRG8aPG8cTlMQzeA87HG3Xi6wieAjXZhvZk6uqyQQNwZoKekB1VYRv8ZQpdVUMToDbHsgqax4wV3uOEqxAaJC7zzCg6n0DERY8xNaynNk'
-const CRAFTSMANSHIP =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDuh6WOdplPQNK4NiWYrG5QT-Hz3qhQk_A_Yk4n_OOLe0ozuNVvLfoRrwkvD8BOxHcJl8ghT_bjjW8Hf3jRML8mTRQ0LYoq4i5pvBbnFQ9rNrSJqFtZWugQwat7PoOx_SqYt8gxDbhTAE-pmhVulHGcbdUaa5AIKMQgUBhUxKqVQpKDqvYB7uXwC1Slyyfa6JdzSViQWltH3bGGFjocg88T0ZhiPTkFaCTt5rL0lCUfzVbWa_o3iKvoZgFASrZvYkIGl8zcqtEOHuU6'
-const WORKSHOP_INTERIOR =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDnYpeowi_xDwjv9tp_ueiiKAn_C8027CPdbH2mIAOvKSRxxM_Bm6BMo_TjgSSr-8CVeh_K0iF7bU1aabkAY9SSep_Ousv8A04Iw12sJpUy9iKaajB_a4PMSnt8yGQNjvQCiMFe0Fb9a2r735OPPN2JXiXu53LBcg95pQru7UeGusxX-YJ2VTRmFuCtgDnOqKb1f9cgyspEWeq4K2FWeYeEKAk45bTnn5JYDHgeMQ-bTrq9RAVrnC9t0fN85cYwdhBJaBZ8HRbXbFZz'
+const WORKSHOP_HERO = '/images/marine-4.jpg'
+const CRAFTSMANSHIP = '/images/covers-1.jpg'
+const WORKSHOP_INTERIOR = '/images/industrial-1.jpg'
 
 const DEFAULT_VALUES = [
   {

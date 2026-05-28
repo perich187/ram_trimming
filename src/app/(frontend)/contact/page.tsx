@@ -4,10 +4,8 @@ import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 import { ContactForm } from './ContactForm'
 
-const CONTACT_HERO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0'
-const MAP_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAoiFuUABTAzZ8PSf09DfUBPX7YchOaVF-XjzT69JmCF79LqA4wG9CllRMWoS1ApOweySMGqeHl2rkvcbQ8lrOIJ_NhTBd4-b8hHToHlLP0GRSwH1P2XmiDtXvq4VH4oxAMssxLq24xm430icyO9OkXSFoS8_nWMTpPhuRmtvQbXQuJxcf0uedUhJ-I9DEJmzFDzqhp66F3wzIa511ovsEKLi24UyIy0qX9GhTBfFQKlwHRASZGErds6Nw50sHxW_-oGd2JdK9qiXnp'
+const CONTACT_HERO = '/images/marine-1.jpg'
+const MAP_IMG = '/images/industrial-2.jpg'
 
 const DEFAULT_HOURS = [
   { day: 'Monday - Friday', time: '8:00 AM - 4:00 PM' },

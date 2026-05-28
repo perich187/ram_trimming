@@ -4,20 +4,13 @@ import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 
-const SERVICES_HERO =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuApt-7-KRPnp-5_rXRSG-HQwuKDQYYQulpBnreR_y8GgHREEd7oIDemu6tANWJ5-vfXY8XSq0jh6q9UGezabS-A7gfKMpqJuTPV1RK3SVG8gAskQD5SEND4rnS2pxOuuGiQurZoyS8Ikt53YDbXKU8A4RNc2UUqWRcLyKEejZlC_PXcOiGQESzbvy2xADW_Q0_POudpsgylTV3XxJ61gm50S7FAgGs-d1Pqjt3HpCn_9phRMHfY8xLMXy0-JIG4pNEpaMvCIfZ8tjiY'
-const MARINE_MAIN =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDVlaGdmQdJcchxiFCgFQh_-9lo37ZobKZbEIZvxsuHCzX-7xbdWiHDivrF5owGM1X2SqZkAqg81S4Kc1KijBMvxe4vZ3Tl_CMEp5Xge5QVL6_dtPnzUJ2wvw4nX4Y963fa4ocbw1c_3P6NCoubpnQ2q3yNtcaeBwBReP8cgQ8CjgJ1vyVfUENO9vsF1c6BM3XWHKz3CyTvLd5yIbF34EKGqxfnJbQN14CKBdbvM3H9u-IBTRvuaVPHMAnoiDm730PRagxR0C1lXc--'
-const MARINE_SIDE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC7zATN78yFcuSkPBziPQ3Tmgu-8P4jfUTzczJeb5xd8PrPZIYXKSSdkz1yYQVzNCjfZVdsVUo2JxhQ5wzfsXqayGFFuXxAXZrnkBUzhEDoJw02KUDFWjRz6TuGPQls0XFw80wHdoSrWohSIWL6SGSHeHt5MP-dhVaxW0hcV9zfTvkuX9s40ckip12uKsgqjiZrsm3wS3tZduJzwT4uKuhMBtjdKqSzVPIoAVUtY_HMNEg08MNLVFNEsGYkcAY-9QYCDlT0FD73i-t8'
-const MINING_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDwHhPBlGHEn1P0TYbKxyr9hyWMC0SSrRFnWpIJyA4vaY4wiZX3KnOLCY7qaADAngYRqol_dj-gjLePUuA-RlKzmWSRz1nLFXmEOpBZKR223RJ4HADzI0lw5GLS-pDTmngx_2tTxsHaymXT2oDQMlfDM_ElD3B3AIrQpQjiApctYoZbuZ_77H70PQSHQ5B7aQg-BupSCB0gW_VRRX8ZKSP_6UT4A5bqiN6qsne2JphJn63mGRed17N-XOjE6b8Xzl_48gbfkuvn7zlF'
-const CANOPY_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBWx-lhXLyhY1Y7mtbSQwZ7twZnvGCWfOedgQpwpAThHveFGyahhl9l4ih6G2FzjMrS-a7OBM-MyzEDwHiu-DqKw3t8qbapLpOy_Z_kpk7Y3Qb3yaYUfJo9SwjhnY-Zw117n0k6cEefTVX0QlY_tvMaILaAUh05yYZYEdV9VVM29dBZDsBsbDs6WRksRFETPpTv6ed8oAXHaGhSehMY01mt4IayCoJD_zwGBMANOdEHOgCUqf4Siu9m0DMrYFI_MSRp8up55dHyDL8u'
-const TRAILER_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDVzA6AvzLHKvMHHbmYjND-o_rK-l8fI_iAvdGFdxUdIz8Eu5l10Piu8twDZWP_9CytPUmmh1EIvCQ9ZXZPHlaeeC4r_FPw_L5J-GzZKYBS2_mgaVAT7MW_QXisfPt3Kg1uhx5IE2licLcN4VjoFutIN8Oreu1LYRwTiGwHaYXhzWi6rrCmFrX-Oz-kTeR9feX6sP2haCLPu_gl6OdCKArjfLaREK8UOt0ENYqpWVmXqCICqLqSflkp_JUbzmZdkGWAxb2QB9ANTb8Z'
-const HEADLINING_IMG =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDFcIFHyT9FQOwqQQfl-6Z29sxRK3Y0em9AJ7Uay6t277xOwaqNRwhm_xdV7suTzW-gptuEECbvmTpPrkYc0aFIsSnueKPWLNVgXzcOg8JGfT9pT-HClTCZ44P9gHd2xuigXLZqiqh-9uWIDphibyev3933Kj7D1Zmi09OoLsw2-eTDmp0mJ06AggTHBfTcakqIIl866spiRgZ1L0x1msL0Ne11guZc4t0Jvj7_4jXGIsrLeCaxxylm6Vio5_5daVnGs5ox65MROmwf'
+const SERVICES_HERO = '/images/marine-2.jpg'
+const MARINE_MAIN = '/images/marine-5.jpg'
+const MARINE_SIDE = '/images/marine-3.jpg'
+const MINING_IMG = '/images/industrial-1.jpg'
+const CANOPY_IMG = '/images/covers-2.jpg'
+const TRAILER_IMG = '/images/hero.jpg'
+const HEADLINING_IMG = '/images/covers-3.jpg'
 
 export default async function ServicesPage() {
   let cms: any = {}
