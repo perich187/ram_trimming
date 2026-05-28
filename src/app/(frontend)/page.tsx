@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { AnimatedHeading } from '@/components/AnimatedHeading'
+import { AnimatedText } from '@/components/AnimatedText'
 
 const HERO_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuC1FGc_sSS27sCh9zHn4U9EKYmXCPGqusvaRuvljHtwH4xSXUS_ydGRs7yekJf8P2-gcICZD73Ien2gLYr3rKpqcddn4Jb0zR8_bwk1xFMrWhReCCYEpmFm9hMtCbG9f43eN62pciJGwmfnl3ys6kY84bOP9A8kVdfTKWG9I0BApUWZeEkkIDH-32BQVozwPzxfjti2qWp0RHL_OaZoXog0vrvkSjWBhiJI7tSSsTcHSspinge2_KKXFkwnunuomjlDq_GD4xw0-YTY'
@@ -70,7 +72,9 @@ export default function HomePage() {
           >
             Marine &amp; Motor Trimming Specialist
           </span>
-          <h1
+          <AnimatedHeading
+            as="h1"
+            delay={0.2}
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 'clamp(40px,6vw,64px)',
@@ -78,11 +82,13 @@ export default function HomePage() {
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               marginBottom: 24,
+              justifyContent: 'center',
             }}
           >
             Built Tough. Made to Last.
-          </h1>
-          <p
+          </AnimatedHeading>
+          <AnimatedText
+            delay={0.5}
             style={{
               fontSize: 'clamp(16px,2vw,18px)',
               lineHeight: 1.6,
@@ -95,7 +101,7 @@ export default function HomePage() {
           >
             Custom trimming solutions specialising in industrial, marine &amp; heavy-duty textile
             fabrication across Western Australia.
-          </p>
+          </AnimatedText>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
             <Link href="/contact" className="btn btn-primary" style={{ fontSize: 13 }}>
               Request a Quote
@@ -130,7 +136,8 @@ export default function HomePage() {
           >
             {/* Left copy */}
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h2
+              <AnimatedHeading
+                as="h2"
                 style={{
                   fontFamily: 'var(--rt-font-display)',
                   fontSize: 'clamp(32px,4vw,48px)',
@@ -142,8 +149,8 @@ export default function HomePage() {
                 }}
               >
                 About RAMS TRIMMING
-              </h2>
-              <p
+              </AnimatedHeading>
+              <AnimatedText
                 style={{
                   fontSize: 18,
                   lineHeight: 1.6,
@@ -155,7 +162,7 @@ export default function HomePage() {
                 to handle the harshest environments Australia can throw at them. From mine spec to
                 marine and everything in between, we focus on durability, function, and clean
                 workmanship.
-              </p>
+              </AnimatedText>
               <div
                 style={{
                   display: 'grid',
@@ -244,7 +251,7 @@ export default function HomePage() {
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div className="title-underline">
-            <h2>What We Do</h2>
+            <AnimatedHeading as="h2">What We Do</AnimatedHeading>
           </div>
           <div
             style={{
@@ -266,7 +273,8 @@ export default function HomePage() {
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
                   directions_boat
                 </span>
-                <h3
+                <AnimatedHeading
+                  as="h3"
                   style={{
                     fontFamily: 'var(--rt-font-display)',
                     fontSize: 24,
@@ -275,7 +283,7 @@ export default function HomePage() {
                   }}
                 >
                   Marine Trimming
-                </h3>
+                </AnimatedHeading>
               </div>
             </div>
             {/* Industrial Textiles */}
@@ -291,7 +299,8 @@ export default function HomePage() {
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
                   factory
                 </span>
-                <h3
+                <AnimatedHeading
+                  as="h3"
                   style={{
                     fontFamily: 'var(--rt-font-display)',
                     fontSize: 24,
@@ -300,7 +309,7 @@ export default function HomePage() {
                   }}
                 >
                   Industrial Textiles
-                </h3>
+                </AnimatedHeading>
               </div>
             </div>
             {/* Custom Covers */}
@@ -316,7 +325,8 @@ export default function HomePage() {
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
                   check_box_outline_blank
                 </span>
-                <h3
+                <AnimatedHeading
+                  as="h3"
                   style={{
                     fontFamily: 'var(--rt-font-display)',
                     fontSize: 24,
@@ -325,7 +335,7 @@ export default function HomePage() {
                   }}
                 >
                   Custom Covers
-                </h3>
+                </AnimatedHeading>
               </div>
             </div>
           </div>
@@ -355,7 +365,8 @@ export default function HomePage() {
           }}
         >
           <div style={{ maxWidth: 480, marginLeft: 'auto' }}>
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 40,
@@ -366,7 +377,7 @@ export default function HomePage() {
               }}
             >
               Why Choose Rams?
-            </h2>
+            </AnimatedHeading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
               {[
                 { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },
@@ -409,7 +420,8 @@ export default function HomePage() {
           }}
         >
           <div style={{ maxWidth: 480 }}>
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 40,
@@ -419,10 +431,10 @@ export default function HomePage() {
               }}
             >
               Request a Quote
-            </h2>
-            <p style={{ fontSize: 16, color: '#4c4546', marginBottom: 40, lineHeight: 1.5 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 16, color: '#4c4546', marginBottom: 40, lineHeight: 1.5 }}>
               Describe your requirements and we will provide a professional assessment within 24 hours.
-            </p>
+            </AnimatedText>
             <form
               onSubmit={handleSubmit}
               style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
@@ -520,7 +532,8 @@ export default function HomePage() {
               backdropFilter: 'blur(8px)',
             }}
           >
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 'clamp(32px,5vw,48px)',
@@ -529,10 +542,11 @@ export default function HomePage() {
                 lineHeight: 1.1,
                 letterSpacing: '-0.02em',
                 marginBottom: 16,
+                justifyContent: 'center',
               }}
             >
               Precision on the Waves.
-            </h2>
+            </AnimatedHeading>
             <p className="caps" style={{ color: '#f3f3f4', letterSpacing: '0.2em' }}>
               CRAFTED FOR EXCELLENCE
             </p>
