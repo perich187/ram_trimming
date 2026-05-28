@@ -10,7 +10,7 @@ export function RamsFooter() {
         <div className="footer-brand">
           <img src={LOGO} alt="Ram&apos;s Trimming" />
           <p>
-            Expertise, Durability, Quality. Professional marine and motor trimming in Mandurah, WA
+            Expertise, Durability, Quality. Professional marine and motor trimming in Fremantle, WA
             and surrounds.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function RamsFooter() {
           <h4>Contact Us</h4>
           <div className="footer-contact-item">
             <span className="material-symbols-outlined">location_on</span>
-            <span>Mandurah, WA 6210</span>
+            <span>Fremantle, WA 6160</span>
           </div>
           <div className="footer-contact-item">
             <span className="material-symbols-outlined">phone</span>

@@ -29,7 +29,7 @@ export function RamsNav() {
     <>
       <header className={`nav${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-logo">
-          <img src={LOGO} alt="Ram&apos;s Trimming Logo" style={{ height: 44, width: 'auto' }} />
+          <img src={LOGO} alt="Ram&apos;s Trimming Logo" style={{ height: 60, width: 'auto' }} />
           <span className="nav-logo-text">Ram&apos;s Trimming</span>
         </div>
         <nav className="nav-links">

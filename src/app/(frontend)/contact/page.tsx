@@ -138,7 +138,7 @@ export default function ContactPage() {
                 <div>
                   <p className="caps" style={{ color: '#5d5e66', marginBottom: 4 }}>Email Inquiry</p>
                   <a
-                    href="mailto:carol@ramstrimming.com.au"
+                    href="mailto:rhys@ramstrimming.com.au"
                     style={{
                       fontFamily: 'var(--rt-font-display)',
                       fontSize: 17,
@@ -146,7 +146,7 @@ export default function ContactPage() {
                       color: 'var(--rt-black)',
                     }}
                   >
-                    carol@ramstrimming.com.au
+                    rhys@ramstrimming.com.au
                   </a>
                 </div>
               </div>
