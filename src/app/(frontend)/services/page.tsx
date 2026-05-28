@@ -378,8 +378,8 @@ export default async function ServicesPage() {
                 >
                   REQUEST A CALL
                 </Link>
-                <Link href="/portfolio" className="btn btn-outline" style={{ fontSize: 12 }}>
-                  VIEW PORTFOLIO
+                <Link href="/gallery" className="btn btn-outline" style={{ fontSize: 12 }}>
+                  VIEW GALLERY
                 </Link>
               </div>
             </div>

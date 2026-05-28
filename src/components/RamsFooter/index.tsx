@@ -26,7 +26,7 @@ export function RamsFooter() {
               <Link href="/services">Services</Link>
             </li>
             <li>
-              <Link href="/portfolio">Gallery</Link>
+              <Link href="/gallery">Gallery</Link>
             </li>
             <li>
               <Link href="/contact">Contact</Link>

@@ -26,7 +26,7 @@ type Props = {
   items: PortfolioItem[]
 }
 
-export function PortfolioClient({ items }: Props) {
+export function GalleryClient({ items }: Props) {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const filtered =

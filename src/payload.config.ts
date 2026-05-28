@@ -8,7 +8,7 @@ import { Categories } from './collections/Categories'
 import { FormSubmissions } from './collections/FormSubmissions'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
-import { Portfolio } from './collections/Portfolio'
+import { Gallery } from './collections/Gallery'
 import { Posts } from './collections/Posts'
 import { Services } from './collections/Services'
 import { Users } from './collections/Users'
@@ -93,7 +93,7 @@ export default buildConfig({
     Categories,
     Users,
     Services,
-    Portfolio,
+    Gallery,
     FormSubmissions,
   ],
   cors: [getServerSideURL()].filter(Boolean),
