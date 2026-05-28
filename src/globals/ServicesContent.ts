@@ -76,7 +76,27 @@ export const ServicesContent: GlobalConfig = {
         {
           name: 'card2',
           type: 'group',
-          label: 'White Card 2 (image on bottom)',
+          label: 'White Card 2',
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'description', type: 'textarea' },
+            { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
+          ],
+        },
+        {
+          name: 'card3',
+          type: 'group',
+          label: 'White Card 3',
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'description', type: 'textarea' },
+            { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
+          ],
+        },
+        {
+          name: 'card4',
+          type: 'group',
+          label: 'White Card 4',
           fields: [
             { name: 'heading', type: 'text' },
             { name: 'description', type: 'textarea' },

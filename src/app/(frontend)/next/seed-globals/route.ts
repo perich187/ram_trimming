@@ -38,7 +38,26 @@ export async function GET(req: Request): Promise<Response> {
           stat2Number: '100%',
           stat2Label: 'Work Guarantee',
         },
-        services: { heading: 'What We Do' },
+        services: {
+          heading: 'What We Do',
+          items: [
+            {
+              heading: 'Marine Trimming',
+              icon: 'directions_boat',
+              description: 'Custom marine upholstery, biminis, and covers using UV-resistant, waterproof materials built for WA conditions.',
+            },
+            {
+              heading: 'Industrial Textiles',
+              icon: 'factory',
+              description: 'Heavy-duty PVC, canvas, and synthetic fabric solutions for mining, construction, and industrial applications.',
+            },
+            {
+              heading: 'Custom Covers',
+              icon: 'deployed_code',
+              description: 'Precision-fitted covers for boats, equipment, and machinery using premium WeatherMax and Sunbrella fabrics.',
+            },
+          ],
+        },
         whyChoose: {
           heading: 'Why Choose Rams?',
           items: [
@@ -142,14 +161,24 @@ export async function GET(req: Request): Promise<Response> {
               badge2Icon: 'sailing', badge2Label: 'UV Resistant',
             },
             card1: {
-              heading: 'Boat Covers & Upholstery',
-              description: 'Custom marine upholstery and tailored covers using high-grade UV-resistant materials and marine-grade foams.',
-              items: 'UV-resistant materials\nWeatherproof construction\nFoam replacement & seat rebuilds\nMarine vinyl finishes\nCustom designs available',
+              heading: 'Boat Covers',
+              description: 'Stay protected with custom-built, tailored boat covers designed for WA conditions.',
+              items: 'UV-resistant materials\nWeatherproof construction\nTrailerable options available\nBuilt to handle WA conditions',
             },
             card2: {
-              heading: 'Bimini Tops & Clears',
-              description: 'Structural bimini frames and heavy-duty marine enclosures for visibility and year-round weather protection.',
-              items: 'Strong stainless or alloy frames\nUV-stable fabrics\nHigh-quality clear PVC\nZips, roll-ups & ventilation\nCustom sizing for perfect fit',
+              heading: 'Boat Upholstery',
+              description: "Restore and upgrade your vessel's interior with premium marine-grade vinyl and foam solutions.",
+              items: 'Foam replacement & seat rebuilds\nMarine vinyl finishes\nCustom designs\nClean professional finish',
+            },
+            card3: {
+              heading: 'Bimini Tops',
+              description: 'Stay protected from the elements with custom-built bimini tops built for strength and longevity.',
+              items: 'Strong stainless or alloy frames\nUV-stable fabrics\nBuilt for strength and longevity\nCustom sizing for perfect fit',
+            },
+            card4: {
+              heading: 'Clears (Marine Enclosures)',
+              description: 'Heavy-duty marine clears for visibility and protection in all weather conditions.',
+              items: 'High-quality clear PVC\nZips, roll-ups & ventilation options\nDesigned for harsh weather',
             },
           },
           {
@@ -167,8 +196,18 @@ export async function GET(req: Request): Promise<Response> {
             },
             card2: {
               heading: 'Equipment Protection',
-              description: 'Custom-fit protection for high-value industrial equipment and logistics.',
+              description: 'Custom-fit protection for high-value industrial equipment and logistics operations.',
               items: 'Equipment Covers\nHeavy Duty Tarps\nPVC Covers\nReinforced construction',
+            },
+            card3: {
+              heading: 'Heavy Duty Tarps',
+              description: 'Custom-sized canvas and PVC tarps built for demanding site and transport conditions.',
+              items: 'Custom-sized canvas tarps\nPVC welded joins\nUV & waterproof rated\nBuilt for site conditions',
+            },
+            card4: {
+              heading: 'Shade & Shelter',
+              description: 'Custom shade structures and industrial shelter solutions designed for the WA climate.',
+              items: 'Custom shade structures\nUV-resistant fabrics\nIndustrial-grade framing\nDesigned for WA heat',
             },
           },
           {
@@ -189,6 +228,16 @@ export async function GET(req: Request): Promise<Response> {
               description: 'Heavy-duty drawbar covers, storage bags, and tailored protective solutions for every need.',
               items: 'Caravan drawbar covers\nReinforced storage bags\nHeavy-duty PVC & canvas\nPrecision custom fit',
             },
+            card3: {
+              heading: 'Boat Storage Covers',
+              description: 'Custom-fit boat covers for trailering and mooring, built to handle every season.',
+              items: 'Custom-fit boat covers\nAll-season protection\nTrailerable & mooring options\nUV-stable fabrics',
+            },
+            card4: {
+              heading: 'Machinery & Equipment',
+              description: 'Purpose-built covers for machinery, generators, furniture, and outdoor equipment.',
+              items: 'Machinery & generator covers\nFurniture & garden covers\nHeavy-duty waterproof materials\nCustom-sized to order',
+            },
           },
           {
             number: '04.', heading: 'Motor Trimming', accent: 'AUTOMOTIVE CRAFT',
@@ -207,6 +256,16 @@ export async function GET(req: Request): Promise<Response> {
               heading: 'Ute Canvas & Panels',
               description: 'Custom canvas covers for utility vehicles and door panel repairs with precision fit and finish.',
               items: 'Heavy-duty canvas ute covers\nWeather-sealed construction\nDoor panel repairs\nCustom finishes available',
+            },
+            card3: {
+              heading: 'Convertible & Soft Tops',
+              description: 'Replacement and repair of convertible hoods and soft tops using premium weatherproof materials.',
+              items: 'Replacement soft tops\nHood repairs & restoration\nWeatherproof materials\nCustom fabrication',
+            },
+            card4: {
+              heading: 'Interior Restoration',
+              description: 'Full interior re-trim services for cars, 4WDs, and classics with colour-matched finishes.',
+              items: 'Full interior re-trim\nColour-matched materials\nPeriod-correct finishes\nLuxury & performance options',
             },
           },
         ],

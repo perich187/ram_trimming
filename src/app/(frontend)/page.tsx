@@ -20,9 +20,9 @@ const DEFAULT_WHY_ITEMS = [
 ]
 
 const DEFAULT_SERVICES = [
-  { id: 'marine', icon: 'directions_boat', title: 'Marine Trimming', imageUrl: MARINE_SVC },
-  { id: 'industrial', icon: 'factory', title: 'Industrial Textiles', imageUrl: CRAFTSMAN },
-  { id: 'custom', icon: 'check_box_outline_blank', title: 'Custom Covers', imageUrl: CUSTOM_SVC },
+  { id: 'marine', icon: 'directions_boat', title: 'Marine Trimming', description: 'Custom marine upholstery, biminis, and covers using UV-resistant, waterproof materials built for WA conditions.', imageUrl: MARINE_SVC },
+  { id: 'industrial', icon: 'factory', title: 'Industrial Textiles', description: 'Heavy-duty PVC, canvas, and synthetic fabric solutions for mining, construction, and industrial applications.', imageUrl: CRAFTSMAN },
+  { id: 'custom', icon: 'deployed_code', title: 'Custom Covers', description: 'Precision-fitted covers for boats, equipment, and machinery using premium WeatherMax and Sunbrella fabrics.', imageUrl: CUSTOM_SVC },
 ]
 
 export default async function HomePage() {
@@ -71,15 +71,26 @@ export default async function HomePage() {
   const closingCaption = cms.closing?.caption || 'CRAFTED FOR EXCELLENCE'
   const closingImage = (cms.closing?.image as any)?.url || CLOSING
 
-  const services =
-    servicesFromDb.length > 0
+  const cmsServiceItems = cms.services?.items && cms.services.items.length > 0
+    ? cms.services.items.map((s: any) => ({
+        id: String(s.id || s.heading),
+        icon: s.icon || 'design_services',
+        title: s.heading,
+        description: s.description || '',
+        imageUrl: (s.image as any)?.url || MARINE_SVC,
+      }))
+    : null
+
+  const services = cmsServiceItems
+    ?? (servicesFromDb.length > 0
       ? servicesFromDb.map((s) => ({
-          id: s.id,
+          id: String(s.id),
           icon: s.icon || 'design_services',
           title: s.title,
+          description: s.description || '',
           imageUrl: (s.image as any)?.url || MARINE_SVC,
         }))
-      : DEFAULT_SERVICES
+      : DEFAULT_SERVICES)
 
   return (
     <main>
@@ -184,6 +195,7 @@ export default async function HomePage() {
                   fontWeight: 700,
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
+                  textTransform: 'uppercase',
                   marginBottom: 24,
                   color: 'var(--rt-black)',
                 }}
@@ -278,7 +290,7 @@ export default async function HomePage() {
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div className="title-underline">
-            <AnimatedHeading as="h2">{servicesHeading}</AnimatedHeading>
+            <AnimatedHeading as="h2" style={{ textTransform: 'uppercase' }}>{servicesHeading}</AnimatedHeading>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
             {services.map((svc) => (
@@ -286,7 +298,7 @@ export default async function HomePage() {
                 <div
                   style={{
                     overflow: 'hidden',
-                    marginBottom: 32,
+                    marginBottom: 24,
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                     border: '1px solid #e2e2e3',
                   }}
@@ -297,7 +309,7 @@ export default async function HomePage() {
                     style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
                   <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--rt-black)' }}>
                     {svc.icon}
                   </span>
@@ -313,6 +325,9 @@ export default async function HomePage() {
                     {svc.title}
                   </AnimatedHeading>
                 </div>
+                {svc.description && (
+                  <p style={{ color: '#5d5e66', fontSize: 14, lineHeight: 1.6 }}>{svc.description}</p>
+                )}
               </div>
             ))}
           </div>

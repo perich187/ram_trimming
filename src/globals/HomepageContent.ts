@@ -59,6 +59,18 @@ export const HomepageContent: GlobalConfig = {
       label: 'Services Section',
       fields: [
         { name: 'heading', type: 'text', defaultValue: 'What We Do' },
+        {
+          name: 'items',
+          type: 'array',
+          label: 'Service Tiles',
+          admin: { description: 'Edit each service tile shown on the home page (photo, title, icon, description)' },
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'icon', type: 'text', admin: { description: 'Material Symbols icon name, e.g. "directions_boat"' } },
+            { name: 'description', type: 'textarea' },
+            { name: 'image', type: 'upload', relationTo: 'media' },
+          ],
+        },
       ],
     },
     {

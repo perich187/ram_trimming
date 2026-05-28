@@ -5,29 +5,41 @@ import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 
 const SERVICES_HERO = '/images/marine-2.jpg'
-const MARINE_A = '/images/marine-5.jpg'
-const MARINE_B = '/images/marine-3.jpg'
-const INDUSTRIAL_A = '/images/industrial-1.jpg'
-const INDUSTRIAL_B = '/images/covers-2.jpg'
-const COVERS_A = '/images/hero.jpg'
-const COVERS_B = '/images/covers-1.jpg'
-const MOTOR_A = '/images/covers-3.jpg'
-const MOTOR_B = '/images/marine-4.jpg'
+const MARINE_A   = '/images/marine-5.jpg'
+const MARINE_B   = '/images/marine-3.jpg'
+const MARINE_C   = '/images/marine-1.jpg'
+const MARINE_D   = '/images/marine-4.jpg'
+const IND_A      = '/images/industrial-1.jpg'
+const IND_B      = '/images/covers-2.jpg'
+const IND_C      = '/images/industrial-2.jpg'
+const IND_D      = '/images/covers-1.jpg'
+const COVERS_A   = '/images/hero.jpg'
+const COVERS_B   = '/images/covers-1.jpg'
+const COVERS_C   = '/images/marine-2.jpg'
+const COVERS_D   = '/images/covers-3.jpg'
+const MOTOR_A    = '/images/covers-3.jpg'
+const MOTOR_B    = '/images/marine-4.jpg'
+const MOTOR_C    = '/images/covers-2.jpg'
+const MOTOR_D    = '/images/marine-3.jpg'
 
 const SECTION_DEFAULTS = [
   {
     id: 'marine',
     number: '01.', heading: 'Marine Trimming', accent: 'WATERPROOF EXCELLENCE',
     darkCard: { heading: 'Built for Marine', description: "Professional-grade upholstery, covers, and enclosures engineered for WA's harshest waterways.", badge1Icon: 'directions_boat', badge1Label: 'Waterproof Materials', badge2Icon: 'sailing', badge2Label: 'UV Resistant' },
-    card1: { heading: 'Boat Covers & Upholstery', description: 'Custom marine upholstery and tailored covers using high-grade UV-resistant materials and marine-grade foams.', items: 'UV-resistant materials\nWeatherproof construction\nFoam replacement & seat rebuilds\nMarine vinyl finishes\nCustom designs available', image: MARINE_A },
-    card2: { heading: 'Bimini Tops & Clears', description: 'Structural bimini frames and heavy-duty marine enclosures for visibility and year-round weather protection.', items: 'Strong stainless or alloy frames\nUV-stable fabrics\nHigh-quality clear PVC\nZips, roll-ups & ventilation\nCustom sizing for perfect fit', image: MARINE_B },
+    card1: { heading: 'Boat Covers', description: 'Stay protected from the elements with custom-built, tailored boat covers designed for WA conditions.', items: 'UV-resistant materials\nWeatherproof construction\nTrailerable options available\nBuilt to handle WA conditions', image: MARINE_A },
+    card2: { heading: 'Boat Upholstery', description: 'Restore and upgrade your vessel\'s interior with premium marine-grade vinyl and foam solutions.', items: 'Foam replacement & seat rebuilds\nMarine vinyl finishes\nCustom designs\nClean professional finish', image: MARINE_B },
+    card3: { heading: 'Bimini Tops', description: 'Stay protected from the elements with custom-built bimini tops built for strength and longevity.', items: 'Strong stainless or alloy frames\nUV-stable fabrics\nBuilt for strength and longevity\nCustom sizing for perfect fit', image: MARINE_C },
+    card4: { heading: 'Clears (Marine Enclosures)', description: 'Heavy-duty marine clears for visibility and protection in all weather conditions.', items: 'High-quality clear PVC\nZips, roll-ups & ventilation options\nDesigned for harsh weather', image: MARINE_D },
   },
   {
     id: 'industrial',
     number: '02.', heading: 'Industrial Textiles', accent: 'HEAVY DUTY SOLUTIONS',
     darkCard: { heading: 'Built for Performance', description: 'Our industrial solutions are engineered to withstand the toughest conditions, from mining sites to large-scale agricultural operations.', badge1Icon: 'engineering', badge1Label: 'Reinforced Stitching', badge2Icon: 'shield', badge2Label: 'UV & Tear Resistant' },
-    card1: { heading: 'Mining & Ag Solutions', description: 'Specialized protective covers and barriers for heavy machinery and site infrastructure.', items: 'Mining Solutions\nAgricultural Solutions\nHeavy-duty PVC & canvas\nMine-spec quality guaranteed', image: INDUSTRIAL_A },
-    card2: { heading: 'Equipment Protection', description: 'Custom-fit protection for high-value industrial equipment and logistics.', items: 'Equipment Covers\nHeavy Duty Tarps\nPVC Covers\nReinforced construction', image: INDUSTRIAL_B },
+    card1: { heading: 'Mining & Ag Solutions', description: 'Specialized protective covers and barriers for heavy machinery and site infrastructure.', items: 'Mining Solutions\nAgricultural Solutions\nHeavy-duty PVC & canvas\nMine-spec quality guaranteed', image: IND_A },
+    card2: { heading: 'Equipment Protection', description: 'Custom-fit protection for high-value industrial equipment and logistics operations.', items: 'Equipment Covers\nHeavy Duty Tarps\nPVC Covers\nReinforced construction', image: IND_B },
+    card3: { heading: 'Heavy Duty Tarps', description: 'Custom-sized canvas and PVC tarps built for demanding site and transport conditions.', items: 'Custom-sized canvas tarps\nPVC welded joins\nUV & waterproof rated\nBuilt for site conditions', image: IND_C },
+    card4: { heading: 'Shade & Shelter', description: 'Custom shade structures and industrial shelter solutions designed for the WA climate.', items: 'Custom shade structures\nUV-resistant fabrics\nIndustrial-grade framing\nDesigned for WA heat', image: IND_D },
   },
   {
     id: 'custom-covers',
@@ -35,6 +47,8 @@ const SECTION_DEFAULTS = [
     darkCard: { heading: 'Bespoke Protection', description: 'Precision-made covers for every environment, built to protect your most valuable assets from the WA elements.', badge1Icon: 'deployed_code', badge1Label: 'Custom Fit', badge2Icon: 'wb_sunny', badge2Label: 'Weather Resistant' },
     card1: { heading: 'Outdoor & Travel', description: 'Bespoke covers designed to protect your lifestyle investments from the WA elements.', items: 'Boat & caravan covers\nOutdoor furniture covers\nUV & waterproof fabrics\nCustom sizing available', image: COVERS_A },
     card2: { heading: 'Caravan & Storage', description: 'Heavy-duty drawbar covers, storage bags, and tailored protective solutions for every need.', items: 'Caravan drawbar covers\nReinforced storage bags\nHeavy-duty PVC & canvas\nPrecision custom fit', image: COVERS_B },
+    card3: { heading: 'Boat Storage Covers', description: 'Custom-fit boat covers for trailering and mooring, built to handle every season.', items: 'Custom-fit boat covers\nAll-season protection\nTrailerable & mooring options\nUV-stable fabrics', image: COVERS_C },
+    card4: { heading: 'Machinery & Equipment', description: 'Purpose-built covers for machinery, generators, furniture, and outdoor equipment.', items: 'Machinery & generator covers\nFurniture & garden covers\nHeavy-duty waterproof materials\nCustom-sized to order', image: COVERS_D },
   },
   {
     id: 'motor',
@@ -42,6 +56,8 @@ const SECTION_DEFAULTS = [
     darkCard: { heading: 'Automotive Craft', description: 'Interior restoration and custom upholstery for cars, utes, and 4WDs using premium leather, vinyl, and fabric.', badge1Icon: 'directions_car', badge1Label: 'Interior Restoration', badge2Icon: 'construction', badge2Label: 'Heavy Duty' },
     card1: { heading: 'Head Linings & Seats', description: 'Factory-matched or custom headlining replacements and full seat re-cover and restoration.', items: 'Sagging headlining repairs\nSeat re-cover & re-bolster\nDoor panel trimming\nLeather & vinyl options', image: MOTOR_A },
     card2: { heading: 'Ute Canvas & Panels', description: 'Custom canvas covers for utility vehicles and door panel repairs with precision fit and finish.', items: 'Heavy-duty canvas ute covers\nWeather-sealed construction\nDoor panel repairs\nCustom finishes available', image: MOTOR_B },
+    card3: { heading: 'Convertible & Soft Tops', description: 'Replacement and repair of convertible hoods and soft tops using premium weatherproof materials.', items: 'Replacement soft tops\nHood repairs & restoration\nWeatherproof materials\nCustom fabrication', image: MOTOR_C },
+    card4: { heading: 'Interior Restoration', description: 'Full interior re-trim services for cars, 4WDs, and classics with colour-matched and period-correct finishes.', items: 'Full interior re-trim\nColour-matched materials\nPeriod-correct finishes\nLuxury & performance options', image: MOTOR_D },
   },
 ]
 
@@ -65,6 +81,8 @@ export default async function ServicesPage() {
     const dc = c.darkCard || {}
     const c1 = c.card1 || {}
     const c2 = c.card2 || {}
+    const c3 = c.card3 || {}
+    const c4 = c.card4 || {}
     return {
       id: def.id,
       number: c.number || def.number,
@@ -78,18 +96,32 @@ export default async function ServicesPage() {
         badge2Icon: dc.badge2Icon || def.darkCard.badge2Icon,
         badge2Label: dc.badge2Label || def.darkCard.badge2Label,
       },
-      card1: {
-        heading: c1.heading || def.card1.heading,
-        description: c1.description || def.card1.description,
-        items: (c1.items || def.card1.items).split('\n').filter(Boolean),
-        image: def.card1.image,
-      },
-      card2: {
-        heading: c2.heading || def.card2.heading,
-        description: c2.description || def.card2.description,
-        items: (c2.items || def.card2.items).split('\n').filter(Boolean),
-        image: def.card2.image,
-      },
+      cards: [
+        {
+          heading: c1.heading || def.card1.heading,
+          description: c1.description || def.card1.description,
+          items: (c1.items || def.card1.items).split('\n').filter(Boolean),
+          image: def.card1.image,
+        },
+        {
+          heading: c2.heading || def.card2.heading,
+          description: c2.description || def.card2.description,
+          items: (c2.items || def.card2.items).split('\n').filter(Boolean),
+          image: def.card2.image,
+        },
+        {
+          heading: c3.heading || def.card3.heading,
+          description: c3.description || def.card3.description,
+          items: (c3.items || def.card3.items).split('\n').filter(Boolean),
+          image: def.card3.image,
+        },
+        {
+          heading: c4.heading || def.card4.heading,
+          description: c4.description || def.card4.description,
+          items: (c4.items || def.card4.items).split('\n').filter(Boolean),
+          image: def.card4.image,
+        },
+      ],
     }
   })
 
@@ -237,74 +269,44 @@ export default async function ServicesPage() {
                 </div>
               </div>
 
-              {/* Two white cards */}
+              {/* Four white cards — 2×2 grid */}
               <div
                 className="svc-cards"
                 style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}
               >
-                {/* Card 1 — image on top */}
-                <div
-                  style={{
-                    background: cardBg,
-                    padding: 32,
-                    borderTop: '4px solid #7e7576',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                  }}
-                >
-                  <img
-                    src={section.card1.image}
-                    alt={section.card1.heading}
-                    style={{ width: '100%', height: 240, objectFit: 'cover', marginBottom: 24 }}
-                  />
-                  <AnimatedHeading
-                    as="h4"
-                    style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
+                {section.cards.map((card, ci) => (
+                  <div
+                    key={card.heading}
+                    style={{
+                      background: cardBg,
+                      padding: 32,
+                      borderTop: `4px solid ${ci % 2 === 0 ? '#7e7576' : 'var(--rt-black)'}`,
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                    }}
                   >
-                    {section.card1.heading}
-                  </AnimatedHeading>
-                  <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
-                    {section.card1.description}
-                  </AnimatedText>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600 }}>
-                    {section.card1.items.map((item: string) => (
-                      <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ color: 'var(--rt-black)' }}>→</span> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Card 2 — image on top */}
-                <div
-                  style={{
-                    background: cardBg,
-                    padding: 32,
-                    borderTop: '4px solid var(--rt-black)',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                  }}
-                >
-                  <img
-                    src={section.card2.image}
-                    alt={section.card2.heading}
-                    style={{ width: '100%', height: 240, objectFit: 'cover', marginBottom: 24 }}
-                  />
-                  <AnimatedHeading
-                    as="h4"
-                    style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
-                  >
-                    {section.card2.heading}
-                  </AnimatedHeading>
-                  <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
-                    {section.card2.description}
-                  </AnimatedText>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600 }}>
-                    {section.card2.items.map((item: string) => (
-                      <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ color: 'var(--rt-black)' }}>→</span> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    <img
+                      src={card.image}
+                      alt={card.heading}
+                      style={{ width: '100%', height: 200, objectFit: 'cover', marginBottom: 24 }}
+                    />
+                    <AnimatedHeading
+                      as="h4"
+                      style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}
+                    >
+                      {card.heading}
+                    </AnimatedHeading>
+                    <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
+                      {card.description}
+                    </AnimatedText>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600 }}>
+                      {card.items.map((item: string) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <span style={{ color: 'var(--rt-black)' }}>→</span> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
