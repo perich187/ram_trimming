@@ -44,6 +44,11 @@ export const ContactContent: GlobalConfig = {
           name: 'hours',
           type: 'array',
           label: 'Operating Hours',
+          defaultValue: [
+            { day: 'Monday - Friday', time: '8:00 AM - 4:00 PM' },
+            { day: 'Saturday', time: 'By Appointment' },
+            { day: 'Sunday', time: 'Closed' },
+          ],
           fields: [
             { name: 'day', type: 'text' },
             { name: 'time', type: 'text' },

@@ -74,6 +74,13 @@ export const HomepageContent: GlobalConfig = {
           admin: {
             description: 'Add feature bullet points. Icon uses Material Symbols names e.g. "thunderstorm"',
           },
+          defaultValue: [
+            { icon: 'thunderstorm', label: 'Built for harsh Australian conditions' },
+            { icon: 'manufacturing', label: 'Industrial-grade materials' },
+            { icon: 'design_services', label: 'Custom fabrication – no off-the-shelf compromises' },
+            { icon: 'handshake', label: 'Reliable turnaround & honest service' },
+            { icon: 'location_on', label: 'WA owned & operated' },
+          ],
           fields: [
             { name: 'icon', type: 'text' },
             { name: 'label', type: 'text' },

@@ -40,6 +40,12 @@ export const ServicesContent: GlobalConfig = {
         description: 'Edit the four main service section headings and accent labels',
         initCollapsed: true,
       },
+      defaultValue: [
+        { number: '01.', heading: 'Marine Trimming', accent: 'WATERPROOF EXCELLENCE' },
+        { number: '02.', heading: 'Industrial Textiles', accent: 'HEAVY DUTY SOLUTIONS' },
+        { number: '03.', heading: 'Custom Covers', accent: 'BESPOKE PROTECTION' },
+        { number: '04.', heading: 'Motor Trimming', accent: 'AUTOMOTIVE CRAFT' },
+      ],
       fields: [
         { name: 'number', type: 'text', admin: { description: 'e.g. 01.' } },
         { name: 'heading', type: 'text' },

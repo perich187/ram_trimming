@@ -104,6 +104,23 @@ export const AboutContent: GlobalConfig = {
           name: 'items',
           type: 'array',
           label: 'Value Items',
+          defaultValue: [
+            {
+              number: '01',
+              label: 'INTEGRITY',
+              description: 'Absolute transparency in material selection and construction methods. We do it right the first time.',
+            },
+            {
+              number: '02',
+              label: 'DURABILITY',
+              description: 'Designed to outlast the equipment it covers. We use UV-stabilized threads and reinforced stress points.',
+            },
+            {
+              number: '03',
+              label: 'PRECISION',
+              description: 'Millimeter-perfect fit for every vehicle, vessel, or industrial component we trim.',
+            },
+          ],
           fields: [
             { name: 'number', type: 'text' },
             { name: 'label', type: 'text' },
