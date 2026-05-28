@@ -35,9 +35,9 @@ export const ServicesContent: GlobalConfig = {
     {
       name: 'sections',
       type: 'array',
-      label: 'Service Section Headers',
+      label: 'Service Sections',
       admin: {
-        description: 'Edit the four main service section headings and accent labels',
+        description: 'Edit the four main service sections — headers and card content',
         initCollapsed: true,
       },
       defaultValue: [
@@ -50,6 +50,39 @@ export const ServicesContent: GlobalConfig = {
         { name: 'number', type: 'text', admin: { description: 'e.g. 01.' } },
         { name: 'heading', type: 'text' },
         { name: 'accent', type: 'text', admin: { description: 'e.g. WATERPROOF EXCELLENCE' } },
+        {
+          name: 'darkCard',
+          type: 'group',
+          label: 'Dark Left Card',
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'description', type: 'textarea' },
+            { name: 'badge1Icon', type: 'text', admin: { description: 'Material Symbols icon name, e.g. directions_boat' } },
+            { name: 'badge1Label', type: 'text' },
+            { name: 'badge2Icon', type: 'text', admin: { description: 'Material Symbols icon name, e.g. sailing' } },
+            { name: 'badge2Label', type: 'text' },
+          ],
+        },
+        {
+          name: 'card1',
+          type: 'group',
+          label: 'White Card 1 (image on top)',
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'description', type: 'textarea' },
+            { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
+          ],
+        },
+        {
+          name: 'card2',
+          type: 'group',
+          label: 'White Card 2 (image on bottom)',
+          fields: [
+            { name: 'heading', type: 'text' },
+            { name: 'description', type: 'textarea' },
+            { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
+          ],
+        },
       ],
     },
     {
@@ -64,8 +97,8 @@ export const ServicesContent: GlobalConfig = {
           defaultValue:
             "Whether it's a luxury yacht, industrial equipment, or custom outdoor protection, we bring the same level of industrial expertise.",
         },
-        { name: 'phone', type: 'text', defaultValue: '08 9581 8180' },
-        { name: 'location', type: 'text', defaultValue: '6C Harlem Place, Greenfields' },
+        { name: 'phone', type: 'text', defaultValue: '0435 929 441' },
+        { name: 'location', type: 'text', defaultValue: 'Fremantle, WA 6160' },
       ],
     },
   ],

@@ -133,17 +133,89 @@ export async function GET(req: Request): Promise<Response> {
             'Expert marine, motor, and industrial trimming. Delivering professional-grade durability since 1987.',
         },
         sections: [
-          { number: '01.', heading: 'Marine Trimming', accent: 'WATERPROOF EXCELLENCE' },
-          { number: '02.', heading: 'Industrial Textiles', accent: 'HEAVY DUTY SOLUTIONS' },
-          { number: '03.', heading: 'Custom Covers', accent: 'BESPOKE PROTECTION' },
-          { number: '04.', heading: 'Motor Trimming', accent: 'AUTOMOTIVE CRAFT' },
+          {
+            number: '01.', heading: 'Marine Trimming', accent: 'WATERPROOF EXCELLENCE',
+            darkCard: {
+              heading: 'Built for Marine',
+              description: "Professional-grade upholstery, covers, and enclosures engineered for WA's harshest waterways.",
+              badge1Icon: 'directions_boat', badge1Label: 'Waterproof Materials',
+              badge2Icon: 'sailing', badge2Label: 'UV Resistant',
+            },
+            card1: {
+              heading: 'Boat Covers & Upholstery',
+              description: 'Custom marine upholstery and tailored covers using high-grade UV-resistant materials and marine-grade foams.',
+              items: 'UV-resistant materials\nWeatherproof construction\nFoam replacement & seat rebuilds\nMarine vinyl finishes\nCustom designs available',
+            },
+            card2: {
+              heading: 'Bimini Tops & Clears',
+              description: 'Structural bimini frames and heavy-duty marine enclosures for visibility and year-round weather protection.',
+              items: 'Strong stainless or alloy frames\nUV-stable fabrics\nHigh-quality clear PVC\nZips, roll-ups & ventilation\nCustom sizing for perfect fit',
+            },
+          },
+          {
+            number: '02.', heading: 'Industrial Textiles', accent: 'HEAVY DUTY SOLUTIONS',
+            darkCard: {
+              heading: 'Built for Performance',
+              description: 'Our industrial solutions are engineered to withstand the toughest conditions, from mining sites to large-scale agricultural operations.',
+              badge1Icon: 'engineering', badge1Label: 'Reinforced Stitching',
+              badge2Icon: 'shield', badge2Label: 'UV & Tear Resistant',
+            },
+            card1: {
+              heading: 'Mining & Ag Solutions',
+              description: 'Specialized protective covers and barriers for heavy machinery and site infrastructure.',
+              items: 'Mining Solutions\nAgricultural Solutions\nHeavy-duty PVC & canvas\nMine-spec quality guaranteed',
+            },
+            card2: {
+              heading: 'Equipment Protection',
+              description: 'Custom-fit protection for high-value industrial equipment and logistics.',
+              items: 'Equipment Covers\nHeavy Duty Tarps\nPVC Covers\nReinforced construction',
+            },
+          },
+          {
+            number: '03.', heading: 'Custom Covers', accent: 'BESPOKE PROTECTION',
+            darkCard: {
+              heading: 'Bespoke Protection',
+              description: 'Precision-made covers for every environment, built to protect your most valuable assets from the WA elements.',
+              badge1Icon: 'deployed_code', badge1Label: 'Custom Fit',
+              badge2Icon: 'wb_sunny', badge2Label: 'Weather Resistant',
+            },
+            card1: {
+              heading: 'Outdoor & Travel',
+              description: 'Bespoke covers designed to protect your lifestyle investments from the WA elements.',
+              items: 'Boat & caravan covers\nOutdoor furniture covers\nUV & waterproof fabrics\nCustom sizing available',
+            },
+            card2: {
+              heading: 'Caravan & Storage',
+              description: 'Heavy-duty drawbar covers, storage bags, and tailored protective solutions for every need.',
+              items: 'Caravan drawbar covers\nReinforced storage bags\nHeavy-duty PVC & canvas\nPrecision custom fit',
+            },
+          },
+          {
+            number: '04.', heading: 'Motor Trimming', accent: 'AUTOMOTIVE CRAFT',
+            darkCard: {
+              heading: 'Automotive Craft',
+              description: 'Interior restoration and custom upholstery for cars, utes, and 4WDs using premium leather, vinyl, and fabric.',
+              badge1Icon: 'directions_car', badge1Label: 'Interior Restoration',
+              badge2Icon: 'construction', badge2Label: 'Heavy Duty',
+            },
+            card1: {
+              heading: 'Head Linings & Seats',
+              description: 'Factory-matched or custom headlining replacements and full seat re-cover and restoration.',
+              items: 'Sagging headlining repairs\nSeat re-cover & re-bolster\nDoor panel trimming\nLeather & vinyl options',
+            },
+            card2: {
+              heading: 'Ute Canvas & Panels',
+              description: 'Custom canvas covers for utility vehicles and door panel repairs with precision fit and finish.',
+              items: 'Heavy-duty canvas ute covers\nWeather-sealed construction\nDoor panel repairs\nCustom finishes available',
+            },
+          },
         ],
         cta: {
           heading: 'Ready to start your project?',
           subtext:
             "Whether it's a luxury yacht, industrial equipment, or custom outdoor protection, we bring the same level of industrial expertise.",
-          phone: '08 9581 8180',
-          location: '6C Harlem Place, Greenfields',
+          phone: '0435 929 441',
+          location: 'Fremantle, WA 6160',
         },
       },
     })

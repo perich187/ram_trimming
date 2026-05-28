@@ -3,6 +3,7 @@ import * as migration_20260527_122536 from './20260527_122536';
 import * as migration_20260528_globals from './20260528_globals';
 import * as migration_20260528_form_submissions from './20260528_form_submissions';
 import * as migration_20260529_rename_enquiries from './20260529_rename_enquiries';
+import * as migration_20260530_service_cards from './20260530_service_cards';
 
 export const migrations = [
   {
@@ -29,5 +30,10 @@ export const migrations = [
     up: migration_20260529_rename_enquiries.up,
     down: migration_20260529_rename_enquiries.down,
     name: '20260529_rename_enquiries'
+  },
+  {
+    up: migration_20260530_service_cards.up,
+    down: migration_20260530_service_cards.down,
+    name: '20260530_service_cards'
   },
 ];
