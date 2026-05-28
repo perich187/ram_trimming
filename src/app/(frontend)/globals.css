@@ -26,6 +26,8 @@ body {
   color: #1b1b1d;
 }
 
+h1 { text-transform: uppercase; }
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -287,7 +289,7 @@ html[data-theme='light'] {
 .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 .nav-logo { display: flex; align-items: center; gap: 14px; }
 .nav-logo img { height: 76px; width: auto; }
-.nav-logo-text { font-family: var(--rt-font-display); font-size: 22px; font-weight: 700; color: var(--rt-black); letter-spacing: -0.02em; }
+.nav-logo-text { font-family: var(--rt-font-display); font-size: 22px; font-weight: 700; color: var(--rt-black); letter-spacing: -0.02em; text-transform: uppercase; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {
   font-family: var(--rt-font-mono);

@@ -19,10 +19,26 @@ export function HomeQuoteForm({ whyHeading, whyItems, quoteHeading, quoteSubtext
     service: 'Marine Trimming',
     details: '',
   })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Thanks! We will be in touch within 24 hours.')
+    setStatus('loading')
+    try {
+      const res = await fetch('/next/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'home-quote', name: form.name, email: form.email, service: form.service, message: form.details }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', service: 'Marine Trimming', details: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -150,13 +166,23 @@ export function HomeQuoteForm({ whyHeading, whyItems, quoteHeading, quoteSubtext
                 onChange={(e) => setForm({ ...form, details: e.target.value })}
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-red"
-              style={{ letterSpacing: '0.18em', fontSize: 13, padding: '20px' }}
-            >
-              SUBMIT MY REQUEST
-            </button>
+            {status === 'success' ? (
+              <div style={{ padding: '20px', background: '#f0fdf4', border: '1px solid #86efac', color: '#166534', fontFamily: 'var(--rt-font-mono)', fontSize: 13, letterSpacing: '0.05em' }}>
+                ✓ Thanks! We&apos;ll be in touch within 24 hours.
+              </div>
+            ) : (
+              <button
+                type="submit"
+                className="btn btn-red"
+                disabled={status === 'loading'}
+                style={{ letterSpacing: '0.18em', fontSize: 13, padding: '20px', opacity: status === 'loading' ? 0.6 : 1 }}
+              >
+                {status === 'loading' ? 'SENDING...' : 'SUBMIT MY REQUEST'}
+              </button>
+            )}
+            {status === 'error' && (
+              <p style={{ color: '#dc2626', fontSize: 13, marginTop: 8 }}>Something went wrong. Please try again or call us directly.</p>
+            )}
           </form>
         </div>
       </div>

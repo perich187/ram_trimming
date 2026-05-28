@@ -5,6 +5,7 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
+import { FormSubmissions } from './collections/FormSubmissions'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Portfolio } from './collections/Portfolio'
@@ -93,6 +94,7 @@ export default buildConfig({
     Users,
     Services,
     Portfolio,
+    FormSubmissions,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [

@@ -16,10 +16,26 @@ export function ContactForm({ heading, subtext }: Props) {
     service: 'Marine',
     details: '',
   })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Thank you! We'll get back to you within 24 hours.")
+    setStatus('loading')
+    try {
+      const res = await fetch('/next/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'contact', name: form.name, email: form.email, phone: form.phone, service: form.service, message: form.details }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', phone: '', service: 'Marine', details: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -141,21 +157,32 @@ export function ContactForm({ heading, subtext }: Props) {
           />
         </div>
         <div style={{ gridColumn: 'span 2', paddingTop: 16 }}>
-          <button
-            type="submit"
-            className="btn btn-red"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 12,
-              fontSize: 13,
-              letterSpacing: '0.15em',
-            }}
-          >
-            <span>Submit Request</span>
-            <span className="material-symbols-outlined">send</span>
-          </button>
+          {status === 'success' ? (
+            <div style={{ padding: '20px', background: '#f0fdf4', border: '1px solid #86efac', color: '#166534', fontFamily: 'var(--rt-font-mono)', fontSize: 13, letterSpacing: '0.05em' }}>
+              ✓ Thank you! We&apos;ll get back to you within 24 hours.
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="btn btn-red"
+              disabled={status === 'loading'}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 12,
+                fontSize: 13,
+                letterSpacing: '0.15em',
+                opacity: status === 'loading' ? 0.6 : 1,
+              }}
+            >
+              <span>{status === 'loading' ? 'SENDING...' : 'Submit Request'}</span>
+              {status !== 'loading' && <span className="material-symbols-outlined">send</span>}
+            </button>
+          )}
+          {status === 'error' && (
+            <p style={{ color: '#dc2626', fontSize: 13, marginTop: 8 }}>Something went wrong. Please try again or call us directly.</p>
+          )}
         </div>
       </form>
 
