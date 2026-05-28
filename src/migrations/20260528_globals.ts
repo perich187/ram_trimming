@@ -12,7 +12,31 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
     ALTER TABLE "services" ADD COLUMN IF NOT EXISTS "image_id" integer;
     ALTER TABLE "portfolio" ADD COLUMN IF NOT EXISTS "tag" varchar;
 
-    -- ── homepage_content (table already exists; create missing array table) ──
+    -- ── homepage_content ──────────────────────────────────────────────────────
+    CREATE TABLE IF NOT EXISTS "homepage_content" (
+      "id"                  serial PRIMARY KEY NOT NULL,
+      "hero_tagline"        varchar,
+      "hero_heading"        varchar,
+      "hero_subtext"        varchar,
+      "hero_image_id"       integer,
+      "about_badge"         varchar,
+      "about_heading"       varchar,
+      "about_description"   varchar,
+      "about_stat1_number"  varchar,
+      "about_stat1_label"   varchar,
+      "about_stat2_number"  varchar,
+      "about_stat2_label"   varchar,
+      "about_image_id"      integer,
+      "services_heading"    varchar,
+      "why_choose_heading"  varchar,
+      "quote_form_heading"  varchar,
+      "quote_form_subtext"  varchar,
+      "closing_heading"     varchar,
+      "closing_caption"     varchar,
+      "closing_image_id"    integer,
+      "updated_at"          timestamp(3) with time zone DEFAULT now() NOT NULL,
+      "created_at"          timestamp(3) with time zone DEFAULT now() NOT NULL
+    );
     CREATE TABLE IF NOT EXISTS "homepage_content_why_choose_items" (
       "_order"     integer NOT NULL,
       "_parent_id" integer NOT NULL,
@@ -118,6 +142,30 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
 
     -- ── Foreign keys (idempotent via DO blocks) ───────────────────────────────
     DO $$ BEGIN
+      IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'homepage_content_hero_image_id_media_id_fk') THEN
+        ALTER TABLE "homepage_content"
+          ADD CONSTRAINT "homepage_content_hero_image_id_media_id_fk"
+          FOREIGN KEY ("hero_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+      END IF;
+    END $$;
+
+    DO $$ BEGIN
+      IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'homepage_content_about_image_id_media_id_fk') THEN
+        ALTER TABLE "homepage_content"
+          ADD CONSTRAINT "homepage_content_about_image_id_media_id_fk"
+          FOREIGN KEY ("about_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+      END IF;
+    END $$;
+
+    DO $$ BEGIN
+      IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'homepage_content_closing_image_id_media_id_fk') THEN
+        ALTER TABLE "homepage_content"
+          ADD CONSTRAINT "homepage_content_closing_image_id_media_id_fk"
+          FOREIGN KEY ("closing_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+      END IF;
+    END $$;
+
+    DO $$ BEGIN
       IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'homepage_content_why_choose_items_parent_id_fk') THEN
         ALTER TABLE "homepage_content_why_choose_items"
           ADD CONSTRAINT "homepage_content_why_choose_items_parent_id_fk"
@@ -162,6 +210,7 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
 export async function down({ db }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
     DROP TABLE IF EXISTS "homepage_content_why_choose_items";
+    DROP TABLE IF EXISTS "homepage_content";
     DROP TABLE IF EXISTS "about_content_values_items";
     DROP TABLE IF EXISTS "about_content";
     DROP TABLE IF EXISTS "services_content_sections";
