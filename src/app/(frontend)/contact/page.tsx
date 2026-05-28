@@ -27,8 +27,8 @@ export default async function ContactPage() {
     "Expert marine and motor trimming in Perth. Let's discuss your custom project, from luxury yacht interiors to vintage vehicle restorations."
   const heroBg = (cms.hero?.image as any)?.url || CONTACT_HERO
 
-  const address = cms.info?.address || 'Fremantle, Western Australia'
-  const phone = cms.info?.phone || '(08) 9581 8180'
+  const address = cms.info?.address || 'Fremantle, WA 6160'
+  const phone = cms.info?.phone || '0435 929 441'
   const email = cms.info?.email || 'rhys@ramstrimming.com.au'
   const hours =
     cms.info?.hours && cms.info.hours.length > 0 ? cms.info.hours : DEFAULT_HOURS

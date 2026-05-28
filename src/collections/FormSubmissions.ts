@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 export const FormSubmissions: CollectionConfig = {
-  slug: 'form-submissions',
+  slug: 'enquiries',
   admin: {
     group: 'Enquiries',
     useAsTitle: 'email',

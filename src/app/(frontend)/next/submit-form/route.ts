@@ -11,7 +11,7 @@ export async function POST(req: Request): Promise<Response> {
 
     const payload = await getPayload({ config })
     await payload.create({
-      collection: 'form-submissions',
+      collection: 'enquiries',
       overrideAccess: true,
       data: { source, name, email, phone: phone || '', service: service || '', message: message || '' },
     })

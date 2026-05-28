@@ -76,68 +76,63 @@ export default async function AboutPage() {
     'Contact us today for a technical consultation and quote on your next industrial or marine textile project.'
 
   return (
-    <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingBottom: 96 }}>
-
-      {/* ── Hero Section ── */}
+    <>
+      {/* ── Full-width Dark Banner Hero ── */}
       <header
         style={{
-          display: 'grid',
-          gridTemplateColumns: '7fr 5fr',
-          gap: 24,
-          marginBottom: 96,
+          position: 'relative',
+          height: '60vh',
+          minHeight: 380,
+          display: 'flex',
+          alignItems: 'center',
+          paddingTop: 96,
+          overflow: 'hidden',
           marginTop: 'var(--rt-nav-h)',
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <span
-            className="caps"
-            style={{ color: 'var(--rt-black)', marginBottom: 16, letterSpacing: '0.16em' }}
-          >
-            {heroBadge}
-          </span>
-          <AnimatedHeading
-            as="h1"
-            delay={0.2}
-            style={{
-              fontFamily: 'var(--rt-font-display)',
-              fontSize: 'clamp(32px,4vw,48px)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              marginBottom: 32,
-              color: 'var(--rt-black)',
-            }}
-          >
-            {heroHeading}
-          </AnimatedHeading>
-          <AnimatedText delay={0.5} style={{ fontSize: 18, lineHeight: 1.6, color: '#5d5e66', maxWidth: 600 }}>
-            {heroDescription}
-          </AnimatedText>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1 }} />
+          <img
+            src={heroImage}
+            alt="Ram's Trimming Workshop"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </div>
-        <div>
+        <div style={{ position: 'relative', zIndex: 2, padding: '0 64px' }}>
           <div
             style={{
-              border: '2px solid var(--rt-black)',
-              overflow: 'hidden',
-              boxShadow: '4px 4px 0 0 var(--rt-black)',
-              aspectRatio: '1 / 1',
+              background: 'rgba(0,0,0,0.9)',
+              padding: 40,
+              maxWidth: 560,
+              borderLeft: '8px solid #7e7576',
             }}
           >
-            <img
-              src={heroImage}
-              alt="Industrial Workshop"
-              className="about-hero-img"
+            <span className="caps" style={{ color: '#7e7576', marginBottom: 12, display: 'block', letterSpacing: '0.16em' }}>
+              {heroBadge}
+            </span>
+            <AnimatedHeading
+              as="h1"
+              delay={0.2}
               style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                filter: 'grayscale(100%)',
-                transition: 'filter 0.7s ease',
+                fontFamily: 'var(--rt-font-display)',
+                fontSize: 'clamp(32px,4vw,48px)',
+                fontWeight: 700,
+                color: 'var(--rt-white)',
+                marginBottom: 16,
+                lineHeight: 1.15,
+                letterSpacing: '-0.02em',
               }}
-            />
+            >
+              {heroHeading}
+            </AnimatedHeading>
+            <AnimatedText delay={0.45} style={{ fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
+              {heroDescription}
+            </AnimatedText>
           </div>
         </div>
       </header>
+
+    <main style={{ maxWidth: 1280, margin: '0 auto', paddingLeft: 40, paddingRight: 40, paddingBottom: 96 }}>
 
       {/* ── Stats Section ── */}
       <section
@@ -146,6 +141,7 @@ export default async function AboutPage() {
           gridTemplateColumns: '1fr 1fr',
           border: '2px solid var(--rt-black)',
           marginBottom: 96,
+          marginTop: 96,
         }}
       >
         <div
@@ -299,7 +295,6 @@ export default async function AboutPage() {
               height: 192,
               border: '2px solid var(--rt-black)',
               overflow: 'hidden',
-              filter: 'grayscale(100%) contrast(1.25)',
             }}
           >
             <img
@@ -416,10 +411,8 @@ export default async function AboutPage() {
       </section>
 
       <style>{`
-        .about-hero-img:hover { filter: grayscale(0%) !important; }
         @media(max-width:900px) {
           main { padding-left:16px !important; padding-right:16px !important; }
-          header[style*="7fr"] { grid-template-columns:1fr !important; }
           section[style*="repeat(12"] { grid-template-columns:1fr !important; }
           section[style*="repeat(12"] > div { grid-column: span 1 !important; }
           section[style*="repeat(3, 1fr)"] { grid-template-columns:1fr !important; }
@@ -428,6 +421,9 @@ export default async function AboutPage() {
           section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] { grid-template-columns:1fr !important; }
           section[style*="grid-template-columns: 1fr 1fr"][style*="border: 2px"] > div:first-child { border-right:none !important; border-bottom:2px solid var(--rt-black); }
         }
+        @media(max-width:768px) {
+          header { padding-left:16px !important; padding-right:16px !important; }
+        }
       `}</style>
 
       {/* FAB */}
@@ -435,5 +431,6 @@ export default async function AboutPage() {
         <span className="material-symbols-outlined">mail</span>
       </a>
     </main>
+    </>
   )
 }

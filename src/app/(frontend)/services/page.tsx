@@ -129,47 +129,39 @@ export default async function ServicesPage() {
               style={{ width: '100%', height: 400, objectFit: 'cover', transition: 'transform 0.7s' }}
             />
             <div style={{ padding: 32 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <div>
-                  <span className="caps" style={{ color: '#7e7576' }}>PRIMARY SERVICE</span>
-                  <AnimatedHeading
-                    as="h3"
-                    style={{
-                      fontFamily: 'var(--rt-font-display)',
-                      fontSize: 32,
-                      fontWeight: 700,
-                      marginTop: 8,
-                    }}
-                  >
-                    Custom Marine Upholstery
-                  </AnimatedHeading>
-                </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
+                <span className="caps" style={{ color: '#7e7576' }}>MARINE SERVICES</span>
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'rgba(0,0,0,0.15)' }}>
                   directions_boat
                 </span>
               </div>
-              <AnimatedText style={{ marginTop: 16, color: '#5d5e66', maxWidth: 560, fontSize: 16, lineHeight: 1.6 }}>
-                We provide comprehensive marine trimming solutions using high-grade UV-resistant
-                materials and foams designed for the Australian maritime environment.
-              </AnimatedText>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 32 }}>
-                {['Boat Covers', 'Upholstery', 'Bimini Tops', 'Clears'].map((item) => (
-                  <div
-                    key={item}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 12,
-                      borderLeft: '2px solid var(--rt-black)',
-                      paddingLeft: 16,
-                    }}
-                  >
-                    <span className="material-symbols-outlined" style={{ color: '#7e7576', fontSize: 20 }}>
-                      check_circle
-                    </span>
-                    <span style={{ fontWeight: 700, fontSize: 15 }}>{item}</span>
-                  </div>
-                ))}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+                <div>
+                  <AnimatedHeading as="h3" style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}>
+                    Boat Covers
+                  </AnimatedHeading>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {['UV-resistant materials', 'Weatherproof construction', 'Trailerable options available', 'Built to handle WA conditions'].map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: '#5d5e66' }}>
+                        <span style={{ display: 'inline-block', width: 6, height: 6, background: '#7e7576', flexShrink: 0 }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <AnimatedHeading as="h3" style={{ fontFamily: 'var(--rt-font-display)', fontSize: 20, fontWeight: 700, marginBottom: 16 }}>
+                    Boat Upholstery
+                  </AnimatedHeading>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {['Foam replacement & seat rebuilds', 'Marine vinyl finishes', 'Custom designs', 'Clean professional finish'].map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: '#5d5e66' }}>
+                        <span style={{ display: 'inline-block', width: 6, height: 6, background: '#7e7576', flexShrink: 0 }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -194,10 +186,10 @@ export default async function ServicesPage() {
                 as="h3"
                 style={{ fontFamily: 'var(--rt-font-display)', fontSize: 24, fontWeight: 700, marginBottom: 16 }}
               >
-                Deck &amp; Canopy Care
+                Bimini Tops
               </AnimatedHeading>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15, opacity: 0.9 }}>
-                {['Sun-decks & Duckbill repairs', 'Marine-grade carpets', 'Specialized canopy frames', 'Storm-proof enclosures'].map(
+                {['Strong stainless or alloy frames', 'UV-stable fabrics', 'Built for strength and longevity', 'Custom sizing for perfect fit'].map(
                   (item) => (
                     <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <span

@@ -158,8 +158,8 @@ export async function GET(req: Request): Promise<Response> {
             "Expert marine and motor trimming in Perth. Let's discuss your custom project, from luxury yacht interiors to vintage vehicle restorations.",
         },
         info: {
-          address: 'Fremantle, Western Australia',
-          phone: '(08) 9581 8180',
+          address: 'Fremantle, WA 6160',
+          phone: '0435 929 441',
           email: 'rhys@ramstrimming.com.au',
           hours: [
             { day: 'Monday - Friday', time: '8:00 AM - 4:00 PM' },
