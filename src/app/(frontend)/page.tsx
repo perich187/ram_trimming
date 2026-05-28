@@ -326,8 +326,15 @@ export default async function HomePage() {
                   </AnimatedHeading>
                 </div>
                 {svc.description && (
-                  <p style={{ color: '#5d5e66', fontSize: 14, lineHeight: 1.6 }}>{svc.description}</p>
+                  <p style={{ color: '#5d5e66', fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>{svc.description}</p>
                 )}
+                <Link
+                  href="/services"
+                  className="btn btn-outline"
+                  style={{ fontSize: 11, letterSpacing: '0.12em', padding: '10px 20px' }}
+                >
+                  LEARN MORE
+                </Link>
               </div>
             ))}
           </div>
