@@ -174,7 +174,46 @@ export async function GET(req: Request): Promise<Response> {
       },
     })
 
-    return Response.json({ ok: true, message: 'All page globals seeded successfully.' })
+    // ── Services collection ───────────────────────────────────────────────────
+    // Only seed if no services exist yet
+    const existing = await payload.find({ collection: 'services', limit: 1 })
+    if (existing.totalDocs === 0) {
+      const serviceData = [
+        {
+          title: 'Marine Trimming',
+          category: 'marine' as const,
+          icon: 'directions_boat',
+          description: 'Custom marine upholstery, biminis, covers, and full boat interior trimming using UV-resistant, waterproof materials built for WA conditions.',
+          order: 1,
+        },
+        {
+          title: 'Industrial Textiles',
+          category: 'industrial' as const,
+          icon: 'factory',
+          description: 'Heavy-duty PVC, canvas, and synthetic fabric solutions for mining, construction, and industrial applications. Mine-spec quality guaranteed.',
+          order: 2,
+        },
+        {
+          title: 'Custom Covers',
+          category: 'custom' as const,
+          icon: 'deployed_code',
+          description: 'Precision-fitted covers for boats, equipment, vehicles, and machinery using premium WeatherMax and Sunbrella fabrics.',
+          order: 3,
+        },
+        {
+          title: 'Motor Trimming',
+          category: 'motor' as const,
+          icon: 'directions_car',
+          description: 'Automotive interior restoration and custom upholstery for cars, trucks, and 4WDs. Leather, vinyl, and fabric options available.',
+          order: 4,
+        },
+      ]
+      for (const svc of serviceData) {
+        await payload.create({ collection: 'services', overrideAccess: true, data: svc })
+      }
+    }
+
+    return Response.json({ ok: true, message: 'All page globals and services seeded successfully.' })
   } catch (err) {
     payload.logger.error({ err, message: 'Error seeding globals' })
     return new Response(`Error seeding globals: ${err instanceof Error ? err.message : String(err)}`, { status: 500 })
