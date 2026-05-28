@@ -174,6 +174,96 @@ export async function GET(req: Request): Promise<Response> {
       },
     })
 
+    // ── Forms collection ─────────────────────────────────────────────────────
+    const existingForms = await payload.find({
+      collection: 'forms',
+      where: { title: { in: ['Home Quote Form', 'Contact Form'] } },
+      limit: 10,
+      overrideAccess: true,
+    })
+    const existingFormTitles = new Set(existingForms.docs.map((f: any) => f.title))
+
+    const confirmMsg = (text: string) => ({
+      root: {
+        type: 'root',
+        children: [
+          {
+            type: 'paragraph',
+            version: 1,
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            children: [{ type: 'text', text, version: 1, format: 0, mode: 'normal', style: '', detail: 0 }],
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
+    })
+
+    if (!existingFormTitles.has('Home Quote Form')) {
+      await payload.create({
+        collection: 'forms',
+        overrideAccess: true,
+        data: {
+          title: 'Home Quote Form',
+          submitButtonLabel: 'SUBMIT MY REQUEST',
+          fields: [
+            { blockType: 'text', name: 'name', label: 'Full Name', required: true, width: 50 },
+            { blockType: 'email', name: 'email', label: 'Email Address', required: true, width: 50 },
+            {
+              blockType: 'select',
+              name: 'service',
+              label: 'Service Type',
+              options: [
+                { label: 'Marine Trimming', value: 'Marine Trimming' },
+                { label: 'Motor Body Trimming', value: 'Motor Body Trimming' },
+                { label: 'Custom Upholstery', value: 'Custom Upholstery' },
+                { label: 'Repairs & Maintenance', value: 'Repairs & Maintenance' },
+              ],
+            },
+            { blockType: 'textarea', name: 'message', label: 'Project Details' },
+          ],
+          confirmationType: 'message',
+          confirmationMessage: confirmMsg("Thanks! We'll be in touch within 24 hours."),
+          emails: [],
+        } as any,
+      })
+    }
+
+    if (!existingFormTitles.has('Contact Form')) {
+      await payload.create({
+        collection: 'forms',
+        overrideAccess: true,
+        data: {
+          title: 'Contact Form',
+          submitButtonLabel: 'Submit Request',
+          fields: [
+            { blockType: 'text', name: 'name', label: 'Full Name', required: true, width: 50 },
+            { blockType: 'email', name: 'email', label: 'Email Address', required: true, width: 50 },
+            { blockType: 'text', name: 'phone', label: 'Phone Number', width: 50 },
+            {
+              blockType: 'select',
+              name: 'service',
+              label: 'Type of Work',
+              width: 50,
+              options: [
+                { label: 'Marine', value: 'Marine' },
+                { label: 'Industrial', value: 'Industrial' },
+                { label: 'Custom', value: 'Custom' },
+              ],
+            },
+            { blockType: 'textarea', name: 'message', label: 'Project Details' },
+          ],
+          confirmationType: 'message',
+          confirmationMessage: confirmMsg("Thank you! We'll get back to you within 24 hours."),
+          emails: [],
+        } as any,
+      })
+    }
+
     // ── Services collection ───────────────────────────────────────────────────
     // Only seed if no services exist yet
     const existing = await payload.find({ collection: 'services', limit: 1 })
