@@ -42,12 +42,6 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     staticDir: path.resolve(dirname, '../../public/media'),
-    adminThumbnail: 'thumbnail',
-    focalPoint: true,
-    imageSizes: [
-      { name: 'thumbnail', width: 400 },
-      { name: 'card', width: 800 },
-      { name: 'large', width: 1600 },
-    ],
+    focalPoint: false,
   },
 }
