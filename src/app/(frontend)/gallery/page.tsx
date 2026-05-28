@@ -43,6 +43,7 @@ export default async function GalleryPage() {
     <>
       {/* ── Dark Banner Hero ── */}
       <header
+        className="gallery-hero"
         style={{
           position: 'relative',
           height: '60vh',
@@ -94,7 +95,7 @@ export default async function GalleryPage() {
         </div>
         <style>{`
           @media(max-width:768px) {
-            header { padding: 0 16px !important; min-height: 300px !important; }
+            .gallery-hero { padding: 0 16px !important; min-height: 260px !important; }
           }
         `}</style>
       </header>
