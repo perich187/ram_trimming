@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react'
+import { AnimatedHeading } from '@/components/AnimatedHeading'
+import { AnimatedText } from '@/components/AnimatedText'
 
 const CONTACT_HERO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCNqVjPQf5nBZXz0VkePs25AOJ96V3-SXwQTtEjsqeJ6etto0M9MwPNOk7DrNC7yV7TBKOiH9mRIjG1Aojhkv2zNMU9dbyvzTR_QK7oi_NEwpPSgak9bw2_-fYDD4ywVQZD4h7cZB2e2rPvwFRnL3t07yf-kwB8n_YpqJSv5NEgSVQBJzlRkiovdlkHSpmafnhmL7uF97aq444FTVfJEqfd_wlTlP8EcRO-TxBPSa8tnGbZMSVD-OeB121rOOruSNQwrKdot-qUQoX0'
@@ -44,7 +46,9 @@ export default function ContactPage() {
           />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 600 }}>
-          <h1
+          <AnimatedHeading
+            as="h1"
+            delay={0.2}
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 'clamp(32px,4vw,48px)',
@@ -55,12 +59,12 @@ export default function ContactPage() {
             }}
           >
             Contact Our Workshop
-          </h1>
+          </AnimatedHeading>
           <div style={{ height: 4, width: 96, background: 'var(--rt-white)', marginBottom: 24 }} />
-          <p style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>
+          <AnimatedText delay={0.45} style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>
             Expert marine and motor trimming in Perth. Let&apos;s discuss your custom project, from
             luxury yacht interiors to vintage vehicle restorations.
-          </p>
+          </AnimatedText>
         </div>
       </section>
 
@@ -76,7 +80,8 @@ export default function ContactPage() {
         {/* Left: Contact Info */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ marginBottom: 48 }}>
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 32,
@@ -87,7 +92,7 @@ export default function ContactPage() {
               }}
             >
               Visit Us
-            </h2>
+            </AnimatedHeading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--rt-black)' }}>
@@ -207,7 +212,8 @@ export default function ContactPage() {
               boxShadow: '0 20px 40px -10px rgba(0,0,0,0.05)',
             }}
           >
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 32,
@@ -218,10 +224,10 @@ export default function ContactPage() {
               }}
             >
               Request a Quote
-            </h2>
-            <p style={{ fontSize: 16, color: '#4c4546', marginBottom: 32, lineHeight: 1.5 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 16, color: '#4c4546', marginBottom: 32, lineHeight: 1.5 }}>
               Tell us about your project requirements for a detailed professional estimate.
-            </p>
+            </AnimatedText>
             <form
               onSubmit={handleSubmit}
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}

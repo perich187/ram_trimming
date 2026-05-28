@@ -21,11 +21,11 @@ export function AnimatedHeading({ children, className, style, as: Tag = 'h2', de
       ref={ref}
       className={className}
       style={{
-        ...style,
         display: 'flex',
         flexWrap: 'wrap',
         columnGap: '0.28em',
         rowGap: 0,
+        ...style,
       }}
     >
       {words.map((word, i) => (

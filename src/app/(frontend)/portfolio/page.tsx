@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { AnimatedHeading } from '@/components/AnimatedHeading'
+import { AnimatedText } from '@/components/AnimatedText'
 
 const portfolioItems = [
   {
@@ -41,7 +43,7 @@ const portfolioItems = [
     tag: 'Motor Trimming',
     title: 'Custom Truck Cabin',
     desc: 'Leather-wrapped dashboard and custom headliner with integrated lighting.',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAMaK5yA7c4jB5fl6jTaoYMPdydKGo_xHtHa7TCi2XjOe197HzIwnVeQ2bTwbiUVgRKsmQ1G1LqGVcAIgASTNPGQ8AuRwn9k6-H-AUgYmx_DHvphBZ5uBAFxR9A03zCWW6XTEg-ZfCZ_lOpyBpelsZlN36VJ3hJfP808-AUk8q1GOuXFYmeABet7B0w7FfTOhFUC5JkbKp2OUn4y4cPTyJaf2ltJNChYwLk-F9BpBGaBKwnv9Vda5Y0gYyk4mOOzIQqAjHc6xUvnvZC',
+    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAMaK5yA7c4jB5fl6jTaoYMPdydKGo_xHtHa7TCi2XjOe197HzIwnVeQ2bTwbiUVgRKsmQ1G1LqGVcAIgASTNPGQ8AuRwn9k6-H-AUgYmeABet7B0w7FfTOhFUC5JkbKp2OUn4y4cPTyJaf2ltJNChYwLk-F9BpBGaBKwnv9Vda5Y0gYyk4mOOzIQqAjHc6xUvnvZC',
   },
   {
     id: 6,
@@ -77,7 +79,9 @@ export default function PortfolioPage() {
             <span style={{ display: 'block', height: 4, width: 48, background: 'var(--rt-black)' }} />
             <span className="caps" style={{ color: 'var(--rt-black)' }}>Expertise &amp; Durability</span>
           </div>
-          <h1
+          <AnimatedHeading
+            as="h1"
+            delay={0.2}
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 'clamp(32px,5vw,48px)',
@@ -89,8 +93,9 @@ export default function PortfolioPage() {
             }}
           >
             Our Craftsmanship in Action
-          </h1>
-          <p
+          </AnimatedHeading>
+          <AnimatedText
+            delay={0.45}
             style={{
               fontSize: 18,
               lineHeight: 1.6,
@@ -101,7 +106,7 @@ export default function PortfolioPage() {
             Explore a curated selection of our finest marine and motor trimming projects. From
             luxury yachts to classic automotive restorations, we deliver uncompromising quality
             using marine-grade materials.
-          </p>
+          </AnimatedText>
         </div>
       </header>
 
@@ -204,7 +209,8 @@ export default function PortfolioPage() {
                   >
                     {item.tag}
                   </span>
-                  <h3
+                  <AnimatedHeading
+                    as="h3"
                     style={{
                       fontFamily: 'var(--rt-font-display)',
                       fontSize: 20,
@@ -213,8 +219,10 @@ export default function PortfolioPage() {
                     }}
                   >
                     {item.title}
-                  </h3>
-                  <p style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.5 }}>{item.desc}</p>
+                  </AnimatedHeading>
+                  <AnimatedText style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.5 }}>
+                    {item.desc}
+                  </AnimatedText>
                 </div>
               </div>
             </article>
@@ -251,7 +259,8 @@ export default function PortfolioPage() {
             </span>
           </div>
           <div style={{ position: 'relative', zIndex: 1, maxWidth: 560 }}>
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 'clamp(28px,4vw,40px)',
@@ -261,11 +270,11 @@ export default function PortfolioPage() {
               }}
             >
               Ready to start your custom project?
-            </h2>
-            <p style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.8, marginBottom: 32 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.8, marginBottom: 32 }}>
               Whether it&apos;s a small repair or a full interior overhaul, we bring decades of
               expertise to every stitch.
-            </p>
+            </AnimatedText>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
               <Link
                 href="/contact"

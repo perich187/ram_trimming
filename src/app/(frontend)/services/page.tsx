@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link'
+import { AnimatedHeading } from '@/components/AnimatedHeading'
+import { AnimatedText } from '@/components/AnimatedText'
 
 const SERVICES_HERO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuApt-7-KRPnp-5_rXRSG-HQwuKDQYYQulpBnreR_y8GgHREEd7oIDemu6tANWJ5-vfXY8XSq0jh6q9UGezabS-A7gfKMpqJuTPV1RK3SVG8gAskQD5SEND4rnS2pxOuuGiQurZoyS8Ikt53YDbXKU8A4RNc2UUqWRcLyKEejZlC_PXcOiGQESzbvy2xADW_Q0_POudpsgylTV3XxJ61gm50S7FAgGs-d1Pqjt3HpCn_9phRMHfY8xLMXy0-JIG4pNEpaMvCIfZ8tjiY'
@@ -57,7 +59,9 @@ export default function ServicesPage() {
               borderLeft: '8px solid #7e7576',
             }}
           >
-            <h1
+            <AnimatedHeading
+              as="h1"
+              delay={0.2}
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 'clamp(32px,4vw,48px)',
@@ -69,11 +73,11 @@ export default function ServicesPage() {
               }}
             >
               Precision Craftsmanship
-            </h1>
-            <p style={{ fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
+            </AnimatedHeading>
+            <AnimatedText delay={0.45} style={{ fontSize: 18, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
               Expert marine, motor, and industrial trimming. Delivering professional-grade durability
               since 1987.
-            </p>
+            </AnimatedText>
           </div>
         </div>
       </header>
@@ -84,18 +88,19 @@ export default function ServicesPage() {
         style={{ padding: 'var(--rt-section-gap) 64px' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 32,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             01. Marine Trimming
-          </h2>
+          </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
             WATERPROOF EXCELLENCE
@@ -121,7 +126,8 @@ export default function ServicesPage() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
                   <span className="caps" style={{ color: '#7e7576' }}>PRIMARY SERVICE</span>
-                  <h3
+                  <AnimatedHeading
+                    as="h3"
                     style={{
                       fontFamily: 'var(--rt-font-display)',
                       fontSize: 32,
@@ -130,16 +136,16 @@ export default function ServicesPage() {
                     }}
                   >
                     Custom Marine Upholstery
-                  </h3>
+                  </AnimatedHeading>
                 </div>
                 <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'rgba(0,0,0,0.15)' }}>
                   directions_boat
                 </span>
               </div>
-              <p style={{ marginTop: 16, color: '#5d5e66', maxWidth: 560, fontSize: 16, lineHeight: 1.6 }}>
+              <AnimatedText style={{ marginTop: 16, color: '#5d5e66', maxWidth: 560, fontSize: 16, lineHeight: 1.6 }}>
                 We provide comprehensive marine trimming solutions using high-grade UV-resistant
                 materials and foams designed for the Australian maritime environment.
-              </p>
+              </AnimatedText>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 32 }}>
                 {['Boat Covers', 'Upholstery', 'Bimini Tops', 'Clears'].map((item) => (
                   <div
@@ -179,7 +185,8 @@ export default function ServicesPage() {
                 alt="Marine Upholstery"
                 style={{ width: '100%', height: 192, objectFit: 'cover', marginBottom: 24 }}
               />
-              <h3
+              <AnimatedHeading
+                as="h3"
                 style={{
                   fontFamily: 'var(--rt-font-display)',
                   fontSize: 24,
@@ -188,7 +195,7 @@ export default function ServicesPage() {
                 }}
               >
                 Deck &amp; Canopy Care
-              </h3>
+              </AnimatedHeading>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15, opacity: 0.9 }}>
                 {[
                   'Sun-decks & Duckbill repairs',
@@ -239,18 +246,19 @@ export default function ServicesPage() {
         style={{ padding: '80px 64px', background: '#f3f3f4' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 32,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             02. Industrial Textiles
-          </h2>
+          </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
             HEAVY DUTY SOLUTIONS
@@ -268,7 +276,8 @@ export default function ServicesPage() {
               justifyContent: 'center',
             }}
           >
-            <h3
+            <AnimatedHeading
+              as="h3"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 30,
@@ -277,11 +286,11 @@ export default function ServicesPage() {
               }}
             >
               Built for Performance
-            </h3>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', marginBottom: 32, lineHeight: 1.7 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', marginBottom: 32, lineHeight: 1.7 }}>
               Our industrial solutions are engineered to withstand the toughest conditions, from
               mining sites to large-scale agricultural operations.
-            </p>
+            </AnimatedText>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
                 { icon: 'engineering', label: 'Reinforced Stitching' },
@@ -316,7 +325,8 @@ export default function ServicesPage() {
               }}
             >
               <img src={MINING_IMG} alt="Mining Solutions" style={{ width: '100%', height: 160, objectFit: 'cover', marginBottom: 24 }} />
-              <h4
+              <AnimatedHeading
+                as="h4"
                 style={{
                   fontFamily: 'var(--rt-font-display)',
                   fontSize: 20,
@@ -325,10 +335,10 @@ export default function ServicesPage() {
                 }}
               >
                 Mining &amp; Ag Solutions
-              </h4>
-              <p style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
+              </AnimatedHeading>
+              <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
                 Specialized protective covers and barriers for heavy machinery and site infrastructure.
-              </p>
+              </AnimatedText>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600 }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: 'var(--rt-black)' }}>→</span> Mining Solutions
@@ -346,7 +356,8 @@ export default function ServicesPage() {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
               }}
             >
-              <h4
+              <AnimatedHeading
+                as="h4"
                 style={{
                   fontFamily: 'var(--rt-font-display)',
                   fontSize: 20,
@@ -355,10 +366,10 @@ export default function ServicesPage() {
                 }}
               >
                 Equipment Protection
-              </h4>
-              <p style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
+              </AnimatedHeading>
+              <AnimatedText style={{ color: '#5d5e66', fontSize: 14, marginBottom: 24, lineHeight: 1.6 }}>
                 Custom-fit protection for high-value industrial equipment and logistics.
-              </p>
+              </AnimatedText>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, fontWeight: 600, marginBottom: 24 }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: 'var(--rt-black)' }}>→</span> Equipment Covers
@@ -382,18 +393,19 @@ export default function ServicesPage() {
         style={{ padding: 'var(--rt-section-gap) 64px' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 32,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             03. Custom Covers
-          </h2>
+          </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: 'var(--rt-black)' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
             BESPOKE PROTECTION
@@ -405,7 +417,8 @@ export default function ServicesPage() {
             <span className="material-symbols-outlined" style={{ fontSize: 48, color: '#7e7576', marginBottom: 16, display: 'block' }}>
               home_repair_service
             </span>
-            <h3
+            <AnimatedHeading
+              as="h3"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 24,
@@ -414,10 +427,10 @@ export default function ServicesPage() {
               }}
             >
               Outdoor &amp; Travel
-            </h3>
-            <p style={{ color: '#5d5e66', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ color: '#5d5e66', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
               Bespoke covers designed to protect your lifestyle investments from the elements.
-            </p>
+            </AnimatedText>
             <div style={{ marginTop: 'auto', paddingTop: 24 }}>
               <img src={TRAILER_IMG} alt="Trailer Cover" style={{ width: '100%', height: 128, objectFit: 'cover' }} />
             </div>
@@ -455,8 +468,15 @@ export default function ServicesPage() {
               >
                 {item.num}
               </div>
-              <h4 style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>{item.title}</h4>
-              <p style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.6 }}>{item.desc}</p>
+              <AnimatedHeading
+                as="h4"
+                style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}
+              >
+                {item.title}
+              </AnimatedHeading>
+              <AnimatedText style={{ fontSize: 14, color: '#5d5e66', lineHeight: 1.6 }}>
+                {item.desc}
+              </AnimatedText>
             </div>
           ))}
         </div>
@@ -468,18 +488,19 @@ export default function ServicesPage() {
         style={{ padding: '80px 64px' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 48 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 32,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
             04. Motor Trimming
-          </h2>
+          </AnimatedHeading>
           <div style={{ flexGrow: 1, height: 4, background: '#7e7576' }} />
           <span className="caps" style={{ color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>
             AUTOMOTIVE CRAFT
@@ -532,7 +553,8 @@ export default function ServicesPage() {
                 className="motor-card-inner"
               >
                 <h4 className="caps" style={{ color: 'var(--rt-black)', marginBottom: 8 }}>{svc.tag}</h4>
-                <h3
+                <AnimatedHeading
+                  as="h3"
                   style={{
                     fontFamily: 'var(--rt-font-display)',
                     fontSize: 24,
@@ -541,8 +563,10 @@ export default function ServicesPage() {
                   }}
                 >
                   {svc.title}
-                </h3>
-                <p style={{ color: '#5d5e66', fontSize: 15, lineHeight: 1.6, marginBottom: 24 }}>{svc.desc}</p>
+                </AnimatedHeading>
+                <AnimatedText style={{ color: '#5d5e66', fontSize: 15, lineHeight: 1.6, marginBottom: 24 }}>
+                  {svc.desc}
+                </AnimatedText>
                 <hr style={{ borderTop: '2px solid #e8e8e9', marginBottom: 16 }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="caps" style={{ color: 'var(--rt-black)', fontSize: 10 }}>{svc.detail}</span>
@@ -593,7 +617,8 @@ export default function ServicesPage() {
             }}
           >
             <div>
-              <h2
+              <AnimatedHeading
+                as="h2"
                 style={{
                   fontFamily: 'var(--rt-font-display)',
                   fontSize: 'clamp(32px,4vw,48px)',
@@ -604,11 +629,11 @@ export default function ServicesPage() {
                 }}
               >
                 Ready to start your project?
-              </h2>
-              <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', marginBottom: 32, maxWidth: 440, lineHeight: 1.6 }}>
+              </AnimatedHeading>
+              <AnimatedText style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', marginBottom: 32, maxWidth: 440, lineHeight: 1.6 }}>
                 Whether it&apos;s a luxury yacht, industrial equipment, or custom outdoor protection,
                 we bring the same level of industrial expertise.
-              </p>
+              </AnimatedText>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                 <Link
                   href="/contact"

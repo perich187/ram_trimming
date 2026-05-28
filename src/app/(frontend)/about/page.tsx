@@ -1,5 +1,7 @@
 'use client'
 import Link from 'next/link'
+import { AnimatedHeading } from '@/components/AnimatedHeading'
+import { AnimatedText } from '@/components/AnimatedText'
 
 const WORKSHOP_HERO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDB-EieVgSsJnCgjpE4vPSEUM5oWow2YDyl6_7GFjSF4eP4w2R-nptI0339PoujoMYwHIoqTRNFptXMF_2om1HJQ3ZMYOeFMQwY9JQK2rzBnW6qai_veZOFfEBWF65IFrNilDmLauIaftKQXffzc3wSwjRqMl-2gpHStHgZRG8aPG8cTlMQzeA87HG3Xi6wieAjXZhvZk6uqyQQNwZoKekB1VYRv8ZQpdVUMToDbHsgqax4wV3uOEqxAaJC7zzCg6n0DERY8xNaynNk'
@@ -29,7 +31,9 @@ export default function AboutPage() {
           >
             Established Expertise
           </span>
-          <h1
+          <AnimatedHeading
+            as="h1"
+            delay={0.2}
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 'clamp(32px,4vw,48px)',
@@ -41,8 +45,9 @@ export default function AboutPage() {
             }}
           >
             Expertise, Durability, Quality.
-          </h1>
-          <p
+          </AnimatedHeading>
+          <AnimatedText
+            delay={0.5}
             style={{
               fontSize: 18,
               lineHeight: 1.6,
@@ -52,7 +57,7 @@ export default function AboutPage() {
           >
             At RAMS TRIMMING, we build hard-wearing, fit-for-purpose textile solutions designed to
             handle the harshest environments Australia can throw at them.
-          </p>
+          </AnimatedText>
         </div>
         <div>
           <div
@@ -158,7 +163,8 @@ export default function AboutPage() {
           }}
         >
           <div>
-            <h2
+            <AnimatedHeading
+              as="h2"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 32,
@@ -168,17 +174,17 @@ export default function AboutPage() {
               }}
             >
               Built for Australia
-            </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66', marginBottom: 24 }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66', marginBottom: 24 }}>
               From mine spec to marine and everything in between, we focus on durability, function,
               and clean workmanship. We understand that in the Australian outback or on the rough WA
               coast, gear failure isn&apos;t just an inconvenience—it&apos;s a critical risk.
-            </p>
-            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
+            </AnimatedText>
+            <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
               Our workshop is equipped with industrial-grade machinery capable of handling
               heavy-weight PVC, canvas, and high-performance synthetics. Every stitch is placed with
               structural integrity in mind.
-            </p>
+            </AnimatedText>
           </div>
           <div
             style={{
@@ -221,10 +227,10 @@ export default function AboutPage() {
             verified
           </span>
           <h3 className="caps" style={{ fontWeight: 700, marginBottom: 16 }}>No Compromise</h3>
-          <p style={{ fontSize: 16, lineHeight: 1.7, color: '#1a1c1d' }}>
+          <AnimatedText style={{ fontSize: 16, lineHeight: 1.7, color: '#1a1c1d' }}>
             We reject off-the-shelf compromises. Every project is a custom fabrication using
             industrial-grade materials tailored to your specific operational needs.
-          </p>
+          </AnimatedText>
         </div>
 
         {/* Identity Card */}
@@ -240,7 +246,8 @@ export default function AboutPage() {
           }}
         >
           <div style={{ flex: '0 0 50%' }}>
-            <h3
+            <AnimatedHeading
+              as="h3"
               style={{
                 fontFamily: 'var(--rt-font-display)',
                 fontSize: 32,
@@ -250,12 +257,12 @@ export default function AboutPage() {
               }}
             >
               WA Owned &amp; Operated
-            </h3>
-            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
+            </AnimatedHeading>
+            <AnimatedText style={{ fontSize: 16, lineHeight: 1.75, color: '#5d5e66' }}>
               Based in Western Australia, we are local specialists who know the conditions. Our
               reputation is built on decades of serving the community with honesty and technical
               precision.
-            </p>
+            </AnimatedText>
           </div>
           <div
             style={{
@@ -278,7 +285,8 @@ export default function AboutPage() {
       {/* ── Values Section ── */}
       <section style={{ borderTop: '2px solid var(--rt-black)', paddingTop: 64, marginBottom: 96 }}>
         <div style={{ marginBottom: 48 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 32,
@@ -287,7 +295,7 @@ export default function AboutPage() {
             }}
           >
             Our Core Values
-          </h2>
+          </AnimatedHeading>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
           {[
@@ -321,7 +329,9 @@ export default function AboutPage() {
                 <span>{val.num}</span>
                 <span>{val.label}</span>
               </div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: '#5d5e66' }}>{val.desc}</p>
+              <AnimatedText style={{ fontSize: 15, lineHeight: 1.7, color: '#5d5e66' }}>
+                {val.desc}
+              </AnimatedText>
             </div>
           ))}
         </div>
@@ -339,18 +349,20 @@ export default function AboutPage() {
         }}
       >
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <h2
+          <AnimatedHeading
+            as="h2"
             style={{
               fontFamily: 'var(--rt-font-display)',
               fontSize: 'clamp(32px,4vw,48px)',
               fontWeight: 700,
               color: 'var(--rt-white)',
               marginBottom: 32,
+              justifyContent: 'center',
             }}
           >
             Ready to start your project?
-          </h2>
-          <p
+          </AnimatedHeading>
+          <AnimatedText
             style={{
               fontSize: 18,
               lineHeight: 1.6,
@@ -363,7 +375,7 @@ export default function AboutPage() {
           >
             Contact us today for a technical consultation and quote on your next industrial or
             marine textile project.
-          </p>
+          </AnimatedText>
           <Link
             href="/contact"
             className="btn"
