@@ -18,6 +18,7 @@ const filters: Filter[] = [
   { key: 'all', label: 'All Work' },
   { key: 'marine', label: 'Marine' },
   { key: 'motor', label: 'Motor' },
+  { key: 'industrial', label: 'Industrial' },
   { key: 'special', label: 'Special Projects' },
 ]
 
