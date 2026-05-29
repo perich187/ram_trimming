@@ -2,7 +2,18 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
-import { ContactForm } from './ContactForm'
+import { PayloadForm, type PayloadFormDef } from '@/components/PayloadForm'
+
+const FALLBACK_CONTACT_FORM: PayloadFormDef = {
+  id: 'fallback-contact',
+  fields: [
+    { blockType: 'text', name: 'name', label: 'Full Name', required: true, width: 50, placeholder: 'John Doe' },
+    { blockType: 'email', name: 'email', label: 'Email Address', required: true, width: 50, placeholder: 'john@example.com' },
+    { blockType: 'text', name: 'phone', label: 'Phone Number', required: false, width: 50, placeholder: '0400 000 000' },
+    { blockType: 'select', name: 'service', label: 'Type of Work', required: false, width: 50, options: [{ label: 'Marine Trimming', value: 'Marine Trimming' }, { label: 'Motor Trimming', value: 'Motor Trimming' }, { label: 'Industrial Textiles', value: 'Industrial Textiles' }, { label: 'Custom Covers', value: 'Custom Covers' }] },
+    { blockType: 'textarea', name: 'message', label: 'Project Details', required: false, width: 100, placeholder: 'Describe the scope, materials, and any specific requirements...' },
+  ],
+}
 
 const CONTACT_HERO = '/images/marine-1.jpg'
 
@@ -36,6 +47,18 @@ export default async function ContactPage() {
   const formSubtext =
     cms.form?.subtext ||
     'Tell us about your project requirements for a detailed professional estimate.'
+
+  let contactForm: PayloadFormDef = FALLBACK_CONTACT_FORM
+  try {
+    const forms = await payload.find({
+      collection: 'forms',
+      where: { title: { equals: 'Contact Form' } },
+      limit: 1,
+      depth: 0,
+      overrideAccess: true,
+    })
+    if (forms.docs.length > 0) contactForm = forms.docs[0] as unknown as PayloadFormDef
+  } catch {}
 
   const phoneHref = `tel:${phone.replace(/[^0-9]/g, '')}`
 
@@ -184,9 +207,15 @@ export default async function ContactPage() {
           </div>
         </div>
 
-        {/* Right: Quote Form (client component) */}
-        <div>
-          <ContactForm heading={formHeading} subtext={formSubtext} />
+        {/* Right: Quote Form — driven by Payload form builder */}
+        <div className="contact-form-box" style={{ background: 'var(--rt-white)', padding: 48, border: '2px solid #cfc4c5', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.05)' }}>
+          <AnimatedHeading as="h2" style={{ fontFamily: 'var(--rt-font-display)', fontSize: 32, fontWeight: 700, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '-0.01em' }}>
+            {formHeading}
+          </AnimatedHeading>
+          <AnimatedText style={{ fontSize: 16, color: '#4c4546', marginBottom: 32, lineHeight: 1.5 }}>
+            {formSubtext}
+          </AnimatedText>
+          <PayloadForm form={contactForm} source="contact" layout="grid" submitLabel="SUBMIT REQUEST" />
         </div>
       </section>
 

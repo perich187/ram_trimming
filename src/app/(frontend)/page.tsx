@@ -4,6 +4,7 @@ import { getPayload } from 'payload'
 import { AnimatedHeading } from '@/components/AnimatedHeading'
 import { AnimatedText } from '@/components/AnimatedText'
 import { HomeQuoteForm } from './HomeQuoteForm'
+import type { PayloadFormDef } from '@/components/PayloadForm'
 
 const HERO_BG = '/images/hero.jpg'
 const CRAFTSMAN = '/images/marine-1.jpg'
@@ -70,6 +71,18 @@ export default async function HomePage() {
   const closingHeading = cms.closing?.heading || 'Precision on the Waves.'
   const closingCaption = cms.closing?.caption || 'CRAFTED FOR EXCELLENCE'
   const closingImage = (cms.closing?.image as any)?.url || CLOSING
+
+  let homeQuoteForm: PayloadFormDef | null = null
+  try {
+    const forms = await payload.find({
+      collection: 'forms',
+      where: { title: { equals: 'Home Quote Form' } },
+      limit: 1,
+      depth: 0,
+      overrideAccess: true,
+    })
+    if (forms.docs.length > 0) homeQuoteForm = forms.docs[0] as unknown as PayloadFormDef
+  } catch {}
 
   const cmsServiceItems = cms.services?.items && cms.services.items.length > 0
     ? cms.services.items.map((s: any) => ({
@@ -353,6 +366,7 @@ export default async function HomePage() {
         whyItems={whyItems}
         quoteHeading={quoteHeading}
         quoteSubtext={quoteSubtext}
+        payloadForm={homeQuoteForm}
       />
 
       {/* ── Closing Atmospheric Section ── */}

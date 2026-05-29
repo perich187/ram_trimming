@@ -10,7 +10,31 @@ const FROM_EMAIL = process.env.FROM_EMAIL || 'noreply@ramstrimming.com.au'
 
 export async function POST(req: Request): Promise<Response> {
   try {
-    const { source, name, email, phone, service, message } = await req.json()
+    const body = await req.json()
+    const { source } = body
+
+    // Support both formats:
+    // New (form-builder): { source, formId, fields: [{field, value}] }
+    // Old (direct):       { source, name, email, phone, service, message }
+    let name: string, email: string, phone: string, service: string, message: string
+    let formId: string | number | undefined
+
+    if (Array.isArray(body.fields)) {
+      formId = body.formId
+      const map: Record<string, string> = {}
+      for (const f of body.fields as { field: string; value: string }[]) map[f.field] = f.value
+      name    = map.name || ''
+      email   = map.email || ''
+      phone   = map.phone || ''
+      service = map.service || ''
+      message = map.message || ''
+    } else {
+      name    = body.name || ''
+      email   = body.email || ''
+      phone   = body.phone || ''
+      service = body.service || ''
+      message = body.message || ''
+    }
 
     if (!name || !email) {
       return Response.json({ ok: false, error: 'Name and email are required.' }, { status: 400 })
@@ -18,22 +42,27 @@ export async function POST(req: Request): Promise<Response> {
 
     const payload = await getPayload({ config })
 
-    // 1. Save to our enquiries collection
+    // 1. Save to enquiries collection
     await payload.create({
       collection: 'enquiries',
       overrideAccess: true,
       data: { source, name, email, phone: phone || '', service: service || '', message: message || '' },
     })
 
-    // 2. Also link to Payload form-builder submission so it shows in admin
-    const formTitle = source === 'home-quote' ? 'Home Quote Form' : 'Contact Form'
-    const forms = await payload.find({
-      collection: 'forms',
-      where: { title: { equals: formTitle } },
-      limit: 1,
-      overrideAccess: true,
-    })
-    if (forms.docs.length > 0) {
+    // 2. Link to Payload form-submissions
+    let resolvedFormId = formId
+    if (!resolvedFormId) {
+      const formTitle = source === 'home-quote' ? 'Home Quote Form' : 'Contact Form'
+      const forms = await payload.find({
+        collection: 'forms',
+        where: { title: { equals: formTitle } },
+        limit: 1,
+        overrideAccess: true,
+      })
+      if (forms.docs.length > 0) resolvedFormId = forms.docs[0].id
+    }
+
+    if (resolvedFormId) {
       const submissionData: { field: string; value: string }[] = [
         { field: 'name', value: name },
         { field: 'email', value: email },
@@ -44,11 +73,11 @@ export async function POST(req: Request): Promise<Response> {
       await payload.create({
         collection: 'form-submissions',
         overrideAccess: true,
-        data: { form: forms.docs[0].id, submissionData } as any,
+        data: { form: resolvedFormId, submissionData } as any,
       })
     }
 
-    // 3. Send email notification via Resend (only if API key is configured)
+    // 3. Email notification via Resend
     const resendKey = process.env.RESEND_API_KEY
     if (resendKey) {
       const resend = new Resend(resendKey)
