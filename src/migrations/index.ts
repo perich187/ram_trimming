@@ -6,6 +6,7 @@ import * as migration_20260529_rename_enquiries from './20260529_rename_enquirie
 import * as migration_20260530_service_cards from './20260530_service_cards';
 import * as migration_20260531_service_cards_extra from './20260531_service_cards_extra';
 import * as migration_20260531_portfolio_to_gallery from './20260531_portfolio_to_gallery';
+import * as migration_20260603_service_card_images from './20260603_service_card_images';
 
 export const migrations = [
   {
@@ -47,5 +48,10 @@ export const migrations = [
     up: migration_20260531_portfolio_to_gallery.up,
     down: migration_20260531_portfolio_to_gallery.down,
     name: '20260531_portfolio_to_gallery'
+  },
+  {
+    up: migration_20260603_service_card_images.up,
+    down: migration_20260603_service_card_images.down,
+    name: '20260603_service_card_images'
   },
 ];
