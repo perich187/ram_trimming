@@ -25,6 +25,22 @@ type Props = {
   confirmationText?: string
 }
 
+const PLACEHOLDERS: Record<string, string> = {
+  name: 'John Smith',
+  fullname: 'John Smith',
+  email: 'john@example.com',
+  phone: '0400 000 000',
+  message: 'Describe your project — model, size, materials, any special requirements...',
+  details: 'Describe the scope, materials, and any specific requirements...',
+  subject: 'How can we help?',
+}
+
+function getPlaceholder(field: FormField): string {
+  if ('placeholder' in field && field.placeholder) return field.placeholder
+  if ('name' in field) return PLACEHOLDERS[field.name.toLowerCase()] ?? ''
+  return ''
+}
+
 export function PayloadForm({
   form,
   source,
@@ -131,7 +147,7 @@ export function PayloadForm({
             className="form-textarea"
             required={field.required}
             rows={5}
-            placeholder={(field as any).placeholder || ''}
+            placeholder={getPlaceholder(field)}
             value={values[field.name] || ''}
             onChange={(e) => setValue(field.name, e.target.value)}
             style={{ minHeight: 100 }}
@@ -149,7 +165,7 @@ export function PayloadForm({
           className="form-input"
           type={field.blockType === 'email' ? 'email' : field.blockType === 'number' ? 'number' : 'text'}
           required={field.required}
-          placeholder={(field as any).placeholder || ''}
+          placeholder={getPlaceholder(field)}
           value={values[field.name] || ''}
           onChange={(e) => setValue(field.name, e.target.value)}
         />
