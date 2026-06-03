@@ -125,7 +125,7 @@ export async function POST(req: Request): Promise<Response> {
       }
     }
 
-    return Response.json({ ok: true, email: emailStatus })
+    return Response.json({ ok: true, email: emailStatus, debug: { from: FROM_EMAIL, to: NOTIFY_EMAILS } })
   } catch (err) {
     console.error('submit-form error:', err)
     return Response.json({ ok: false, error: String(err) }, { status: 500 })
