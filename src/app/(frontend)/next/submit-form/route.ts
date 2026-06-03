@@ -49,32 +49,38 @@ export async function POST(req: Request): Promise<Response> {
       data: { source, name, email, phone: phone || '', service: service || '', message: message || '' },
     })
 
-    // 2. Link to Payload form-submissions
-    let resolvedFormId = formId
-    if (!resolvedFormId) {
-      const formTitle = source === 'home-quote' ? 'Home Quote Form' : 'Contact Form'
-      const forms = await payload.find({
-        collection: 'forms',
-        where: { title: { equals: formTitle } },
-        limit: 1,
-        overrideAccess: true,
-      })
-      if (forms.docs.length > 0) resolvedFormId = forms.docs[0].id
-    }
+    // 2. Link to Payload form-submissions (best-effort — never fails the request)
+    try {
+      let resolvedFormId: string | number | undefined =
+        formId && !String(formId).startsWith('fallback') ? formId : undefined
 
-    if (resolvedFormId) {
-      const submissionData: { field: string; value: string }[] = [
-        { field: 'name', value: name },
-        { field: 'email', value: email },
-        ...(phone ? [{ field: 'phone', value: phone }] : []),
-        ...(service ? [{ field: 'service', value: service }] : []),
-        ...(message ? [{ field: 'message', value: message }] : []),
-      ]
-      await payload.create({
-        collection: 'form-submissions',
-        overrideAccess: true,
-        data: { form: resolvedFormId, submissionData } as any,
-      })
+      if (!resolvedFormId) {
+        const formTitle = source === 'home-quote' ? 'Home Quote Form' : 'Contact Form'
+        const forms = await payload.find({
+          collection: 'forms',
+          where: { title: { equals: formTitle } },
+          limit: 1,
+          overrideAccess: true,
+        })
+        if (forms.docs.length > 0) resolvedFormId = forms.docs[0].id
+      }
+
+      if (resolvedFormId) {
+        const submissionData: { field: string; value: string }[] = [
+          { field: 'name', value: name },
+          { field: 'email', value: email },
+          ...(phone ? [{ field: 'phone', value: phone }] : []),
+          ...(service ? [{ field: 'service', value: service }] : []),
+          ...(message ? [{ field: 'message', value: message }] : []),
+        ]
+        await payload.create({
+          collection: 'form-submissions',
+          overrideAccess: true,
+          data: { form: resolvedFormId, submissionData } as any,
+        })
+      }
+    } catch (linkErr) {
+      console.warn('form-submissions link failed (non-fatal):', linkErr)
     }
 
     // 3. Email notification via Resend
