@@ -68,6 +68,7 @@ export const ServicesContent: GlobalConfig = {
           type: 'group',
           label: 'White Card 1 (image on top)',
           fields: [
+            { name: 'image', type: 'upload', relationTo: 'media' },
             { name: 'heading', type: 'text' },
             { name: 'description', type: 'textarea' },
             { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
@@ -78,6 +79,7 @@ export const ServicesContent: GlobalConfig = {
           type: 'group',
           label: 'White Card 2',
           fields: [
+            { name: 'image', type: 'upload', relationTo: 'media' },
             { name: 'heading', type: 'text' },
             { name: 'description', type: 'textarea' },
             { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
@@ -88,6 +90,7 @@ export const ServicesContent: GlobalConfig = {
           type: 'group',
           label: 'White Card 3',
           fields: [
+            { name: 'image', type: 'upload', relationTo: 'media' },
             { name: 'heading', type: 'text' },
             { name: 'description', type: 'textarea' },
             { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
@@ -98,6 +101,7 @@ export const ServicesContent: GlobalConfig = {
           type: 'group',
           label: 'White Card 4',
           fields: [
+            { name: 'image', type: 'upload', relationTo: 'media' },
             { name: 'heading', type: 'text' },
             { name: 'description', type: 'textarea' },
             { name: 'items', type: 'textarea', admin: { description: 'One bullet point per line' } },
