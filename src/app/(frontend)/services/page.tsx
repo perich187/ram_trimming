@@ -287,7 +287,7 @@ export default async function ServicesPage() {
                     <img
                       src={card.image}
                       alt={card.heading}
-                      style={{ width: '100%', height: 200, objectFit: 'cover', marginBottom: 24 }}
+                      style={{ width: '100%', height: 300, objectFit: 'cover', marginBottom: 24 }}
                     />
                     <AnimatedHeading
                       as="h4"
