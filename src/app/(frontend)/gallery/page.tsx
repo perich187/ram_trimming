@@ -7,17 +7,15 @@ import { GalleryClient } from './GalleryClient'
 
 const HERO_BG = '/images/marine-1.jpg'
 
-const PLACEHOLDER_ITEMS = [
-  { id: 1, category: 'marine', tag: 'Marine Grade', title: 'Custom Boat Cover', desc: 'Heavy-duty waterproof cover with custom-fitted design for full weather protection.', imageUrl: '/images/hero.jpg' },
-  { id: 2, category: 'marine', tag: 'Marine Trimming', title: 'Marine Upholstery', desc: 'UV-resistant marine vinyl with reinforced stitching for long-lasting durability.', imageUrl: '/images/marine-1.jpg' },
-  { id: 3, category: 'marine', tag: 'Marine Grade', title: 'Boat Interior Trim', desc: 'Custom marine-grade upholstery designed to withstand the harshest coastal conditions.', imageUrl: '/images/marine-4.jpg' },
-  { id: 4, category: 'industrial', tag: 'Industrial', title: 'Industrial Canvas Work', desc: 'Heavy-duty PVC and canvas fabrication built to mine-spec standards.', imageUrl: '/images/industrial-1.jpg' },
-  { id: 5, category: 'industrial', tag: 'Industrial', title: 'Equipment Protection', desc: 'Custom-fabricated covers and enclosures for industrial machinery and equipment.', imageUrl: '/images/industrial-2.jpg' },
-  { id: 6, category: 'marine', tag: 'Custom Cover', title: 'Custom Covers & Biminis', desc: 'Precision-fitted covers and biminis using premium Sunbrella and WeatherMax fabrics.', imageUrl: '/images/covers-1.jpg' },
-]
-
 export default async function GalleryPage() {
-  let galleryItems: typeof PLACEHOLDER_ITEMS = []
+  let items: Array<{
+    id: string | number
+    category: string
+    tag: string
+    title: string
+    desc: string
+    imageUrl: string
+  }> = []
 
   try {
     const payload = await getPayload({ config: configPromise })
@@ -27,7 +25,7 @@ export default async function GalleryPage() {
       limit: 50,
       depth: 1,
     })
-    galleryItems = result.docs.map((doc: any) => ({
+    items = result.docs.map((doc: any) => ({
       id: doc.id,
       category: doc.category || 'marine',
       tag: doc.tag || doc.category || '',
@@ -36,8 +34,6 @@ export default async function GalleryPage() {
       imageUrl: (doc.image as any)?.url || '',
     }))
   } catch {}
-
-  const items = galleryItems.length > 0 ? galleryItems : PLACEHOLDER_ITEMS
 
   return (
     <>
