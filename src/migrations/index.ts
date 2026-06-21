@@ -7,6 +7,7 @@ import * as migration_20260530_service_cards from './20260530_service_cards';
 import * as migration_20260531_service_cards_extra from './20260531_service_cards_extra';
 import * as migration_20260531_portfolio_to_gallery from './20260531_portfolio_to_gallery';
 import * as migration_20260603_service_card_images from './20260603_service_card_images';
+import * as migration_20260617_form_upload_field from './20260617_form_upload_field';
 
 export const migrations = [
   {
@@ -53,5 +54,10 @@ export const migrations = [
     up: migration_20260603_service_card_images.up,
     down: migration_20260603_service_card_images.down,
     name: '20260603_service_card_images'
+  },
+  {
+    up: migration_20260617_form_upload_field.up,
+    down: migration_20260617_form_upload_field.down,
+    name: '20260617_form_upload_field'
   },
 ];

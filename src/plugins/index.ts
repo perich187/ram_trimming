@@ -57,7 +57,9 @@ export const plugins: Plugin[] = [
   formBuilderPlugin({
     fields: {
       payment: false,
+      upload: true,
     },
+    uploadCollections: ['media'],
     formOverrides: {
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
